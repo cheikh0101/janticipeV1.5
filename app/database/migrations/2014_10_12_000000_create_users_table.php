@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->text('description');
-            $table->boolean('is_admin');
-            $table->foreignIdFor(Role::class)->constrained();
+            $table->text('description')->nullable();
+            $table->boolean('is_admin')->default(false);
+            //$table->foreignIdFor(Role::class)->constrained();
         });
     }
 
