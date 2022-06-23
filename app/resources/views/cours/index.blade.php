@@ -21,7 +21,7 @@
                 <div class="card">
                     <h5 class="card-header">Nom de l'EC</h5>
                     <div class="card-body">
-                        <h5 class="card-title">Niveau</h5>
+                        <h5 class="card-title">Semestre</h5>
                         <p class="card-text">
                             UE: ...
                         </p>
