@@ -32,3 +32,7 @@ Route::get('/cours', function () {
 Route::get('/cours/details', function () {
     return view('cours.show');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
