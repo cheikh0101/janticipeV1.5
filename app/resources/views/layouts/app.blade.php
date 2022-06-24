@@ -46,7 +46,7 @@
                                 href=" {{ route('anneeAcademique.index') }} ">{{ __('Année Académique') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Semestre') }}</a>
+                            <a class="nav-link" href="{{ route('semestre.index') }}">{{ __('Semestre') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('UE') }}</a>

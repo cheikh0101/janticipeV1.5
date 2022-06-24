@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnneeAcademiqueController;
+use App\Http\Controllers\SemestreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
     // });
     Route::resource('anneeAcademique', AnneeAcademiqueController::class);
+    Route::resource('semestre', SemestreController::class);
 });
 
 Route::group(['prefix' => 'guest'], function () {

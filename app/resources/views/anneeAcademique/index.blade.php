@@ -22,13 +22,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            @forelse ($anneeAcademiques as $anneeAcademique)
+                        @forelse ($anneeAcademiques as $anneeAcademique)
+                            <tr>
                                 <th scope="row" class="text-center">1</th>
                                 <td class="text-center">{{ $anneeAcademique->annee_debut }}</td>
                                 <td class="text-center">{{ $anneeAcademique->annee_fin }}</td>
-                                <td class="text-center">@{{ $anneeAcademique - > nom }}</td>
-                                <td class="text-center">@{{ $anneeAcademique - > code }}</td>
+                                <td class="text-center">{{ $anneeAcademique->nom }}</td>
+                                <td class="text-center">{{ $anneeAcademique->code }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-outline-primary"> <i class="fa fa-eye"
                                             aria-hidden="true"></i>
@@ -44,13 +44,12 @@
                                             aria-hidden="true"></i>
                                     </button>
                                 </td>
-                            @empty
-                                <p>
-                                    Aucune année académique
-                                </p>
-                            @endforelse
-
-                        </tr>
+                            </tr>
+                        @empty
+                            <p>
+                                Aucune année académique
+                            </p>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
