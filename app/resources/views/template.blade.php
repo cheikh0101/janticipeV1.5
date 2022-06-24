@@ -37,7 +37,7 @@
                 <ul>
                     <li><a href="/" class="active">Accueil</a></li>
                     <li>
-                        <a href="/cours">Cours</a>
+                        <a href="/guest/cours">Cours</a>
                     </li>
                 </ul>
                 <i class="fa fa-navicon mobile-nav-toggle" aria-hidden="true"></i>

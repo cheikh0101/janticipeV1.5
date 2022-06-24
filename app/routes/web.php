@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::fallback(function () {
+    return view('index');
+});
+
 Route::get('/', function () {
     return view('index');
 });
@@ -25,13 +29,25 @@ Route::get('/contact', function () {
     return view('template.contact');
 });
 
-Route::get('/cours', function () {
-    return view('cours.index');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
+    });
+
+    Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
+    });
 });
 
-Route::get('/cours/details', function () {
-    return view('cours.show');
+Route::group(['prefix' => 'guest'], function () {
+    Route::get('/cours', function () {
+        return view('cours.index');
+    });
+
+    Route::get('/cours/details', function () {
+        return view('cours.show');
+    });
 });
+
 
 Auth::routes();
 

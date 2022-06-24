@@ -5,7 +5,7 @@
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
             <h1>Apprendre aujourd'hui,<br>Apprendre demain</h1>
             <h2>Tous mes cours en un seul endroit</h2>
-            <a href="/cours" class="btn-get-started">Mes Cours <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+            <a href="/guest/cours" class="btn-get-started">Mes Cours <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
         </div>
     </section><!-- End Hero -->
 
