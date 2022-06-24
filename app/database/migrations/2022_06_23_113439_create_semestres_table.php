@@ -19,7 +19,6 @@ class CreateSemestresTable extends Migration
             $table->string('nom')->unique();
             $table->string('code')->unique();
             $table->string('user_email');
-            $table->foreignIdFor(AnneeAcademique::class)->constrained();
             $table->timestamps();
         });
     }

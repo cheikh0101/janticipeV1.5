@@ -14,7 +14,13 @@ class UeController extends Controller
      */
     public function index()
     {
-        //
+        $ues = Ue::all();
+        return view('ue.index', compact('ues'));
+    }
+
+    public function create()
+    {
+        return view('ue.create');
     }
 
     /**

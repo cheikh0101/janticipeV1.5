@@ -14,7 +14,13 @@ class EcController extends Controller
      */
     public function index()
     {
-        //
+        $ecs = Ec::all();
+        return view('ec.index', compact('ecs'));
+    }
+
+    public function create()
+    {
+        return view('ec.create');
     }
 
     /**

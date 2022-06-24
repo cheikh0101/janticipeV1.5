@@ -49,10 +49,10 @@
                             <a class="nav-link" href="{{ route('semestre.index') }}">{{ __('Semestre') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('UE') }}</a>
+                            <a class="nav-link" href="{{ route('ue.index') }}">{{ __('UE') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('EC') }}</a>
+                            <a class="nav-link" href="{{ route('ec.index') }}">{{ __('EC') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Type Document') }}</a>
