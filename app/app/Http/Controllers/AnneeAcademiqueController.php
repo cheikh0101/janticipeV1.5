@@ -14,7 +14,13 @@ class AnneeAcademiqueController extends Controller
      */
     public function index()
     {
-        //
+        $anneeAcademiques = AnneeAcademique::all();
+        return view('anneeAcademique.index', compact('anneeAcademiques'));
+    }
+
+    public function create()
+    {
+        return view('anneeAcademique.create');
     }
 
     /**
@@ -25,7 +31,7 @@ class AnneeAcademiqueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'hello';
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnneeAcademiqueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +31,11 @@ Route::get('/contact', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
-    Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
-    });
-
-    Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
-    });
+    // Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
+    // });
+    // Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
+    // });
+    Route::resource('anneeAcademique', AnneeAcademiqueController::class);
 });
 
 Route::group(['prefix' => 'guest'], function () {
