@@ -20,9 +20,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <div class="d-none">
+                            {{ $i = 1 }}
+                        </div>
                         @forelse ($semestres as $semestre)
                             <tr>
-                                <th scope="row" class="text-center">1</th>
+                                <th scope="row" class="text-center">{{ $i++ }}</th>
                                 <td class="text-center">{{ $semestre->nom }}</td>
                                 <td class="text-center">{{ $semestre->code }}</td>
                                 <td class="text-center">

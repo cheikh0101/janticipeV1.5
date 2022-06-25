@@ -55,10 +55,11 @@
                             <a class="nav-link" href="{{ route('ec.index') }}">{{ __('EC') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Type Document') }}</a>
+                            <a class="nav-link"
+                                href="{{ route('typeDocument.index') }}">{{ __('Type Document') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Document') }}</a>
+                            <a class="nav-link" href="{{ route('document.index') }}">{{ __('Document') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Responsable') }}</a>

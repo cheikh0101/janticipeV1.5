@@ -36,17 +36,11 @@ class SemestreController extends Controller
             'nom' => 'required|unique:semestres',
             'code' => 'required|unique:semestres',
         ]);
-        DB::beginTransaction();
-        try {
-            $semestre = new Semestre();
-            $semestre->user_email = auth()->user()->email;
-            $semestre->code = $request->code;
-            $semestre->nom = $request->nom;
-            $semestre->saveOrFail();
-        } catch (\Throwable $th) {
-            DB::rollback();
-            return back();
-        }
+        $semestre = new Semestre();
+        $semestre->user_email = auth()->user()->email;
+        $semestre->code = $request->code;
+        $semestre->nom = $request->nom;
+        $semestre->save();
         return redirect()->route('semestre.index');
     }
 

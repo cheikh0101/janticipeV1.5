@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ec;
+use App\Models\Ue;
 use Illuminate\Http\Request;
 
 class EcController extends Controller
@@ -20,7 +21,8 @@ class EcController extends Controller
 
     public function create()
     {
-        return view('ec.create');
+        $ues = Ue::all();
+        return view('ec.create', compact('ues'));
     }
 
     /**
@@ -31,7 +33,18 @@ class EcController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'required|unique:ecs',
+            'code' => 'required|unique:ecs',
+            'ue_id' => 'required|unique:ecs',
+        ]);
+        $ec = new Ec();
+        $ec->user_email = auth()->user()->email;
+        $ec->code = $request->code;
+        $ec->nom = $request->nom;
+        $ec->ue_id = $request->ue_id;
+        $ec->save();
+        return redirect()->route('ec.index');
     }
 
     /**

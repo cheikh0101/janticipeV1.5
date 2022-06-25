@@ -31,7 +31,16 @@ class UeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'required|unique:ues',
+            'code' => 'required|unique:ues',
+        ]);
+        $ue = new Ue();
+        $ue->user_email = auth()->user()->email;
+        $ue->code = $request->code;
+        $ue->nom = $request->nom;
+        $ue->save();
+        return redirect()->route('ec.index');
     }
 
     /**

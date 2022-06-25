@@ -22,9 +22,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <div class="d-none">
+                            {{ $i = 1 }}
+                        </div>
                         @forelse ($anneeAcademiques as $anneeAcademique)
                             <tr>
-                                <th scope="row" class="text-center">1</th>
+                                <th scope="row" class="text-center"> {{ $i++ }} </th>
                                 <td class="text-center">{{ $anneeAcademique->annee_debut }}</td>
                                 <td class="text-center">{{ $anneeAcademique->annee_fin }}</td>
                                 <td class="text-center">{{ $anneeAcademique->nom }}</td>

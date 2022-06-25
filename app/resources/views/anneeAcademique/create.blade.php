@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <form class="row g-3" method="POST" action=" {{ route('anneeAcademique.store') }} ">
                             @csrf
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="annee_debut" class="form-label">Année Début</label>
                                     <select class="form-control" name="annee_debut" id="annee_debut">
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <label for="annee_fin" class="form-label">Année Début</label>
+                                <label for="annee_fin" class="form-label">Année Fin</label>
                                 <select class="form-control" name="annee_fin" id="annee_fin">
                                     <option value="2021">2021</option>
                                     <option value="2020">2020</option>
@@ -32,7 +32,7 @@
                                     <option value="2018">2018</option>
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <label for="code" class="form-label">Code</label>
                                 <input type="text" name="code" required class="form-control" id="code">
                             </div>

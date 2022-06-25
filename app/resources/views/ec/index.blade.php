@@ -3,9 +3,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col d-flex justify-content-end">
-                <a href=" {{ route('semestre.create') }} " class="btn btn-primary"> <i class="fa fa-plus-circle"
+                <a href=" {{ route('ec.create') }} " class="btn btn-primary"> <i class="fa fa-plus-circle"
                         aria-hidden="true"></i> Nouveau
-                    semestre</a>
+                    ec</a>
             </div>
         </div>
         <div class="row">
@@ -20,11 +20,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($semestres as $semestre)
+                        @forelse ($ecs as $ec)
                             <tr>
                                 <th scope="row" class="text-center">1</th>
-                                <td class="text-center">{{ $semestre->nom }}</td>
-                                <td class="text-center">{{ $semestre->code }}</td>
+                                <td class="text-center">{{ $ec->nom }}</td>
+                                <td class="text-center">{{ $ec->code }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-outline-primary"> <i class="fa fa-eye"
                                             aria-hidden="true"></i>
@@ -43,7 +43,7 @@
                             </tr>
                         @empty
                             <p>
-                                Aucun semestre
+                                Aucun ec
                             </p>
                         @endforelse
                     </tbody>

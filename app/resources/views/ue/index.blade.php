@@ -3,7 +3,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col d-flex justify-content-end">
-                <a href=" {{ route('semestre.create') }} " class="btn btn-primary"> <i class="fa fa-plus-circle"
+                <a href=" {{ route('ue.create') }} " class="btn btn-primary"> <i class="fa fa-plus-circle"
                         aria-hidden="true"></i> Nouveau
                     ue</a>
             </div>
@@ -20,11 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($semestres as $semestre)
+                        <div class="d-none">
+                            {{ $i = 1 }}
+                        </div>
+                        @forelse ($ues as $ue)
                             <tr>
-                                <th scope="row" class="text-center">1</th>
-                                <td class="text-center">{{ $semestre->nom }}</td>
-                                <td class="text-center">{{ $semestre->code }}</td>
+                                <th scope="row" class="text-center">{{ $i++ }}</th>
+                                <td class="text-center">{{ $ue->nom }}</td>
+                                <td class="text-center">{{ $ue->code }}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-outline-primary"> <i class="fa fa-eye"
                                             aria-hidden="true"></i>
@@ -43,7 +46,7 @@
                             </tr>
                         @empty
                             <p>
-                                Aucun semestre
+                                Aucun ue
                             </p>
                         @endforelse
                     </tbody>

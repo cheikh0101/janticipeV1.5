@@ -14,7 +14,13 @@ class TypeDocumentController extends Controller
      */
     public function index()
     {
-        //
+        $typeDocuments = TypeDocument::all();
+        return view('typeDocument.index', compact('typeDocuments'));
+    }
+
+    public function create()
+    {
+        return view('typeDocument.create');
     }
 
     /**
@@ -25,7 +31,15 @@ class TypeDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'required|unique:ues',
+            'code' => 'required|unique:ues',
+        ]);
+        $typeDocument = new TypeDocument();
+        $typeDocument->code = $request->code;
+        $typeDocument->nom = $request->nom;
+        $typeDocument->save();
+        return redirect()->route('typeDocument.index');
     }
 
     /**

@@ -38,19 +38,13 @@ class AnneeAcademiqueController extends Controller
             'annee_fin' => 'required',
             'code' => 'required|unique:annee_academiques',
         ]);
-        DB::beginTransaction();
-        try {
-            $anneeAcademique = new AnneeAcademique();
-            $anneeAcademique->user_email = auth()->user()->email;
-            $anneeAcademique->annee_debut = $request->annee_debut;
-            $anneeAcademique->annee_fin = $request->annee_fin;
-            $anneeAcademique->code = $request->code;
-            $anneeAcademique->nom = $request->annee_debut . '-' . $request->annee_fin;
-            $anneeAcademique->saveOrFail();
-        } catch (\Throwable $th) {
-            DB::rollback();
-            return back();
-        }
+        $anneeAcademique = new AnneeAcademique();
+        $anneeAcademique->user_email = auth()->user()->email;
+        $anneeAcademique->annee_debut = $request->annee_debut;
+        $anneeAcademique->annee_fin = $request->annee_fin;
+        $anneeAcademique->code = $request->code;
+        $anneeAcademique->nom = $request->annee_debut . '-' . $request->annee_fin;
+        $anneeAcademique->save();
         return redirect()->route('anneeAcademique.index');
     }
 
