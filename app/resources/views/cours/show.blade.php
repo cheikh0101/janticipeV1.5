@@ -12,29 +12,21 @@
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <div class="col-lg-8">
-                    <h3>Nom du Cours</h3>
+                    <h3>Algorithme et Programmation 1</h3>
                 </div>
                 <div class="col-lg-4">
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>EC</h5>
-                        <p>xxx</p>
+                        <h5>Niveau</h5>
+                        <p>Licence 1</p>
                     </div>
-
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>UE</h5>
-                        <p>xxx</p>
+                        <h5>Spécialité</h5>
+                        <p>Informatique</p>
                     </div>
-
                     <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>SEMESTRE</h5>
-                        <p>xxx</p>
+                        <h5>Nombre de documents</h5>
+                        <p>25</p>
                     </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>NIVEAU</h5>
-                        <p>xxx</p>
-                    </div>
-
                 </div>
             </div>
 
@@ -69,8 +61,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
+                        <h5 class="card-title">Nom du document</h5>
+                        <p class="card-text">Description du document</p>
                         <a href="#" class="btn btn-primary">Visionner</a>
                     </div>
                 </div>
@@ -79,8 +71,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
+                        <h5 class="card-title">Nom du document</h5>
+                        <p class="card-text">Description du document</p>
                         <a href="#" class="btn btn-primary">Visionner</a>
                     </div>
                 </div>
@@ -89,8 +81,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
+                        <h5 class="card-title">Nom du document</h5>
+                        <p class="card-text">Description du document</p>
                         <a href="#" class="btn btn-primary">Visionner</a>
                     </div>
                 </div>
@@ -99,28 +91,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
-                    </div>
-                </div>
-            </div> <!-- End Course Item-->
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
-                    </div>
-                </div>
-            </div> <!-- End Course Item-->
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Description.</p>
+                        <h5 class="card-title">Nom du document</h5>
+                        <p class="card-text">Description du document</p>
                         <a href="#" class="btn btn-primary">Visionner</a>
                     </div>
                 </div>

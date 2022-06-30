@@ -9,23 +9,27 @@
                     <img src="../assets/img/a.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                    <h3>Plateforme d'apprentissage de nouvelle génération pour le monde universitaire.</h3>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore
-                        magna aliqua.
+                        {{ config('app.name') }} est l'outil parfait pour les étudiants qui veulent tout avoir en un seul
+                        endroit. Ne perdez plus vos
+                        documents !
+                        Vous pouvez conserver tous vos documents nécessaires au cours.
                     </p>
                     <ul>
-                        <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                        <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat.</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Duis aute irure dolor in reprehenderit in
+                            voluptate velit.
                         </li>
-                        <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat. Duis
                             aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
                             nulla pariatur.</li>
                     </ul>
                     <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate
+                        Avec {{ config('app.name') }} non seulement je valide les unités d'enseignement
+                        mais aussi j'ai plus de connaissance.
                     </p>
 
                 </div>
@@ -33,51 +37,4 @@
 
         </div>
     </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts section-bg">
-        <div class="container">
-
-            <div class="row counters">
-
-                <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1"
-                        class="purecounter"></span>
-                    <p>Students</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1"
-                        class="purecounter"></span>
-                    <p>Courses</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1"
-                        class="purecounter"></span>
-                    <p>Events</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-                        class="purecounter"></span>
-                    <p>Trainers</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2>Testimonials</h2>
-                <p>What are they saying</p>
-            </div>
-
-        </div>
-    </section><!-- End Testimonials Section -->
 @endsection

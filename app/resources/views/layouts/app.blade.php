@@ -42,26 +42,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link"
-                                href=" {{ route('anneeAcademique.index') }} ">{{ __('Année Académique') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('semestre.index') }}">{{ __('Semestre') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('ue.index') }}">{{ __('UE') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('ec.index') }}">{{ __('EC') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('typeDocument.index') }}">{{ __('Type Document') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('document.index') }}">{{ __('Document') }}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Responsable') }}</a>
                         </li>
                     </ul>

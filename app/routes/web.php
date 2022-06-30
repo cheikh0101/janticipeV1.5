@@ -1,11 +1,5 @@
 <?php
 
-use App\Http\Controllers\AnneeAcademiqueController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\EcController;
-use App\Http\Controllers\SemestreController;
-use App\Http\Controllers\TypeDocumentController;
-use App\Http\Controllers\UeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,19 +29,6 @@ Route::get('/contact', function () {
     return view('template.contact');
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    // Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
-    // });
-    // Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
-    // });
-    Route::resource('anneeAcademique', AnneeAcademiqueController::class);
-    Route::resource('semestre', SemestreController::class);
-    Route::resource('ue', UeController::class);
-    Route::resource('ec', EcController::class);
-    Route::resource('typeDocument', TypeDocumentController::class);
-    Route::resource('document', DocumentController::class);
-});
-
 Route::group(['prefix' => 'guest'], function () {
     Route::get('/cours', function () {
         return view('cours.index');
@@ -57,6 +38,14 @@ Route::group(['prefix' => 'guest'], function () {
         return view('cours.show');
     });
 });
+
+Route::group(['middleware' => 'auth'], function () {
+    // Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
+    // });
+    // Route::group(['middleware' => 'is_res', 'prefix' => 'res'], function () {
+    // });
+});
+
 
 Auth::routes();
 

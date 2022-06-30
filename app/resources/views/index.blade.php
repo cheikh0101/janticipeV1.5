@@ -17,13 +17,14 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-stretch">
                         <div class="content">
-                            <h3>Pourquoi choisir Janticipe?</h3>
+                            <h3>Pourquoi choisir {{ config('app.name') }}?</h3>
                             <p>
                                 Avez-vous déjà perdu du temps à fouiller dans des fichiers à la recherche de vos notes ?
-                                Avec Janticipe, vous pouvez désormais organiser tous vos documents en un seul endroit.
+                                Avec {{ config('app.name') }}, vous pouvez désormais organiser tous vos documents en un
+                                seul endroit.
                             </p>
                             <div class="text-center">
-                                <a href="/about" class="more-btn">Plus <i class="fa fa-angle-right"
+                                <a href="/about" class="more-btn">PLUS <i class="fa fa-angle-right"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -35,7 +36,7 @@
                                     <div class="icon-box mt-4 mt-xl-0">
                                         <i class="fa fa-recycle" aria-hidden="true"></i>
                                         <h4>Organiser</h4>
-                                        <p>Année Académique, Semestre, UE... ont été pris en compte</p>
+                                        <p>Spécialité, Niveau, Cours... ont été pris en compte</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">

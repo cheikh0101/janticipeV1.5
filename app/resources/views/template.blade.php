@@ -30,7 +30,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="/">Janticipe</a></h1>
+            <h1 class="logo me-auto"><a href="/">{{ config('app.name') }}</a></h1>
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
@@ -57,7 +57,7 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Janticipe</h3>
+                        <h3>{{ config('app.name') }}</h3>
                         <a name="" id="" class="btn btn-primary" href="/contact" role="button">Nous
                             écrire <i class="fa fa-file-text" aria-hidden="true"></i> </a>
                     </div>
@@ -84,7 +84,7 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Janticipe</span></strong>. Tous droits réservés
+                    &copy; Copyright <strong><span>{{ config('app.name') }}</span></strong>. Tous droits réservés
                 </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">
