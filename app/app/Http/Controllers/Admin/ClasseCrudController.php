@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\NiveauRequest;
+use App\Http\Requests\ClasseRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class NiveauCrudController
+ * Class ClasseCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class NiveauCrudController extends CrudController
+class ClasseCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class NiveauCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Niveau::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/niveau');
-        CRUD::setEntityNameStrings('niveau', 'niveaux');
+        CRUD::setModel(\App\Models\Classe::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/classe');
+        CRUD::setEntityNameStrings('classe', 'classes');
     }
 
     /**
@@ -39,9 +39,9 @@ class NiveauCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('libelle');
-        CRUD::column('code');
-        CRUD::column('enabled')->type('check')->label('Activé');
+        CRUD::column('niveau_id');
+        CRUD::column('specialite_id');
+        CRUD::column('annee_academique_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,11 +58,11 @@ class NiveauCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NiveauRequest::class);
+        CRUD::setValidation(ClasseRequest::class);
 
-        CRUD::field('libelle');
-        CRUD::field('code');
-        CRUD::field('enabled')->type('checkbox')->label('Activé');
+        CRUD::field('niveau_id');
+        CRUD::field('specialite_id');
+        CRUD::field('annee_academique_id');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

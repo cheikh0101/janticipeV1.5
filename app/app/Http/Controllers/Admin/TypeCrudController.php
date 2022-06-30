@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\NiveauRequest;
+use App\Http\Requests\TypeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class NiveauCrudController
+ * Class TypeCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class NiveauCrudController extends CrudController
+class TypeCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class NiveauCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Niveau::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/niveau');
-        CRUD::setEntityNameStrings('niveau', 'niveaux');
+        CRUD::setModel(\App\Models\Type::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/type');
+        CRUD::setEntityNameStrings('type', 'types');
     }
 
     /**
@@ -39,9 +39,9 @@ class NiveauCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('libelle');
+        CRUD::column('name');
         CRUD::column('code');
-        CRUD::column('enabled')->type('check')->label('Activé');
+        CRUD::column('description');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,11 +58,11 @@ class NiveauCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NiveauRequest::class);
+        CRUD::setValidation(TypeRequest::class);
 
-        CRUD::field('libelle');
+        CRUD::field('name');
         CRUD::field('code');
-        CRUD::field('enabled')->type('checkbox')->label('Activé');
+        CRUD::field('description');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

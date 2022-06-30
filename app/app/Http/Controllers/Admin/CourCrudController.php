@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\NiveauRequest;
+use App\Http\Requests\CourRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class NiveauCrudController
+ * Class CourCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class NiveauCrudController extends CrudController
+class CourCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class NiveauCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Niveau::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/niveau');
-        CRUD::setEntityNameStrings('niveau', 'niveaux');
+        CRUD::setModel(\App\Models\Cour::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/cour');
+        CRUD::setEntityNameStrings('cour', 'cours');
     }
 
     /**
@@ -39,9 +39,9 @@ class NiveauCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('libelle');
-        CRUD::column('code');
-        CRUD::column('enabled')->type('check')->label('Activé');
+        CRUD::column('name');
+        CRUD::column('enabled');
+        CRUD::column('classe_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,11 +58,11 @@ class NiveauCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NiveauRequest::class);
+        CRUD::setValidation(CourRequest::class);
 
-        CRUD::field('libelle');
-        CRUD::field('code');
-        CRUD::field('enabled')->type('checkbox')->label('Activé');
+        CRUD::field('name');
+        CRUD::field('enabled');
+        CRUD::field('classe_id');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\NiveauRequest;
+use App\Http\Requests\AnneeAcademiqueRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class NiveauCrudController
+ * Class AnneeAcademiqueCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class NiveauCrudController extends CrudController
+class AnneeAcademiqueCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class NiveauCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Niveau::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/niveau');
-        CRUD::setEntityNameStrings('niveau', 'niveaux');
+        CRUD::setModel(\App\Models\AnneeAcademique::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/annee-academique');
+        CRUD::setEntityNameStrings('annee academique', 'annee academiques');
     }
 
     /**
@@ -41,7 +41,9 @@ class NiveauCrudController extends CrudController
     {
         CRUD::column('libelle');
         CRUD::column('code');
-        CRUD::column('enabled')->type('check')->label('Activé');
+        CRUD::column('annee_debut');
+        CRUD::column('annee_fin');
+        CRUD::column('enabled');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,11 +60,13 @@ class NiveauCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(NiveauRequest::class);
+        CRUD::setValidation(AnneeAcademiqueRequest::class);
 
         CRUD::field('libelle');
         CRUD::field('code');
-        CRUD::field('enabled')->type('checkbox')->label('Activé');
+        CRUD::field('annee_debut');
+        CRUD::field('annee_fin');
+        CRUD::field('enabled');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
