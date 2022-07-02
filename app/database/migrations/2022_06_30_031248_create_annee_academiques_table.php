@@ -19,7 +19,6 @@ class CreateAnneeAcademiquesTable extends Migration
             $table->string('code')->unique();
             $table->date('annee_debut');
             $table->date('annee_fin');
-            $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
     }

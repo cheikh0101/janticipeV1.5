@@ -17,7 +17,6 @@ class CreateTypesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

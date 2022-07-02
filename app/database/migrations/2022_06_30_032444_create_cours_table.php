@@ -17,7 +17,6 @@ class CreateCoursTable extends Migration
         Schema::create('cours', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->boolean('enabled')->default(false);
             $table->foreignIdFor(Classe::class)->constrained();
             $table->timestamps();
         });

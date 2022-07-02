@@ -17,7 +17,6 @@ class CreateNiveauTable extends Migration
             $table->id();
             $table->string('libelle')->unique();
             $table->string('code')->unique();
-            $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
     }

@@ -41,7 +41,6 @@ class NiveauCrudController extends CrudController
     {
         CRUD::column('libelle');
         CRUD::column('code');
-        CRUD::column('enabled')->type('check')->label('Activé');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,7 +61,6 @@ class NiveauCrudController extends CrudController
 
         CRUD::field('libelle');
         CRUD::field('code');
-        CRUD::field('enabled')->type('checkbox')->label('Activé');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

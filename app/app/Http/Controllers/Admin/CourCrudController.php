@@ -40,7 +40,6 @@ class CourCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        CRUD::column('enabled');
         CRUD::column('classe_id');
 
         /**
@@ -61,7 +60,6 @@ class CourCrudController extends CrudController
         CRUD::setValidation(CourRequest::class);
 
         CRUD::field('name');
-        CRUD::field('enabled');
         CRUD::field('classe_id');
 
         /**

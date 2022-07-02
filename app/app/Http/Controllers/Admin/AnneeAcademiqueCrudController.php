@@ -43,7 +43,6 @@ class AnneeAcademiqueCrudController extends CrudController
         CRUD::column('code');
         CRUD::column('annee_debut');
         CRUD::column('annee_fin');
-        CRUD::column('enabled');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -66,7 +65,6 @@ class AnneeAcademiqueCrudController extends CrudController
         CRUD::field('code');
         CRUD::field('annee_debut');
         CRUD::field('annee_fin');
-        CRUD::field('enabled');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -39,7 +39,6 @@ class SpecialiteCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('libelle');
         CRUD::column('code');
         CRUD::column('enabled');
 
@@ -60,7 +59,6 @@ class SpecialiteCrudController extends CrudController
     {
         CRUD::setValidation(SpecialiteRequest::class);
 
-        CRUD::field('libelle');
         CRUD::field('code');
         CRUD::field('enabled');
 
