@@ -40,7 +40,7 @@ class SpecialiteCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('code');
-        CRUD::column('enabled');
+        CRUD::column('libelle');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -60,7 +60,7 @@ class SpecialiteCrudController extends CrudController
         CRUD::setValidation(SpecialiteRequest::class);
 
         CRUD::field('code');
-        CRUD::field('enabled');
+        CRUD::field('libelle');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
