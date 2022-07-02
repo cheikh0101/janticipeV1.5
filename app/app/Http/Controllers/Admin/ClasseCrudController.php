@@ -60,9 +60,41 @@ class ClasseCrudController extends CrudController
     {
         CRUD::setValidation(ClasseRequest::class);
 
-        CRUD::field('niveau_id');
-        CRUD::field('specialite_id');
-        CRUD::field('annee_academique_id');
+        CRUD::addField([
+            'name'    => 'annee_academique_id',
+            'label'   => 'Année Académique',
+            'type'    => 'select',
+            'entity'    => 'annee_academique',
+            'model'     => "App\Models\AnneeAcademique",
+            'attribute' => 'libelle',
+            'options' => (function ($query) {
+                return $query->orderBy('libelle', 'ASC')->get();
+            }),
+        ]);
+
+        CRUD::addField([
+            'name'    => 'niveau_id',
+            'label'   => 'Niveau',
+            'type'    => 'select',
+            'entity'    => 'niveau',
+            'model'     => "App\Models\Niveau",
+            'attribute' => 'libelle',
+            'options' => (function ($query) {
+                return $query->orderBy('libelle', 'ASC')->get();
+            }),
+        ]);
+
+        CRUD::addField([
+            'name'    => 'specialite_id',
+            'label'   => 'Spécialité',
+            'type'    => 'select',
+            'entity'    => 'specialite',
+            'model'     => "App\Models\Specialite",
+            'attribute' => 'libelle',
+            'options' => (function ($query) {
+                return $query->orderBy('libelle', 'ASC')->get();
+            }),
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
