@@ -41,7 +41,6 @@ class TypeCrudController extends CrudController
     {
         CRUD::column('name');
         CRUD::column('code');
-        CRUD::column('description');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,7 +61,6 @@ class TypeCrudController extends CrudController
 
         CRUD::field('name');
         CRUD::field('code');
-        CRUD::field('description');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
