@@ -40,7 +40,7 @@ class CourCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        CRUD::column('libelle_classe');
+        CRUD::column('libelle_classe')->label('Libelle de la classe');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

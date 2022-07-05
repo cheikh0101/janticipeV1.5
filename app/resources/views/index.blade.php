@@ -87,4 +87,34 @@
             </div>
         </section><!-- End Counts Section -->
     </main>
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>{{ config('app.name') }}</h3>
+                        <a name="" id="" class="btn btn-primary" href="/contact" role="button">Nous
+                            écrire <i class="fa fa-file-text" aria-hidden="true"></i> </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Boite à lettres</h4>
+                        <p>
+                            Pour être informer de toutes nouveautés merci de renseigner votre email
+                        </p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="S'inscrire"
+                                placeholder="janticipe0101@gmail.com">
+                        </form>
+                        <p>
+                            Merci pour la confiance &hearts;
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
 @endsection

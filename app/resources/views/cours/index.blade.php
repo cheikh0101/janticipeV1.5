@@ -9,11 +9,14 @@
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col col-lg-6 col-md-6">
-                <div class="mb-3">
-                    <label for="" class="form-label">Rechercher un cours</label>
-                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                        placeholder="ex: algorithme">
-                </div>
+                <form action="/guest/cours/search" method="post" autocomplete="on">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="motCle" class="form-label">Rechercher un cours</label>
+                        <input type="text" class="form-control" name="motCle" id="motCle" aria-describedby="helpId"
+                            placeholder="ex: algorithme">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -36,6 +39,7 @@
                     Aucun cours disponible
                 </p>
             @endforelse
+            {{ $cours->links() }}
         </div>
     </div>
 @endsection

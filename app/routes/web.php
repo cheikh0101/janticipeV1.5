@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursController;
 use App\Models\Cour;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Auth;
@@ -34,10 +35,9 @@ Route::get('/contact', function () {
 });
 
 Route::group(['prefix' => 'guest'], function () {
-    Route::get('/cours', function () {
-        $cours = Cour::simplePaginate(10);
-        return view('cours.index', compact('cours'));
-    });
+    Route::get('/cours', [CoursController::class, 'index']);
+
+    Route::post('/cours/search', [CoursController::class, 'search']);
 
     Route::get('/cours/details', function () {
         return view('cours.show');
