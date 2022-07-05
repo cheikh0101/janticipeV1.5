@@ -39,9 +39,12 @@ class ClasseCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('niveau_id');
-        CRUD::column('specialite_id');
         CRUD::column('annee_academique_id');
+        $this->crud->setColumnDetails('annee_academique_id', ['attribute' => 'libelle']);
+        CRUD::column('niveau_id');
+        $this->crud->setColumnDetails('niveau_id', ['attribute' => 'libelle']);
+        CRUD::column('specialite_id');
+        $this->crud->setColumnDetails('specialite_id', ['attribute' => 'libelle']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,18 +62,6 @@ class ClasseCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(ClasseRequest::class);
-
-        CRUD::addField([
-            'name'    => 'annee_academique_id',
-            'label'   => 'Année Académique',
-            'type'    => 'select',
-            'entity'    => 'annee_academique',
-            'model'     => "App\Models\AnneeAcademique",
-            'attribute' => 'libelle',
-            'options' => (function ($query) {
-                return $query->orderBy('libelle', 'ASC')->get();
-            }),
-        ]);
 
         CRUD::addField([
             'name'    => 'niveau_id',
@@ -95,6 +86,19 @@ class ClasseCrudController extends CrudController
                 return $query->orderBy('libelle', 'ASC')->get();
             }),
         ]);
+
+        CRUD::addField([
+            'name'    => 'annee_academique_id',
+            'label'   => 'Année Académique',
+            'type'    => 'select',
+            'entity'    => 'annee_academique',
+            'model'     => "App\Models\AnneeAcademique",
+            'attribute' => 'libelle',
+            'options' => (function ($query) {
+                return $query->orderBy('libelle', 'ASC')->get();
+            }),
+        ]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Cour;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -34,7 +35,8 @@ Route::get('/contact', function () {
 
 Route::group(['prefix' => 'guest'], function () {
     Route::get('/cours', function () {
-        return view('cours.index');
+        $cours = Cour::simplePaginate(10);
+        return view('cours.index', compact('cours'));
     });
 
     Route::get('/cours/details', function () {
@@ -42,7 +44,7 @@ Route::group(['prefix' => 'guest'], function () {
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

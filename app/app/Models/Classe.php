@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Classe extends Model
 {
@@ -23,6 +24,8 @@ class Classe extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+
+    protected $appends = ['libelle'];
 
     /*
     |--------------------------------------------------------------------------
@@ -64,6 +67,21 @@ class Classe extends Model
     public function specialite(): BelongsTo
     {
         return $this->belongsTo(Specialite::class);
+    }
+
+    /**
+     * Get all of the cours for the Classe
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cours(): HasMany
+    {
+        return $this->hasMany(Cour::class);
+    }
+
+    public function getLibelleAttribute()
+    {
+        return $this->niveau->libelle . "-" . $this->specialite->libelle . "-" . $this->annee_academique->libelle;
     }
     /*
     |--------------------------------------------------------------------------

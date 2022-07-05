@@ -6,3 +6,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('annee-academique') }}'><i class='nav-icon la la-question'></i> Annee academiques</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('classe') }}'><i class='nav-icon la la-question'></i> Classes</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('cour') }}'><i class='nav-icon la la-question'></i> Cours</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-question'></i> Users</a></li>

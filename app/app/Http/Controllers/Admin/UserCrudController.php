@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CourRequest;
+use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 /**
- * Class CourCrudController
+ * Class UserCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class CourCrudController extends CrudController
+class UserCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +29,9 @@ class CourCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Cour::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/cour');
-        CRUD::setEntityNameStrings('cour', 'cours');
+        CRUD::setModel(\App\Models\User::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
+        CRUD::setEntityNameStrings('user', 'users');
     }
 
     /**
@@ -39,8 +42,11 @@ class CourCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('libelle_classe');
+        CRUD::column('name')->label('Prénom et Nom');
+        CRUD::column('email');
+        CRUD::column('num_telephone')->label('Numéro de Téléphone');
+        CRUD::column('type');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -56,21 +62,29 @@ class CourCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CourRequest::class);
+        CRUD::setValidation(UserRequest::class);
 
-        CRUD::field('name');
-        // CRUD::field('classe_id');
+        User::creating(function ($user) {
+            $user->password = Hash::make('password');
+        });
+
+        CRUD::field('name')->label('Prénom et Nom');
+        CRUD::field('email');
+        CRUD::field('num_telephone')->label('Numéro de Téléphone');
+        // CRUD::addField(['name' => 'type', 'type' => 'select_from_array', 'options' => ['admin' => 'Admin', 'responsable' => 'Responsable']]);
+
         CRUD::addField([
-            'name'    => 'classe_id',
-            'label'   => 'Classe',
-            'type'    => 'select',
-            'entity'    => 'classe',
-            'model'     => "App\Models\Classe",
-            'attribute' => 'libelle',
-            'options' => (function ($query) {
-                return $query->orderBy('niveau_id', 'ASC')->get();
-            }),
+            'name' => 'type',
+            'events' => [
+                'saving' => function ($entry) {
+                    $entry->type = 'admin';
+                },
+            ],
         ]);
+
+        User::created(function ($user) {
+            event(new Registered($user));
+        });
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
