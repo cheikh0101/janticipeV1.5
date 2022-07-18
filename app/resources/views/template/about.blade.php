@@ -1,5 +1,11 @@
 @extends('template')
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Tout ce qu'il faut savoir</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
     <!-- ======= About Section ======= -->
     <section id="about" class="about mt-5">
         <div class="container" data-aos="fade-up">
@@ -17,19 +23,25 @@
                         Vous pouvez conserver tous vos documents nécessaires au cours.
                     </p>
                     <ul>
-                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat.</li>
-                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Duis aute irure dolor in reprehenderit in
-                            voluptate velit.
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Organiser: Les ressources dans le domaine
+                            de l'enseignement supérieur sont nombreuses.
+                            Pour une meilleure navigabilité nous avons regrouper les documents en fonction des spécialités
+                            de chaque apprenant tout en prenant compte du niveau d'étude. De plus pour chaque document lui
+                            correspond un type, exemple cours magistral.</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Simple: Entre les cours et les td
+                            l'apprenant n'a pas de temps à perdre. Raison pour laquelle
+                            nous avons simplifiée la plateforme au maximum histoire d'offrir une meilleure navigabilité. Si
+                            toutes fois vous avez des suggestions ou remarques,
+                            <a href="/contact">veuillez nous contacter</a>.
                         </li>
-                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis
-                            aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat
-                            nulla pariatur.</li>
+                        <li><i class="fa fa-check-circle" aria-hidden="true"></i> Fiable: Nous avons porté le choix sur les
+                            responsables de classe
+                            afin de fournir les documents. Tout ceci pour vous permettre d'avoir les documents qui sont en
+                            phase avec votre programme.</li>
                     </ul>
                     <p>
                         Avec {{ config('app.name') }} non seulement je valide les unités d'enseignement
-                        mais aussi j'ai plus de connaissance.
+                        mais aussi j'ai plus de connaissances.
                     </p>
 
                 </div>
