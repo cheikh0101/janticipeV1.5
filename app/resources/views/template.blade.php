@@ -54,7 +54,8 @@
         <div class="container d-md-flex py-4">
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>{{ config('app.name') }}</span></strong>. Tous droits réservés
+                    &copy; Copyright <strong><span>{{ config('app.name') }}</span></strong> by <a
+                        href="https://cheikh0101.github.io/portfolio/">CTG</a> . Tous droits réservés
                 </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">

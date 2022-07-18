@@ -10,6 +10,13 @@
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col">
+                @if (isset($infoMessage))
+                    @if (isset($alert))
+                        <div class="alert alert-{{ $alert }}" role="alert">
+                            {{ $infoMessage }}
+                        </div>
+                    @endif
+                @endif
                 <div class="card">
                     <div class="card-header">
                         <h2>
@@ -17,7 +24,7 @@
                         </h2>
                     </div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action=" {{ route('contact/message') }} " method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="objet" class="form-label">Objet du message</label>
@@ -43,4 +50,5 @@
             </div>
         </div>
     </div>
+    <div style="margin-top: 173px;"></div>
 @endsection

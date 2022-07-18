@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\CoursController;
+use App\Mail\SendContactMessageEmail;
 use App\Models\Cour;
 use App\Models\Specialite;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +36,22 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('template.contact');
 });
+
+Route::post('/contact/message', function (Request $request) {
+    try {
+        $infoMessage = "Message envoyé avec succès. Merci!";
+        $alert = "primary";
+        $objet = $request->objet;
+        $email = $request->email;
+        $message = $request->message;
+        Mail::to('janticipe0101@gmail.com')->send(new SendContactMessageEmail($objet, $email, $message));
+    } catch (\Throwable $th) {
+        throw $th;
+        $infoMessage = "Une erreur a été rencontré lors de l'envoi du message. Merci!";
+        $alert = "danger";
+    }
+    return view('template.contact', compact('infoMessage', 'alert'));
+})->name('contact/message');
 
 Route::group(['prefix' => 'guest'], function () {
     Route::get('/cours', [CoursController::class, 'index']);
