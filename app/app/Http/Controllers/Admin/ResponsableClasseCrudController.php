@@ -39,9 +39,10 @@ class ResponsableClasseCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('user_id')->label('Email');
-        CRUD::column('classe_id')->label('Libelle de la classe');
-
+        CRUD::column('user_id');
+        $this->crud->setColumnDetails('user_id', ['attribute' => 'email']);
+        CRUD::column('classe_id');
+        $this->crud->setColumnDetails('classe_id', ['attribute' => 'libelle']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
