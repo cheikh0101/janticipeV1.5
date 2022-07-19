@@ -15,7 +15,7 @@ class CreateMailBoxesTable extends Migration
     {
         Schema::create('mail_boxes', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

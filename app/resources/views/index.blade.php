@@ -92,13 +92,11 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>{{ config('app.name') }}</h3>
                         <a name="" id="" class="btn btn-primary" href="/contact" role="button">Nous
                             écrire <i class="fa fa-file-text" aria-hidden="true"></i> </a>
                     </div>
-
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Boite à lettres</h4>
                         <p>
@@ -109,11 +107,12 @@
                             <input type="email" name="email" placeholder="janticipe0101@gmail.com" required><input
                                 type="submit" value="S'inscrire">
                         </form>
-                        <p>
-                            Merci pour la confiance &hearts;
-                        </p>
+                        @if (isset($infoMessage))
+                            <p class="alert alert-{{ $alert }}">
+                                {{ $infoMessage }}
+                            </p>
+                        @endif
                     </div>
-
                 </div>
             </div>
         </div>

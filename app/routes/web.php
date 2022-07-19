@@ -3,6 +3,7 @@
 use App\Http\Controllers\CoursController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\Cour;
+use App\Models\MailBox;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,21 +41,23 @@ Route::get('/contact', function () {
 });
 
 Route::post('/new-email', function (Request $request) {
-    return 'hello';
     $validators = Validator::make($request->all(), [
-        'email' => 'required|exists:mail_boxes,email'
+        'email' => 'required'
     ]);
     if ($validators->fails()) {
         return back();
     }
     DB::beginTransaction();
     try {
-        $infoMessage = "Merci pour la confiance &hearts";
+        $infoMessage = "Abonnement réussi. Merci pour la confiance!";
         $alert = "primary";
+        $newEmail = new MailBox();
+        $newEmail->email = $request->email;
+        $newEmail->saveOrFail();
         DB::commit();
         return view('index', compact('infoMessage', 'alert'));
     } catch (\Throwable $th) {
-        $infoMessage = "Une erreur a été rencontré lors de l'envoi. Merci de réessayer!";
+        $infoMessage = "Une erreur a été rencontré. Merci de réessayer!";
         $alert = "danger";
         DB::rollback();
         return view('index', compact('infoMessage', 'alert'));
