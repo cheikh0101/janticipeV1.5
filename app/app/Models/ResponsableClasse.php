@@ -5,9 +5,8 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Classe extends Model
+class ResponsableClasse extends Model
 {
     use CrudTrait;
 
@@ -17,15 +16,13 @@ class Classe extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'classes';
+    protected $table = 'responsable_classes';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-
-    protected $appends = ['libelle'];
 
     /*
     |--------------------------------------------------------------------------
@@ -38,56 +35,16 @@ class Classe extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    /**
-     * Get the annee_academique that owns the Classe
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function annee_academique(): BelongsTo
+    public function classe(): BelongsTo
     {
-        return $this->belongsTo(AnneeAcademique::class);
+        return $this->belongsTo(Classe::class);
     }
 
-    /**
-     * Get the niveau that owns the Classe
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function niveau(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Niveau::class);
+        return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the specialite that owns the Classe
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function specialite(): BelongsTo
-    {
-        return $this->belongsTo(Specialite::class);
-    }
-
-    /**
-     * Get all of the cours for the Classe
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function cours(): HasMany
-    {
-        return $this->hasMany(Cour::class);
-    }
-
-    public function responsableClasse(): HasMany
-    {
-        return $this->hasMany(ResponsableClasse::class);
-    }
-
-    public function getLibelleAttribute()
-    {
-        return $this->niveau->libelle . "-" . $this->specialite->libelle . "-" . $this->annee_academique->libelle;
-    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

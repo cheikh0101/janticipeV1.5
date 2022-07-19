@@ -62,24 +62,24 @@
             </div>
         </section><!-- End Why Us Section -->
         <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts section-bg">
+        <section id="counts" class="counts mb-4">
             <div class="container">
                 <div class="row counters">
                     <div class="col-lg-3 col-6 text-center">
-                        <span>50</span>
-                        <p>CM</p>
+                        <span>{{ $specialite }}</span>
+                        <h4>Spécialités</h4>
+                    </div>
+                    <div class="col-lg-3 col-6 text-center">
+                        <span>{{ $classe }}</span>
+                        <h4>Classes</h4>
                     </div>
                     <div class="col-lg-3 col-6 text-center">
                         <span>50</span>
-                        <p>TD</p>
+                        <h4>Devoirs</h4>
                     </div>
                     <div class="col-lg-3 col-6 text-center">
                         <span>50</span>
-                        <p>Devoirs</p>
-                    </div>
-                    <div class="col-lg-3 col-6 text-center">
-                        <span>50</span>
-                        <p>Examens</p>
+                        <h4>Examens</h4>
                     </div>
 
                 </div>
@@ -92,12 +92,12 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 footer-contact">
+                    <div class="col-md-3 footer-contact">
                         <h3>{{ config('app.name') }}</h3>
                         <a name="" id="" class="btn btn-primary" href="/contact" role="button">Nous
                             écrire <i class="fa fa-file-text" aria-hidden="true"></i> </a>
                     </div>
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <div class="col-md-9 footer-newsletter">
                         <h4>Boite à lettres</h4>
                         <p>
                             Pour être informer de toutes nouveautés merci de renseigner votre email

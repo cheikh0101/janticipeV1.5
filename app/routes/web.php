@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CoursController;
 use App\Mail\SendContactMessageEmail;
+use App\Models\Classe;
 use App\Models\Cour;
 use App\Models\MailBox;
 use App\Models\Specialite;
@@ -29,7 +30,9 @@ Route::fallback(function () {
 });
 
 Route::get('/', function () {
-    return view('index');
+    $specialite = Specialite::count();
+    $classe = Classe::count();
+    return view('index', compact('specialite', 'classe'));
 });
 
 Route::get('/about', function () {

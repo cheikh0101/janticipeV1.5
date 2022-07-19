@@ -42,7 +42,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Responsable') }}</a>
+                            <a class="nav-link active" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('Documents') }}</a>
                         </li>
                     </ul>
 
