@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Pays;
+use App\Models\ResponsableClasse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-      //  $this->middleware('auth');
+        //  $this->middleware('auth');
     }
 
     /**
@@ -24,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $reponsableClasses = ResponsableClasse::where('user_id', Auth::id())->get();
+        $nbreDocuments = Document::where('user_id', Auth::id())->count();
+        return view('home', compact('reponsableClasses', 'nbreDocuments'));
     }
 }

@@ -19,9 +19,10 @@
                         <div class="content">
                             <h3>Pourquoi choisir {{ config('app.name') }}?</h3>
                             <p>
-                                Avez-vous déjà perdu du temps à fouiller dans des fichiers à la recherche de vos notes ?
-                                Avec {{ config('app.name') }}, vous pouvez désormais organiser tous vos documents en un
-                                seul endroit.
+                                Avez-vous déjà voulu anticiper sur certains cours sans avoir les supports?
+                                Avez-vous déjà voulu revoir vos cours des années passées et il s'avère que vous avez perdu
+                                les documents?
+                                Avec {{ config('app.name') }}, tout ceci est désormais possible.
                             </p>
                             <div class="text-center">
                                 <a href="/about" class="more-btn">PLUS <i class="fa fa-angle-right"
@@ -74,11 +75,11 @@
                         <h4>Classes</h4>
                     </div>
                     <div class="col-lg-3 col-6 text-center">
-                        <span>50</span>
-                        <h4>Devoirs</h4>
+                        <span> {{ $cm }} </span>
+                        <h4>CM</h4>
                     </div>
                     <div class="col-lg-3 col-6 text-center">
-                        <span>50</span>
+                        <span>{{ $examens }}</span>
                         <h4>Examens</h4>
                     </div>
 

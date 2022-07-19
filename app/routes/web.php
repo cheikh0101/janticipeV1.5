@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\CoursController;
+use App\Http\Controllers\DocumentController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\Classe;
 use App\Models\Cour;
 use App\Models\MailBox;
 use App\Models\Specialite;
+use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +34,9 @@ Route::fallback(function () {
 Route::get('/', function () {
     $specialite = Specialite::count();
     $classe = Classe::count();
-    return view('index', compact('specialite', 'classe'));
+    $cm = TypeDocument::whereRelation('type', 'code', 'CM')->count();
+    $examens = TypeDocument::whereRelation('type', 'code', 'EN')->count();
+    return view('index', compact('specialite', 'classe', 'cm', 'examens'));
 });
 
 Route::get('/about', function () {
@@ -104,19 +108,4 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('specialite', function () {
-//     $client = Http::get('https://gpe-ws.univ-thies.sn/api/public/filieres-and-options-sync');
-//     if ($client->successful()) {
-//         $filiereAndOptions = $client->object();
-//         foreach ($filiereAndOptions as $filiereAndOption) {
-//             foreach ($filiereAndOption->specialites as $specialite) {
-//                 $specialitee = new Specialite();
-//                 $specialitee->libelle = $specialite->nom;
-//                 $specialitee->code = $specialite->code;
-//                 $specialitee->save();
-//             }
-//         }
-//     } else {
-//         return 'error';
-//     }
-// });
+Route::resource('document', DocumentController::class);

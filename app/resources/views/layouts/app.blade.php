@@ -45,7 +45,7 @@
                             <a class="nav-link active" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Documents') }}</a>
+                            <a class="nav-link" href=" {{ route('document.index') }} ">{{ __('Documents') }}</a>
                         </li>
                     </ul>
 

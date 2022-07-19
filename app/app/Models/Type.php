@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Type extends Model
 {
@@ -34,6 +35,15 @@ class Type extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    /**
+     * Get all of the typeDocuments for the Type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function typeDocuments(): HasMany
+    {
+        return $this->hasMany(TypeDocument::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
