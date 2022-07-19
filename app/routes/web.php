@@ -45,7 +45,7 @@ Route::get('/contact', function () {
 
 Route::post('/new-email', function (Request $request) {
     $validators = Validator::make($request->all(), [
-        'email' => 'required'
+        'email' => 'required|unique:mail_boxes|email:rfc,dns'
     ]);
     if ($validators->fails()) {
         return back();
