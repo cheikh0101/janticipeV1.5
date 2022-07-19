@@ -6,9 +6,11 @@ use App\Models\Cour;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,37 @@ Route::get('/contact', function () {
     return view('template.contact');
 });
 
+Route::post('/new-email', function (Request $request) {
+    return 'hello';
+    $validators = Validator::make($request->all(), [
+        'email' => 'required|exists:mail_boxes,email'
+    ]);
+    if ($validators->fails()) {
+        return back();
+    }
+    DB::beginTransaction();
+    try {
+        $infoMessage = "Merci pour la confiance &hearts";
+        $alert = "primary";
+        DB::commit();
+        return view('index', compact('infoMessage', 'alert'));
+    } catch (\Throwable $th) {
+        $infoMessage = "Une erreur a été rencontré lors de l'envoi. Merci de réessayer!";
+        $alert = "danger";
+        DB::rollback();
+        return view('index', compact('infoMessage', 'alert'));
+    }
+})->name('new-email');
+
 Route::post('/contact/message', function (Request $request) {
+    $validators = Validator::make($request->all(), [
+        'objet' => 'required',
+        'message' => 'required',
+        'email' => 'required',
+    ]);
+    if ($validators->fails()) {
+        return back();
+    }
     try {
         $infoMessage = "Message envoyé avec succès. Merci!";
         $alert = "primary";
@@ -46,7 +78,6 @@ Route::post('/contact/message', function (Request $request) {
         $message = $request->message;
         Mail::to('janticipe0101@gmail.com')->send(new SendContactMessageEmail($objet, $email, $message));
     } catch (\Throwable $th) {
-        throw $th;
         $infoMessage = "Une erreur a été rencontré lors de l'envoi du message. Merci!";
         $alert = "danger";
     }

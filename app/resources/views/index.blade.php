@@ -104,9 +104,10 @@
                         <p>
                             Pour être informer de toutes nouveautés merci de renseigner votre email
                         </p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="S'inscrire"
-                                placeholder="janticipe0101@gmail.com">
+                        <form action=" {{ route('new-email') }} " method="post">
+                            @csrf
+                            <input type="email" name="email" placeholder="janticipe0101@gmail.com" required><input
+                                type="submit" value="S'inscrire">
                         </form>
                         <p>
                             Merci pour la confiance &hearts;
