@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
@@ -14,7 +15,18 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        $documents = Document::where('user_id', Auth::id())->simplePaginate(10);
+        return view('document.index', compact('documents'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('document.create');
     }
 
     /**
@@ -25,7 +37,6 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -35,6 +46,15 @@ class DocumentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Document $document)
+    {
+        return view('document.show', compact('document'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     */
+    public function edit(Document $document)
     {
         //
     }
