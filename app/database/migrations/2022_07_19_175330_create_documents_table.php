@@ -19,9 +19,9 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('file');
-            $table->string('lien');
-            $table->text('description');
+            $table->string('file')->nullable();
+            $table->string('lien')->nullable();
+            $table->text('description')->nullable();
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Cour::class)->constrained();
             $table->foreignIdFor(Classe::class)->constrained();

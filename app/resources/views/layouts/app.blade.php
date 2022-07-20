@@ -92,6 +92,22 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="bg-light">
+            <div class="container d-md-flex py-4">
+                <div class="me-md-auto text-center text-md-start">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>{{ config('app.name') }}</span></strong> by <a
+                            href="https://cheikh0101.github.io/portfolio/">CTG</a> . Tous droits réservés
+                    </div>
+                </div>
+                <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                    <a href="https://www.linkedin.com/in/cheikh-tidiane-gueye/
+" class="linkedin"><i
+                            class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">

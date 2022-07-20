@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classe;
+use App\Models\Cour;
 use App\Models\Document;
+use App\Models\Type;
+use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
 {
@@ -26,7 +32,12 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('document.create');
+        $types = Type::all();
+        $classes = Classe::whereRelation('responsableClasse', 'user_id', Auth::id())->get();
+        $cours = Cour::whereRelation('classe', function ($query) {
+            $query->whereRelation('responsableClasse', 'user_id', Auth::id());
+        })->get();
+        return view('document.create', compact('types', 'classes', 'cours'));
     }
 
     /**
@@ -37,6 +48,43 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+        $validators = Validator::make($request->all(), [
+            'name' => 'required',
+            'classe' => 'required',
+            'cours' => 'required',
+            'type' => 'required',
+            'file' => 'mimes:pdf,jpg,png',
+            'lien' => 'url',
+            'description' => 'nullable|string',
+        ]);
+        if ($validators->fails()) {
+            return back();
+        }
+        DB::beginTransaction();
+        try {
+            $document = new Document();
+            $document->name = $request->name;
+            $document->file = $request->file;
+            $document->lien = $request->lien;
+            $document->description = $request->description;
+            $document->user_id = Auth::id();
+            $document->cour_id = $request->cours;
+            $document->classe_id = $request->classe;
+            $document->save();
+
+            $type = Type::whereCode($request->type)->first();
+
+            $typeDocument = new TypeDocument();
+            $typeDocument->user_email = auth()->user()->email;
+            $typeDocument->document_id = $document->id;
+            $typeDocument->type_id = $type->id;
+            $typeDocument->save();
+            DB::commit();
+            return route('document.index');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return back();
+        }
     }
 
     /**
