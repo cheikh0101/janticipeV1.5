@@ -11,16 +11,7 @@ use App\Traits\Uuids;
 
 class Document extends Model
 {
-    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory, Uuids;
-
-    public function setDocumentAttribute($value)
-    {
-        $attribute_name = "document";
-        $disk = "local";
-        $destination_path = "document/";
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-    }
 
     /**
      * Get the classe that owns the Document

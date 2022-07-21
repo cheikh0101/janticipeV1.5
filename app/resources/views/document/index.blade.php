@@ -43,7 +43,7 @@
                                 <th>
                                     Type
                                 </th>
-                                <th colspan="2" class="text-center">
+                                <th colspan="3" class="text-center">
                                     Actions
                                 </th>
                             </tr>
@@ -69,17 +69,30 @@
                                     </td>
 
                                     <td>
-                                        {{ $document->typeDocument->type->nom }}
+                                        <ul>
+                                            <li>
+                                                @foreach ($document->typeDocuments as $item)
+                                                    {{ $item->type->name }}
+                                                @endforeach
+                                            </li>
+                                        </ul>
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
+                                        <a href=" {{ route('document.show', compact('document')) }} "
+                                            class="btn btn-outline-primary">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+
+                                    <td class="text-center">
                                         <a href=" {{ route('document.edit', compact('document')) }} "
                                             class="btn btn-outline-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         <form action=" {{ route('document.destroy', compact('document')) }} "
                                             method="post">
                                             @csrf
@@ -116,7 +129,7 @@
                                     Type
                                 </th>
 
-                                <th colspan="2" class="text-center">
+                                <th colspan="3" class="text-center">
                                     Actions
                                 </th>
                             </tr>

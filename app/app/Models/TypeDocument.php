@@ -19,4 +19,9 @@ class TypeDocument extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function document(): BelongsTo
+    {
+        return $this->belongsTo(Document::class);
+    }
 }

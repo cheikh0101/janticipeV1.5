@@ -48,18 +48,15 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $validators = Validator::make($request->all(), [
-            'name' => 'required',
+        $request->validate([
+            'name' => 'required|min:2',
             'classe' => 'required',
             'cours' => 'required',
             'type' => 'required',
-            'file' => 'mimes:pdf,jpg,png',
-            'lien' => 'url',
+            'file' => 'nullable|mimes:pdf,jpg,png',
+            'lien' => 'nullable|url',
             'description' => 'nullable|string',
         ]);
-        if ($validators->fails()) {
-            return back();
-        }
         DB::beginTransaction();
         try {
             $document = new Document();
@@ -80,7 +77,7 @@ class DocumentController extends Controller
             $typeDocument->type_id = $type->id;
             $typeDocument->save();
             DB::commit();
-            return route('document.index');
+            return redirect()->route('document.index');
         } catch (\Throwable $th) {
             DB::rollback();
             return back();
