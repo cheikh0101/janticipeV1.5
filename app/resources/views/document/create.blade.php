@@ -8,6 +8,12 @@
                         Nouveau Document
                     </div>
                     <div class="card-body">
+                        <div class="alert alert-primary">
+                            <p>
+                                La publication d'un nouveau document est une grande responsabilité. Soyez attentionnés s'il
+                                vous plaît!
+                            </p>
+                        </div>
                         <form action=" {{ route('document.store') }} " method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mt-5">
@@ -113,7 +119,6 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Description</label>
-                                        {{-- <textarea class="form-control" name="description" id="description" rows="3"></textarea> --}}
                                         <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description"></textarea>
                                         @error('description')
                                             <small id="helpId" class="form-text text-danger">

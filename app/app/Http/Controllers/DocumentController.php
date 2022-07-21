@@ -101,7 +101,12 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        $types = Type::all();
+        $classes = Classe::whereRelation('responsableClasse', 'user_id', Auth::id())->get();
+        $cours = Cour::whereRelation('classe', function ($query) {
+            $query->whereRelation('responsableClasse', 'user_id', Auth::id());
+        })->get();
+        return view('document.edit', compact('types', 'classes', 'cours', 'document'));
     }
 
     /**
@@ -113,7 +118,41 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        return $document;
+        $request->validate([
+            'name' => 'required|min:2',
+            'classe' => 'required',
+            'cours' => 'required',
+            'type' => 'required',
+            'file' => 'nullable|mimes:pdf,jpg,png',
+            'lien' => 'nullable|url',
+            'description' => 'nullable|string',
+        ]);
+        DB::beginTransaction();
+        try {
+            $document = new Document();
+            $document->name = $request->name;
+            $document->file = $request->file;
+            $document->lien = $request->lien;
+            $document->description = $request->description;
+            $document->user_id = Auth::id();
+            $document->cour_id = $request->cours;
+            $document->classe_id = $request->classe;
+            $document->save();
+
+            $type = Type::whereCode($request->type)->first();
+
+            $typeDocument = new TypeDocument();
+            $typeDocument->user_email = auth()->user()->email;
+            $typeDocument->document_id = $document->id;
+            $typeDocument->type_id = $type->id;
+            $typeDocument->save();
+            DB::commit();
+            return redirect()->route('document.index');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return back();
+        }
     }
 
     /**
@@ -124,6 +163,16 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $typeDocument = TypeDocument::where('document_id', $document->id)->first();
+            $typeDocument->deleteOrFail();
+            $document->deleteOrFail();
+            DB::commit();
+            return redirect()->route('document.index');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return back();
+        }
     }
 }
