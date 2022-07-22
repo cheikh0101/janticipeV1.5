@@ -48,12 +48,13 @@ Route::get('/contact', function () {
 });
 
 Route::post('/new-email', function (Request $request) {
-    $validators = Validator::make($request->all(), [
+    $request->validate([
         'email' => 'required|unique:mail_boxes|email:rfc,dns'
     ]);
-    if ($validators->fails()) {
-        return back();
-    }
+    $specialite = Specialite::count();
+    $classe = Classe::count();
+    $cm = TypeDocument::whereRelation('type', 'code', 'CM')->count();
+    $examens = TypeDocument::whereRelation('type', 'code', 'EN')->count();
     DB::beginTransaction();
     try {
         $infoMessage = "Abonnement réussi. Merci pour la confiance!";
@@ -62,24 +63,21 @@ Route::post('/new-email', function (Request $request) {
         $newEmail->email = $request->email;
         $newEmail->saveOrFail();
         DB::commit();
-        return view('index', compact('infoMessage', 'alert'));
+        return view('index', compact('infoMessage', 'alert', 'specialite', 'classe', 'cm', 'examens'));
     } catch (\Throwable $th) {
         $infoMessage = "Une erreur a été rencontré. Merci de réessayer!";
         $alert = "danger";
         DB::rollback();
-        return view('index', compact('infoMessage', 'alert'));
+        return view('index', compact('infoMessage', 'alert', 'specialite', 'classe', 'cm', 'examens'));
     }
 })->name('new-email');
 
 Route::post('/contact/message', function (Request $request) {
-    $validators = Validator::make($request->all(), [
+    $request->validate([
         'objet' => 'required',
         'message' => 'required',
         'email' => 'required',
     ]);
-    if ($validators->fails()) {
-        return back();
-    }
     try {
         $infoMessage = "Message envoyé avec succès. Merci!";
         $alert = "primary";

@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Nouveau Document
+                        Modification de Document
                     </div>
                     <div class="card-body">
                         <div class="alert alert-primary">
@@ -14,7 +14,7 @@
                                 vous plaît!
                             </p>
                         </div>
-                        <form action=" {{ route('document.update'), compact('document') }} " method="post"
+                        <form action=" {{ route('document.update', compact('document')) }} " method="post"
                             enctype="multipart/form-data">
                             @csrf
                             @method('put')

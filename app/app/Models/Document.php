@@ -28,7 +28,7 @@ class Document extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function cours(): BelongsTo
+    public function cour(): BelongsTo
     {
         return $this->belongsTo(Cour::class);
     }

@@ -118,7 +118,6 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        return $document;
         $request->validate([
             'name' => 'required|min:2',
             'classe' => 'required',
@@ -130,7 +129,6 @@ class DocumentController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            $document = new Document();
             $document->name = $request->name;
             $document->file = $request->file;
             $document->lien = $request->lien;
@@ -138,15 +136,15 @@ class DocumentController extends Controller
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
-            $document->save();
+            $document->update();
 
             $type = Type::whereCode($request->type)->first();
 
-            $typeDocument = new TypeDocument();
+            $typeDocument = TypeDocument::where('document_id', $document->id)->first();
             $typeDocument->user_email = auth()->user()->email;
             $typeDocument->document_id = $document->id;
             $typeDocument->type_id = $type->id;
-            $typeDocument->save();
+            $typeDocument->update();
             DB::commit();
             return redirect()->route('document.index');
         } catch (\Throwable $th) {

@@ -105,9 +105,13 @@
                         </p>
                         <form action=" {{ route('new-email') }} " method="post">
                             @csrf
-                            <input type="email" name="email" placeholder="janticipe0101@gmail.com" required><input
-                                type="submit" value="S'inscrire">
+                            <input type="email" name="email" placeholder="janticipe0101@gmail.com"
+                                @error('email') is-invalid @enderror" required><input type="submit" value="S'inscrire">
                         </form>
+                        @error('email')
+                            <small id="helpId" class="form-text text-danger"> {{ $errors->first('email') }}
+                            </small>
+                        @enderror
                         @if (isset($infoMessage))
                             <p class="alert alert-{{ $alert }}">
                                 {{ $infoMessage }}
