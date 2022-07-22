@@ -97,7 +97,7 @@ Route::group(['prefix' => 'guest'], function () {
 
     Route::post('/cours/search', [CoursController::class, 'search']);
 
-    Route::get('/cours/details', function () {
+    Route::get('/cours/details', function (Request $request) {
         return view('cours.show');
     });
 });

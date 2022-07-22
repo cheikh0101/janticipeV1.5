@@ -67,7 +67,7 @@
             <div class="container">
                 <div class="row counters">
                     <div class="col-lg-3 col-6 text-center">
-                        <span>{{ $specialite }}</span>
+                        <span>{{ $specialite ?? '' }}</span>
                         <h4>Spécialités</h4>
                     </div>
                     <div class="col-lg-3 col-6 text-center">

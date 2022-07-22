@@ -29,8 +29,8 @@
                             <p class="card-text">
                                 Spécialité: {{ $cour->classe->specialite->libelle }}
                             </p>
-                            <a href="/guest/cours/details" class="btn btn-primary">PLUS <i class="fa fa-angle-right"
-                                    aria-hidden="true"></i></a>
+                            <a href="/guest/cours/details/{{ $cour->name }}" class="btn btn-primary">PLUS <i
+                                    class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
