@@ -35,14 +35,14 @@
 
     <div class="container mb-5">
         <form action="/guest/document/search/" method="post" autocomplete="on">
+            @csrf
             <div class="row">
                 <div class="col-md-4">
-                    @csrf
                     <div class="mb-3">
                         <label for="anneeAcademique" class="form-label">Année Académique</label>
                         <select class="form-control" name="anneeAcademique" id="anneeAcademique">
                             @foreach ($anneeAcademiques as $anneeAcademique)
-                                <option value=" {{ $anneeAcademique->id }} ">{{ $anneeAcademique->libelle }}</option>
+                                <option value=" {{ $anneeAcademique->code }} ">{{ $anneeAcademique->libelle }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -52,14 +52,14 @@
                         <label for="type" class="form-label">Type</label>
                         <select class="form-control" name="type" id="type">
                             @foreach ($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option value="{{ $type->code }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary btn-block">Recherche</button>
+                    <div class="mt-4 mb-4 d-grid gap-2"><label for=""></label>
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
                     </div>
                 </div>
             </div>
@@ -68,11 +68,12 @@
             @forelse ($cour->documents as $document)
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
                     <div class="card" style="width: 18rem;">
-                        <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
+                        <img src="../assets/img/g.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"> {{ $document->name }} </h5>
                             <p class="card-text">{!! $document->description !!}</p>
-                            <a href="#" class="btn btn-primary">Visionner</a>
+                            <a href="#" class="btn btn-primary">Détails <i class="fa fa-angle-right"
+                                    aria-hidden="true"></i> </a>
                         </div>
                     </div>
                 </div> <!-- End Course Item-->

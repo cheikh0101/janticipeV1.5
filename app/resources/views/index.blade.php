@@ -35,21 +35,21 @@
                             <div class="row">
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="fa fa-recycle" aria-hidden="true"></i>
+                                        <i class="fa fa-align-center" aria-hidden="true"></i>
                                         <h4>Organiser</h4>
                                         <p>Spécialité, Niveau, Cours... ont été pris en compte</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="fa fa-recycle" aria-hidden="true"></i>
+                                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                                         <h4>Simple</h4>
                                         <p>En quelques clics seulement nous obtenons le document dont on a besoin</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="fa fa-recycle" aria-hidden="true"></i>
+                                        <i class="fa fa-file-text" aria-hidden="true"></i>
                                         <h4>Fiable</h4>
                                         <p>Documents publiés par les responsables de classe
                                         </p>

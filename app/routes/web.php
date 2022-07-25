@@ -99,7 +99,7 @@ Route::post('/contact/message', function (Request $request) {
 Route::group(['prefix' => 'guest'], function () {
     Route::resource('/cours', CoursController::class)->only(['index', 'show']);
     Route::post('/cours/search', [CoursController::class, 'search']);
-    Route::post('/document/search/anneeAcademique', [DocumentController::class, 'searchAnneeAcademique']);
+    Route::post('/document/search/', [DocumentController::class, 'search']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnneeAcademique;
 use App\Models\Classe;
 use App\Models\Cour;
 use App\Models\Document;
@@ -174,8 +175,10 @@ class DocumentController extends Controller
         }
     }
 
-    public function searchAnneeAcademique()
+    public function search(Request $request)
     {
-        return 'hello';
+        $types = Type::all();
+        $anneeAcademiques = AnneeAcademique::all();
+        return view('cours.show', compact('cour', 'types', 'anneeAcademiques'));
     }
 }
