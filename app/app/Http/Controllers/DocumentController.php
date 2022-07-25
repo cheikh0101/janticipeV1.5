@@ -173,4 +173,9 @@ class DocumentController extends Controller
             return back();
         }
     }
+
+    public function searchAnneeAcademique()
+    {
+        return 'hello';
+    }
 }

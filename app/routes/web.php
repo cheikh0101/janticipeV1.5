@@ -28,7 +28,11 @@ use Illuminate\Support\Facades\Validator;
 */
 
 Route::fallback(function () {
-    return view('index');
+    $specialite = Specialite::count();
+    $classe = Classe::count();
+    $cm = TypeDocument::whereRelation('type', 'code', 'CM')->count();
+    $examens = TypeDocument::whereRelation('type', 'code', 'EN')->count();
+    return view('index', compact('specialite', 'classe', 'cm', 'examens'));
 });
 
 Route::get('/', function () {
@@ -93,13 +97,9 @@ Route::post('/contact/message', function (Request $request) {
 })->name('contact/message');
 
 Route::group(['prefix' => 'guest'], function () {
-    Route::get('/cours', [CoursController::class, 'index']);
-
+    Route::resource('/cours', CoursController::class)->only(['index', 'show']);
     Route::post('/cours/search', [CoursController::class, 'search']);
-
-    Route::get('/cours/details', function (Request $request) {
-        return view('cours.show');
-    });
+    Route::post('/document/search/anneeAcademique', [DocumentController::class, 'searchAnneeAcademique']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

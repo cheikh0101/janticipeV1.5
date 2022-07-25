@@ -12,20 +12,20 @@
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <div class="col-lg-8">
-                    <h3>Algorithme et Programmation 1</h3>
+                    <h3>{{ $cour->name }}</h3>
                 </div>
                 <div class="col-lg-4">
                     <div class="course-info d-flex justify-content-between align-items-center">
                         <h5>Niveau</h5>
-                        <p>Licence 1</p>
+                        <p>{{ $cour->classe->niveau->libelle }}</p>
                     </div>
                     <div class="course-info d-flex justify-content-between align-items-center">
                         <h5>Spécialité</h5>
-                        <p>Informatique</p>
+                        <p>{{ $cour->classe->specialite->libelle }}</p>
                     </div>
                     <div class="course-info d-flex justify-content-between align-items-center">
                         <h5>Nombre de documents</h5>
-                        <p>25</p>
+                        <p>{{ count($cour->documents) }}</p>
                     </div>
                 </div>
             </div>
@@ -34,69 +34,53 @@
     </section><!-- End Cource Details Section -->
 
     <div class="container mb-5">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="" class="form-label">Année Académique</label>
-                    <select class="form-control" name="" id="">
-                        <option>2019-2020</option>
-                        <option>2020-2021</option>
-                        <option>2021-2022</option>
-                    </select>
+        <form action="/guest/document/search/" method="post" autocomplete="on">
+            <div class="row">
+                <div class="col-md-4">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="anneeAcademique" class="form-label">Année Académique</label>
+                        <select class="form-control" name="anneeAcademique" id="anneeAcademique">
+                            @foreach ($anneeAcademiques as $anneeAcademique)
+                                <option value=" {{ $anneeAcademique->id }} ">{{ $anneeAcademique->libelle }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Type</label>
+                        <select class="form-control" name="type" id="type">
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary btn-block">Recherche</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="" class="form-label">Type</label>
-                    <select class="form-control" name="" id="">
-                        <option>Cours Magistral</option>
-                        <option>TP</option>
-                        <option>TD</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+        </form>
         <div class="row mt-2" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom du document</h5>
-                        <p class="card-text">Description du document</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
+            @forelse ($cour->documents as $document)
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ $document->name }} </h5>
+                            <p class="card-text">{!! $document->description !!}</p>
+                            <a href="#" class="btn btn-primary">Visionner</a>
+                        </div>
                     </div>
-                </div>
-            </div> <!-- End Course Item-->
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom du document</h5>
-                        <p class="card-text">Description du document</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
-                    </div>
-                </div>
-            </div> <!-- End Course Item-->
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom du document</h5>
-                        <p class="card-text">Description du document</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
-                    </div>
-                </div>
-            </div> <!-- End Course Item-->
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/a.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom du document</h5>
-                        <p class="card-text">Description du document</p>
-                        <a href="#" class="btn btn-primary">Visionner</a>
-                    </div>
-                </div>
-            </div> <!-- End Course Item-->
+                </div> <!-- End Course Item-->
+            @empty
+                <p>
+                    Aucun document pour ce cours
+                </p>
+            @endforelse
         </div>
     </div>
 @endsection

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnneeAcademique;
 use App\Models\Cour;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class CoursController extends Controller
@@ -47,7 +49,9 @@ class CoursController extends Controller
      */
     public function show(Cour $cour)
     {
-        //
+        $types = Type::all();
+        $anneeAcademiques = AnneeAcademique::all();
+        return view('cours.show', compact('cour', 'types', 'anneeAcademiques'));
     }
 
     /**
