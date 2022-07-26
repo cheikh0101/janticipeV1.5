@@ -99,7 +99,9 @@ Route::group(['prefix' => 'guest'], function () {
     Route::post('/document/search/', [DocumentController::class, 'search']);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'isResponsable']);
-Route::resource('document', DocumentController::class)->middleware(['auth', 'isResponsable']);
+Route::middleware(['auth', 'isResponsable'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('document', DocumentController::class);
+});
 
 Auth::routes(['verify' => true]);
