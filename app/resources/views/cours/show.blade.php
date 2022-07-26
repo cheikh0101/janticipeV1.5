@@ -76,7 +76,7 @@
                                 <div class="card-body">
                                     <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
                                         <p>Libellé:</p>
-                                        <p>{{ $document->user->name }}</p>
+                                        <p>{{ $document->name }}</p>
                                     </div>
                                     <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
                                         <p>Type:</p>
@@ -109,8 +109,10 @@
                                         @endif
                                     </div>
                                     <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
-                                        <p>Description:</p>
-                                        {!! $document->description !!}
+                                        @if (!empty($document->description))
+                                            <p>Description:</p>
+                                            {!! $document->description !!}
+                                        @endif
                                     </div>
                                     <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
                                         <p>Publié par:</p>
