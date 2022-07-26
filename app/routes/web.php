@@ -4,17 +4,14 @@ use App\Http\Controllers\CoursController;
 use App\Http\Controllers\DocumentController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\Classe;
-use App\Models\Cour;
 use App\Models\MailBox;
 use App\Models\Specialite;
 use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,9 +99,7 @@ Route::group(['prefix' => 'guest'], function () {
     Route::post('/document/search/', [DocumentController::class, 'search']);
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('document', DocumentController::class);
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'isResponsable']);
+Route::resource('document', DocumentController::class)->middleware(['auth', 'isResponsable']);
 
 Auth::routes(['verify' => true]);

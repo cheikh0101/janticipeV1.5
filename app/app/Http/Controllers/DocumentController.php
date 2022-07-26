@@ -177,8 +177,9 @@ class DocumentController extends Controller
 
     public function search(Request $request)
     {
+        return back();
         $types = Type::all();
         $anneeAcademiques = AnneeAcademique::all();
-        return view('cours.show', compact('cour', 'types', 'anneeAcademiques'));
+        return view('cours.show', compact('types', 'anneeAcademiques'));
     }
 }

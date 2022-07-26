@@ -64,24 +64,68 @@
                 </div>
             </div>
         </form>
-        <div class="row mt-2" data-aos="zoom-in" data-aos-delay="100">
-            @forelse ($cour->documents as $document)
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch mb-2">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../assets/img/g.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ $document->name }} </h5>
-                            <p class="card-text">{!! $document->description !!}</p>
-                            <a href="#" class="btn btn-primary">Détails <i class="fa fa-angle-right"
-                                    aria-hidden="true"></i> </a>
+        @forelse ($cour->documents as $document)
+            <div class="row">
+                <div class="col mb-2">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../assets/img/.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        <p>Libellé:</p>
+                                        <p>{{ $document->user->name }}</p>
+                                    </div>
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        <p>Type:</p>
+                                        <ul>
+                                            @foreach ($document->typeDocuments as $typeDocument)
+                                                <li>
+                                                    {{ $typeDocument->type->name }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        @if (!empty($document->lien))
+                                            <p>Lien:</p>
+                                            <p>
+                                                <a href="{{ $document->lien }}" target="_blank">Visionner</a>
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        @if (!empty($document->file))
+                                            <p>Visionner:</p>
+                                            <p>
+                                                <a href="{{ $document->file }}" target="_blank">Visionner</a>
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        <p>Description:</p>
+                                        {!! $document->description !!}
+                                    </div>
+                                    <div class="bg-light mb-2 d-flex justify-content-between align-items-center">
+                                        <p>Publié par:</p>
+                                        <p>{{ $document->user->name }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> <!-- End Course Item-->
-            @empty
-                <p>
-                    Aucun document pour ce cours
-                </p>
-            @endforelse
-        </div>
+                </div>
+            </div>
+        @empty
+            <p>
+                Aucun document pour ce cours
+            </p>
+        @endforelse
     </div>
 @endsection
