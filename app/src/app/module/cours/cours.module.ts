@@ -5,7 +5,9 @@ import { CoursRoutingModule } from './cours-routing.module';
 import { CoursComponent } from './cours.component';
 import { CoursListComponent } from 'src/app/pages/cours/cours-list/cours-list.component';
 import { CoursShowComponent } from 'src/app/pages/cours/cours-show/cours-show.component';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { CoursShowComponent } from 'src/app/pages/cours/cours-show/cours-show.co
   ],
   imports: [
     CommonModule,
-    CoursRoutingModule
+    CoursRoutingModule,
+    PdfViewerModule,
+    NzModalModule,
+    NzButtonModule,
   ]
 })
 export class CoursModule { }
