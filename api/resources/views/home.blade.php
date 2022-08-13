@@ -31,18 +31,18 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Classe sous votre responsabilité ( {{ $reponsableClasses->count() }} )
+                                    Classe sous votre responsabilité ( xxx )
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    @forelse ($reponsableClasses as $reponsableClasse)
+                                    {{-- @forelse ($reponsableClasses as $reponsableClasse)
                                         <ul>
                                             <li>
-                                                {{ $reponsableClasse->classe->libelle }}
+                                                xxx
                                             </li>
                                         </ul>
                                     @empty
                                         Aucune classe pour l'instant
-                                    @endforelse
+                                    @endforelse --}}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -59,7 +59,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Nombre de document publiés</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $nbreDocuments }} </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"> xxx </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa fa-bookmark fa-2x text-gray-300" aria-hidden="true"></i>
