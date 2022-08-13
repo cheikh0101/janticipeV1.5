@@ -8,7 +8,7 @@ Route::fallback(function () {
 });
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('login');
 });
 
 Route::middleware(['auth', 'isResponsable'])->group(function () {

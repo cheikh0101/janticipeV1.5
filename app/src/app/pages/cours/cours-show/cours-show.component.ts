@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class CoursShowComponent implements OnInit {
 
   pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
-  isVisible = false;
 
   constructor() { }
 
