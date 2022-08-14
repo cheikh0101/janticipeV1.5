@@ -55,7 +55,6 @@ class DocumentController extends Controller
             'cours' => 'required',
             'type' => 'required',
             'file' => 'nullable|mimes:pdf,jpg,png',
-            'lien' => 'nullable|url',
             'description' => 'nullable|string',
         ]);
         DB::beginTransaction();
@@ -63,7 +62,6 @@ class DocumentController extends Controller
             $document = new Document();
             $document->name = $request->name;
             $document->file = $request->file;
-            $document->lien = $request->lien;
             $document->description = $request->description;
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
@@ -125,7 +123,6 @@ class DocumentController extends Controller
             'cours' => 'required',
             'type' => 'required',
             'file' => 'nullable|mimes:pdf,jpg,png',
-            'lien' => 'nullable|url',
             'description' => 'nullable|string',
         ]);
         DB::beginTransaction();

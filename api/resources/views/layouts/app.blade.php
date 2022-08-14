@@ -16,7 +16,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
@@ -33,29 +32,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=" {{ route('document.index') }} ">{{ __('Documents') }}</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=" {{ route('document.index') }} ">{{ __('Documents') }}</a>
+                            </li>
+                        </ul>
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -94,8 +84,7 @@
                     </div>
                 </div>
                 <div class="social-links text-center text-md-right pt-3 pt-md-0">
-                    <a href="https://www.linkedin.com/in/cheikh-tidiane-gueye/
-" class="linkedin"><i
+                    <a href="https://www.linkedin.com/in/cheikh-tidiane-gueye/" class="linkedin"><i
                             class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
             </div>

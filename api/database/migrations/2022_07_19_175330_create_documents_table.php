@@ -20,7 +20,6 @@ class CreateDocumentsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('file')->nullable();
-            $table->string('lien')->nullable();
             $table->text('description')->nullable();
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Cour::class)->constrained();

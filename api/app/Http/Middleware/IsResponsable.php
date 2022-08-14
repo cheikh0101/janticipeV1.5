@@ -18,7 +18,7 @@ class IsResponsable
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check() || !Auth::user()->responsable) {
-            return back();
+            return abort(403);
         }
         return $next($request);
     }
