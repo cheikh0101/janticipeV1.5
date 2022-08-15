@@ -5,35 +5,37 @@
     </div>
 </div><!-- End Breadcrumbs -->
 
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col">
-          <h2>
-              Formulaire de contact
-          </h2>
-          <div class="card-body">
-            <form action="" method="post">
-                <div class="mb-3">
-                    <label for="objet" class="form-label">Objet du message</label>
-                    <input type="text" minlength="5" required class="form-control" name="objet"
-                        id="objet" aria-describedby="helpId"
-                        placeholder="Demande d'informations">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" required class="form-control"
-                        name="email" id="email" aria-describedby="helpId" placeholder="cheikh@gmail.com">
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea required minlength="5" class="form-control" name="message"
-                        id="message" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Envoyer mon message <i class="fa fa-send"
-                        aria-hidden="true"></i> </button>
-            </form>
+<section id="contact" class="contact mt-5 mb-5">
+  <div class="container" data-aos="fade-up">
+    <div class="row mt-5">
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>janticipe0101@gmail.com</p>
+          </div>
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Téléphone:</h4>
+            <p>+221 77 111 61 22</p>
           </div>
         </div>
+      </div>
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form action="" method="post" role="form" class="php-email-form">
+          <div class="form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="janticipe0101@gmail.com" required>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet" required>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="text-center"><button type="submit">Envoyer</button></div>
+        </form>
+      </div>
     </div>
-</div>
-<div style="margin-top: 173px;"></div>
+  </div>
+</section>
