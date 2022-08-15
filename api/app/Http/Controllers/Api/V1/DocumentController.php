@@ -23,8 +23,13 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::where('user_id', Auth::id())->simplePaginate(10);
-        return view('document.index', compact('documents'));
+        $documents = Document::where('user_id', Auth::id())->simplePaginate(6);
+        $types = Type::all();
+        $classes = Classe::whereRelation('responsableClasse', 'user_id', Auth::id())->get();
+        $cours = Cour::whereRelation('classe', function ($query) {
+            $query->whereRelation('responsableClasse', 'user_id', Auth::id());
+        })->get();
+        return view('document.index', compact('documents', 'types', 'classes', 'cours'));
     }
 
     /**

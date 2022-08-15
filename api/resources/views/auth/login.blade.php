@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Plus il y a de documents, mieux ça sera.</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

@@ -1,152 +1,166 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col">
-                <h3>
-                    Liste des documents ({{ count($documents) }})
-                </h3>
-            </div>
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Plus il y a de documents, mieux ça sera.</h2>
         </div>
+    </div><!-- End Breadcrumbs -->
 
-        <div class="row">
-            <div class="col d-flex justify-content-start">
-                <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                    placeholder="Recherche">
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Documents ({{ count($documents) }})</h2>
+                <p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newDocument">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Nouveau Document
+                    </button>
+                </p>
             </div>
-            <div class="col d-flex justify-content-end">
-                <a href=" {{ route('document.create') }} " class="btn btn-primary">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Ajouter un document
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                @if (isset($successStore))
-                    <p>
-                        {{ $successStore }}
-                    </p>
-                @endif
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-
-                                <th>
-                                    Libelle
-                                </th>
-
-                                <th>
-                                    Classe
-                                </th>
-
-                                <th>
-                                    Type
-                                </th>
-                                <th colspan="3" class="text-center">
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <div class="d-none">
-                                {{ $id = 1 }}
-                            </div>
-
-                            @forelse ($documents as $document)
-                                <tr>
-                                    <th>
-                                        {{ $id++ }}
-                                    </th>
-
-                                    <td class="text-primary">
-                                        {{ $document->name }}
-                                    </td>
-
-                                    <td>
-                                        {{ $document->classe->libelle }}
-                                    </td>
-
-                                    <td>
-                                        <ul>
-                                            <li>
-                                                @foreach ($document->typeDocuments as $item)
-                                                    {{ $item->type->name }}
-                                                @endforeach
-                                            </li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="text-center">
-                                        <a href=" {{ route('document.show', compact('document')) }} "
-                                            class="btn btn-outline-primary">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-
-                                    <td class="text-center">
-                                        <a href=" {{ route('document.edit', compact('document')) }} "
-                                            class="btn btn-outline-warning">
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                @forelse ($documents as $document)
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-2">
+                        <div class="course-item">
+                            <img src="../../assets/images/bg.jpeg" class="img-fluid" alt="...">
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4>{{ $document->cour->name }}</h4>
+                                </div>
+                                <h3><a href="course-details.html"> {{ $document->name }} </a></h3>
+                                <p> {!! $document->description !!} </p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <span>Publié le: {{ $document->created_at->format('Y-m-d') }} </span>
+                                    </div>
+                                    <div class="trainer-rank d-flex align-items-center">
+                                        <button class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+                                        </button>
+                                        &nbsp;
+                                        <button class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p>
+                        Aucun document pour l'instant. Créez-en!
+                    </p>
+                    <section id="hero" class="d-flex align-items-center">
+                        <div class="container d-flex flex-column align-items-center" data-aos="zoom-in"
+                            data-aos-delay="100">
+                            <iframe src="https://embed.lottiefiles.com/animation/73061"></iframe>
+                        </div>
+                    </section><!-- End Hero -->
+                @endforelse
 
-                                    <td class="text-center">
-                                        <form action=" {{ route('document.destroy', compact('document')) }} "
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-outline-danger">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <p>
-                                    Aucun document trouvé
-                                </p>
-                            @endforelse
+            </div>
+            {{ $documents->links() }}
+        </div>
+    </section><!-- End Popular Courses Section -->
 
-                        </tbody>
-
-                        <tfoot class="table-dark">
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-
-                                <th>
-                                    Libelle
-                                </th>
-
-                                <th>
-                                    Classe
-                                </th>
-
-                                <th>
-                                    Type
-                                </th>
-
-                                <th colspan="3" class="text-center">
-                                    Actions
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    {{ $documents->links() }}
+    <!-- Modal -->
+    <div class="modal fade" id="newDocument" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nouveau Document <i class="fa fa-book"
+                            aria-hidden="true"></i> </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action=" {{ route('document.store') }} " method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="">Libelle du document</label>
+                                    <input type="text" name="name" required id="name"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        placeholder="Algorithme et Programmation 1" aria-describedby="helpId">
+                                    @error('name')
+                                        <small id="helpId" class="form-text text-danger"> {{ $errors->first('name') }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="type" class="form-label">Type du document</label>
+                                    <select class="form-select" name="type" id="type" required>
+                                        @foreach ($types as $type)
+                                            <option value="{{ $type->code }}">{{ $type->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="classe" class="form-label">Classe</label>
+                                    <select class="form-select" name="classe" id="classe" required>
+                                        @foreach ($classes as $classe)
+                                            <option value="{{ $classe->id }}">{{ $classe->libelle }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="cours" class="form-label">Cours</label>
+                                    <select class="form-select" name="cours" id="cours" required>
+                                        @foreach ($cours as $cour)
+                                            <option value="{{ $cour->id }}">{{ $cour->name }} (
+                                                {{ $cour->classe->libelle }} )
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Commentaire</label>
+                                    <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description"></textarea>
+                                    @error('description')
+                                        <small id="helpId" class="form-text text-danger">
+                                            {{ $errors->first('description') }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-outline-primary btn-block">
+                                    Enregistrer
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
-
     </div>
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('.ckeditor').ckeditor();
+
+        });
+    </script>
 @endsection

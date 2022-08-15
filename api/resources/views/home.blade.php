@@ -1,6 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>{{ config('app.name') }}, au service des étudiants.</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
     <div class="container">
         <div class="row mt-5">
             <div class="col-xl-12 col-md-12 mb-4">
