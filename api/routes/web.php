@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Api\V1\DocumentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +13,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'isResponsable'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\Api\V1\HomeController::class, 'index'])->name('home');
     Route::resource('document', DocumentController::class);
 });
 

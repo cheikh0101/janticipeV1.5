@@ -53,4 +53,4 @@ Route::post('/contact/message', function (Request $request) {
 
 Route::resource('/cours', CoursController::class)->only(['index', 'show']);
 Route::post('/cours/search', [CoursController::class, 'search']);
-// Route::post('/document/search/', [DocumentController::class, 'search']);
+Route::post('/document/search/', [DocumentController::class, 'search']);
