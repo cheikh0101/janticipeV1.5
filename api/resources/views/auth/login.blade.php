@@ -3,24 +3,12 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
         <div class="container">
-            <h2>Plus il y a de documents, mieux ça sera.</h2>
+            <h2>Veuillez vous authentifier</h2>
         </div>
     </div><!-- End Breadcrumbs -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-
-
-                {{-- @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Mot de passe oublié?') }}
-                    </a> --}}
-            </div>
-        </div>
-    </div>
     <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-6 pt-5 mt-5 mt-lg-0 d-flex align-items-stretch">
                     <form action="{{ route('login') }}" method="post" role="form" class="php-email-form">
                         @csrf

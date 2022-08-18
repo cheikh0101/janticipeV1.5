@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cours } from 'src/app/model/Cours';
+import { CoursService } from 'src/app/service/cours.service';
 
 @Component({
   selector: 'app-cours-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursListComponent implements OnInit {
 
-  constructor() { }
+  cours: Cours[] = [];
+
+  constructor(public coursSrv: CoursService) { }
 
   ngOnInit(): void {
+    this.findAll();
+  }
+
+  findAll(){
+    this.coursSrv.findAll()
+    .then((data: Cours[]) => {
+        this.cours = data;
+      })
+      .catch(() => { });
   }
 
 }

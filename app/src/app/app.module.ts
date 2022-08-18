@@ -8,6 +8,10 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
+    ToastrModule.forRoot(),
+    LoadingBarHttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

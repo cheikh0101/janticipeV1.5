@@ -1,11 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <h2>Plus il y a de documents, mieux ça sera.</h2>
-        </div>
-    </div><!-- End Breadcrumbs -->
     <div class="container mt-5">
         <div class="row">
             <div class="col">
@@ -13,15 +7,15 @@
                     <div class="card-header">
                         Modification de Document
                     </div>
-                    <div class="card-body">
-                        <div class="alert alert-primary">
+                    <div class="card-body contact">
+                        <div class="alert alert-danger">
                             <p>
                                 La modification d'un document est une grande responsabilité. Soyez attentionnés s'il
                                 vous plaît!
                             </p>
                         </div>
-                        <form action=" {{ route('document.update', compact('document')) }} " method="post"
-                            enctype="multipart/form-data">
+                        <form action=" {{ route('document.update', compact('document')) }} " class="php-email-form"
+                            method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="row mt-1">
@@ -40,20 +34,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Lien vers le document</label>
-                                        <input type="url" name="lien" id="lien"
-                                            class="form-control @error('lien') is-invalid @enderror " placeholder=""
-                                            value=" {{ $document->lien }} " aria-describedby="helpId">
-                                        @error('lien')
-                                            <small id="helpId" class="form-text text-danger"> {{ $errors->first('lien') }}
-                                            </small>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label for="type" class="form-label">Type du document</label>
                                         <select class="form-select" name="type" @error('type') is-invalid @enderror"
                                             id="type" required>
@@ -66,21 +46,6 @@
                                         </select>
                                         @error('type')
                                             <small id="helpId" class="form-text text-danger"> {{ $errors->first('type') }}
-                                            </small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Fichier
-                                            <small id="helpId" class="form-text text-primary">
-                                                Seuls les fichiers au format pdf,jpg,png sont acceptés
-                                            </small>
-                                        </label>
-                                        <input type="file" @error('type') is-invalid @enderror" name="file"
-                                            id="file" class="form-control" placeholder="" aria-describedby="helpId">
-                                        @error('file')
-                                            <small id="helpId" class="form-text text-danger"> {{ $errors->first('file') }}
                                             </small>
                                         @enderror
                                     </div>
@@ -152,11 +117,11 @@
             </div>
         </div>
     </div>
-
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.ckeditor').ckeditor();
-        });
-    </script>
 @endsection
+
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ckeditor').ckeditor();
+    });
+</script>

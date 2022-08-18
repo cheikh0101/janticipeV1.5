@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\CoursController;
+use App\Http\Controllers\Api\V1\DocumentController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\MailBox;
 use Illuminate\Http\Request;
@@ -51,6 +53,6 @@ Route::post('/contact/message', function (Request $request) {
     }
 })->name('contact/message');
 
-Route::resource('/cours', CoursController::class)->only(['index', 'show']);
+Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 Route::post('/cours/search', [CoursController::class, 'search']);
 Route::post('/document/search/', [DocumentController::class, 'search']);

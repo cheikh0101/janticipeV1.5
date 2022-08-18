@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Custom\CustomResponse;
 use App\Http\Controllers\Controller;
 use App\Models\AnneeAcademique;
 use App\Models\Cour;
@@ -18,6 +19,7 @@ class CoursController extends Controller
     public function index()
     {
         $cours = Cour::all();
+        return CustomResponse::buildSuccessResponse($cours);
     }
 
     /**

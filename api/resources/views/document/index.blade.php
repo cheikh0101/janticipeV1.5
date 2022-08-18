@@ -88,8 +88,9 @@
                             aria-hidden="true"></i> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action=" {{ route('document.store') }} " method="post" enctype="multipart/form-data">
+                <div class="modal-body contact">
+                    <form action=" {{ route('document.store') }} " class="php-email-form" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -104,8 +105,6 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="type" class="form-label">Type du document</label>
