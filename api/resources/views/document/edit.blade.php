@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Plus il y a de documents, mieux ça sera.</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
     <div class="container mt-5">
         <div class="row">
             <div class="col">
@@ -150,9 +156,7 @@
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-
             $('.ckeditor').ckeditor();
-
         });
     </script>
 @endsection

@@ -17,8 +17,18 @@
                         <i class="fa fa-plus" aria-hidden="true"></i> Nouveau Document
                     </button>
                 </p>
+                @if (session()->has('storeDocument'))
+                    <div class="alert alert-primary" role="alert">
+                        <strong>{{ session()->get('storeDocument') }}</strong>
+                    </div>
+                @endif
+                @if (session()->has('deleteDocument'))
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ session()->get('deleteDocument') }}</strong>
+                    </div>
+                @endif
             </div>
-            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            <div class="row mb-2" data-aos="zoom-in" data-aos-delay="100">
                 @forelse ($documents as $document)
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-2">
                         <div class="course-item">
@@ -34,13 +44,19 @@
                                         <span>Publié le: {{ $document->created_at->format('Y-m-d') }} </span>
                                     </div>
                                     <div class="trainer-rank d-flex align-items-center">
-                                        <button class="btn btn-warning">
+                                        <a href=" {{ route('document.edit', compact('document')) }} "
+                                            class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </button>
+                                        </a>
                                         &nbsp;
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
+                                        <form action=" {{ route('document.destroy', compact('document')) }} "
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

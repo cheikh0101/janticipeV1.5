@@ -63,7 +63,7 @@
             @yield('content')
         </main>
         <!-- ======= Footer ======= -->
-        <footer id="footer" class="bg-light fixed-bottom">
+        <footer id="footer" class="bg-light">
             <div class="container d-md-flex py-4">
                 <div class="me-md-auto text-center text-md-start">
                     <div class="copyright">

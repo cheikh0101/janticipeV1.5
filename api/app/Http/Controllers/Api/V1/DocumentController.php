@@ -39,12 +39,6 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
-        $classes = Classe::whereRelation('responsableClasse', 'user_id', Auth::id())->get();
-        $cours = Cour::whereRelation('classe', function ($query) {
-            $query->whereRelation('responsableClasse', 'user_id', Auth::id());
-        })->get();
-        return view('document.create', compact('types', 'classes', 'cours'));
     }
 
     /**
@@ -81,6 +75,7 @@ class DocumentController extends Controller
             $typeDocument->document_id = $document->id;
             $typeDocument->type_id = $type->id;
             $typeDocument->save();
+            session()->flash('storeDocument', 'Document enregistré avec succès');
             DB::commit();
             return redirect()->route('document.index');
         } catch (\Throwable $th) {
@@ -171,6 +166,7 @@ class DocumentController extends Controller
             $typeDocument->deleteOrFail();
             $document->deleteOrFail();
             DB::commit();
+            session()->flash('deleteDocument', 'Document supprimé avec succès');
             return redirect()->route('document.index');
         } catch (\Throwable $th) {
             DB::rollback();
