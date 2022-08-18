@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $reponsableClasses = ResponsableClasse::where('user_id', Auth::id())->get();
+        $responsableClasses = ResponsableClasse::where('user_id', Auth::id())->get();
         $nbreDocuments = Document::where('user_id', Auth::id())->count();
-        return view('home', compact('reponsableClasses', 'nbreDocuments'));
+        return view('home', compact('responsableClasses', 'nbreDocuments'));
     }
 }

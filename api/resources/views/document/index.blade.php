@@ -44,6 +44,11 @@
                                         <span>Publié le: {{ $document->created_at->format('Y-m-d') }} </span>
                                     </div>
                                     <div class="trainer-rank d-flex align-items-center">
+                                        <a href=" {{ route('document.show', compact('document')) }} "
+                                            class="btn btn-primary">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        &nbsp;
                                         <a href=" {{ route('document.edit', compact('document')) }} "
                                             class="btn btn-warning">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>

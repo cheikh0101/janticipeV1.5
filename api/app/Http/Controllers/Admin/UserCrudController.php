@@ -71,17 +71,7 @@ class UserCrudController extends CrudController
         CRUD::field('name')->label('Prénom et Nom');
         CRUD::field('email');
         CRUD::field('num_telephone')->label('Numéro de Téléphone');
-        // CRUD::addField(['name' => 'type', 'type' => 'select_from_array', 'options' => ['admin' => 'Admin', 'responsable' => 'Responsable']]);
-
-        CRUD::addField([
-            'name' => 'type',
-            'events' => [
-                'saving' => function ($entry) {
-                    $entry->type = 'admin';
-                },
-            ],
-        ]);
-
+        CRUD::field('type');
         User::created(function ($user) {
             event(new Registered($user));
         });

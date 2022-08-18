@@ -29,7 +29,7 @@
                     @auth
                         <ul>
                             <li>
-                                <a class="nav-link active" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
+                                <a class="nav-link" href=" {{ route('home') }} ">{{ __('Tableau de Bord') }}</a>
                             </li>
                             <li>
                                 <a class="nav-link" href=" {{ route('document.index') }} ">{{ __('Documents') }}</a>

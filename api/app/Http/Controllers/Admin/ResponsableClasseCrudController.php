@@ -69,7 +69,7 @@ class ResponsableClasseCrudController extends CrudController
             'model'     => "App\Models\User",
             'attribute' => 'email',
             'options' => (function ($query) {
-                return $query->orderBy('id', 'ASC')->get();
+                return $query->where('type', 'responsable')->get();
             }),
         ]);
         CRUD::addField([

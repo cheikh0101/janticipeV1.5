@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\DocumentController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\MailBox;
 use Illuminate\Http\Request;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/new-email', function (Request $request) {
+Route::post('new-email', function (Request $request) {
     $request->validate([
         'email' => 'required|unique:mail_boxes|email:rfc,dns'
     ]);
@@ -38,7 +39,7 @@ Route::post('/new-email', function (Request $request) {
     }
 })->name('new-email');
 
-Route::post('/contact/message', function (Request $request) {
+Route::post('contact/message', function (Request $request) {
     $request->validate([
         'objet' => 'required',
         'message' => 'required',
@@ -53,6 +54,8 @@ Route::post('/contact/message', function (Request $request) {
     }
 })->name('contact/message');
 
-Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
-Route::post('/cours/search', [CoursController::class, 'search']);
-Route::post('/document/search/', [DocumentController::class, 'search']);
+Route::prefix('V1')->group(function () {
+    Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
+    Route::post('cours/search', [CoursController::class, 'search']);
+    Route::post('document/search/', [DocumentController::class, 'search']);
+});

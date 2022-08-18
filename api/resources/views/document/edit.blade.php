@@ -1,13 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Modification de Document
-                    </div>
-                    <div class="card-body contact">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Plus il y a de documents, mieux ça sera.</h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
+    <section id="contact" class="contact">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card- contact">
                         <div class="alert alert-danger">
                             <p>
                                 La modification d'un document est une grande responsabilité. Soyez attentionnés s'il
@@ -89,34 +92,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-1">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="description" class="form-label">Description</label>
-                                        <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description">
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description">
                                             {{ $document->description }}
                                         </textarea>
-                                        @error('description')
-                                            <small id="helpId" class="form-text text-danger">
-                                                {{ $errors->first('description') }}
-                                            </small>
-                                        @enderror
-                                    </div>
-                                </div>
+                                @error('description')
+                                    <small id="helpId" class="form-text text-danger">
+                                        {{ $errors->first('description') }}
+                                    </small>
+                                @enderror
                             </div>
-                            <div class="row mt-1">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-outline-primary btn-block">
-                                        Enregistrer
-                                    </button>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-outline-primary btn-block">
+                                Enregistrer
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
 
 <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>

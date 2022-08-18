@@ -8,7 +8,7 @@ import { first } from 'rxjs';
 })
 export class JanticipeHttpService {
 
-  prefixUrl = 'http://127.0.0.1:8000/api/';
+  prefixUrl = 'http://127.0.0.1:8000/api/V1';
 
   constructor(public http: HttpClient, public injector: Injector) { }
 
