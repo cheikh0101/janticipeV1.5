@@ -50,6 +50,11 @@
 .contact .php-email-form {
   width: 100%;
   background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  border-top: 3px solid #0d6efd;
+  border-bottom: 3px solid #0d6efd;
+  padding: 30px;
 }
 
 .contact .php-email-form .form-group {
@@ -58,9 +63,9 @@
 
 .contact .php-email-form input,
 .contact .php-email-form textarea {
-  border-radius: 4px;
   box-shadow: none;
   font-size: 14px;
+  border-radius: 20px;
 }
 
 .contact .php-email-form input:focus,
