@@ -85,17 +85,22 @@ Route::prefix('V1')->group(function () {
     })->name('new-email');
 
     Route::post('contact/message', function (Request $request) {
-        $request->validate([
+        $validators = Validator::make($request->all(), [
             'objet' => 'required',
             'message' => 'required',
-            'email' => 'required',
+            'email' => 'required|email:rfc,dns'
         ]);
+        if ($validators->fails()) {
+            return CustomResponse::buildValidationErrorResponse($validators->errors());
+        }
         try {
             $objet = $request->objet;
             $email = $request->email;
             $message = $request->message;
             Mail::to('janticipe0101@gmail.com')->send(new SendContactMessageEmail($objet, $email, $message));
         } catch (\Throwable $th) {
+            return CustomResponse::buildErrorResponse("Une erreur est survenue lors de l'envoi...");
         }
+        return CustomResponse::buildSuccessResponse("Message envoyé avec succès!");
     })->name('contact/message');
 });

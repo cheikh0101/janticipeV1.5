@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     ToastrModule.forRoot(),
     LoadingBarHttpClientModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

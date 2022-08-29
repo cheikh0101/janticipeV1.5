@@ -22,17 +22,17 @@
         </div>
       </div>
       <div class="col-lg-8 mt-5 mt-lg-0">
-        <form action="" method="post" role="form" class="php-email-form">
+        <form method="post" role="form" class="php-email-form">
           <div class="form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="janticipe0101@gmail.com" required>
+            <input type="email" [(ngModel)]="contact.email" class="form-control" name="email" id="email" placeholder="janticipe0101@gmail.com" required>
           </div>
           <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Objet" required>
+            <input type="text" [(ngModel)]="contact.objet" class="form-control" name="objet" id="objet" placeholder="Objet" required>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            <textarea class="form-control" [(ngModel)]="contact.message" name="message" rows="5" placeholder="Message" required></textarea>
           </div>
-          <div class="text-center"><button type="submit">Envoyer</button></div>
+          <div class="text-center"><button type="submit" (click)="save()">Envoyer</button></div>
         </form>
       </div>
     </div>

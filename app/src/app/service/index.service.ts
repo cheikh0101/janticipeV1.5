@@ -24,4 +24,8 @@ export class IndexService {
   getExams() {
     return this.http.get('numberOfExamDoc');
   }
+
+  sendContact(contact: object) {
+    return this.http.post('contact/message',contact)
+  }
 }
