@@ -45,10 +45,8 @@
           <div class="col-md-6">
               <div class="mb-3">
                   <label for="type" class="form-label">Type</label>
-                  <select class="form-control" name="type" id="type">
-                    <option value="">Cours Magistral</option>
-                    <option value="">Travaux Pratiques</option>
-                    <option value="">Travaux Dirigés</option>
+                  <select class="form-control">
+                    <option value="" *ngFor="let type of types"> {{type.name}} </option>
                   </select>
               </div>
           </div>

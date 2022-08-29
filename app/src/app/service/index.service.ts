@@ -28,4 +28,8 @@ export class IndexService {
   sendContact(contact: object) {
     return this.http.post('contact/message',contact)
   }
+
+  getTypes() {
+    return this.http.get('types');
+  }
 }
