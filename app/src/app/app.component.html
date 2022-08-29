@@ -1,19 +1,17 @@
-<!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
         <h1 class="logo me-auto"><a href="/">Janticipe</a></h1>
-        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         <nav id="navbar" class="navbar order-last order-lg-0">
-            <ul>
-                <li><a routerLink="/">Accueil</a></li>
-                <li>
-                    <a routerLink="cours">Cours</a>
-                </li>
-            </ul>
-            <i class="fa fa-navicon mobile-nav-toggle" aria-hidden="true"></i>
-        </nav><!-- .navbar -->
+          <ul>
+            <li><a routerLink="/">Accueil</a></li>
+            <li>
+              <a routerLink="cours">Cours</a>
+            </li>
+          </ul>
+            <i class="fa fa-navicon mobile-nav-toggle"></i>
+        </nav>
     </div>
-</header><!-- End Header -->
+</header>
 <ngx-loading-bar height=5.7px ref='http'></ngx-loading-bar>
 <router-outlet></router-outlet>
 <!-- ======= Footer ======= -->
@@ -21,30 +19,36 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 footer-contact">
+                <div class="col-lg-4 col-md-6 footer-contact">
                     <h3>Janticipe</h3>
                     <a name="" id="" class="btn btn-primary" routerLink="contact" role="button">Nous
                         écrire <i class="fa fa-file-text" aria-hidden="true"></i> </a>
                 </div>
-                <div class="col-lg-3 col-md-6 footer-links">
-                  <h4>Liens</h4>
+                <div class="col-lg-4 col-md-6 footer-links">
+                  <h4>Liens utiles</h4>
                   <ul>
                     <li><i class="fa fa-angle-right"></i> <a routerLink="/">Accueil</a></li>
                     <li><i class="fa fa-angle-right"></i> <a routerLink="/cours">Cours</a></li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 footer-links">
+                  <h4>Liens utiles</h4>
+                  <ul>
                     <li><i class="fa fa-angle-right"></i> <a routerLink="/about">A propos</a></li>
                     <li><i class="fa fa-angle-right"></i> <a routerLink="/contact">Contact</a></li>
                   </ul>
                 </div>
-                <div class="col-lg-6 col-md-6 footer-newsletter">
+                <!-- <div class="col-lg-6 col-md-6 footer-newsletter">
                     <h4>Boite à lettres</h4>
                     <p>
                         Pour être informer de toutes nouveautés merci de renseigner votre email
                     </p>
-                    <form action="" method="post">
+                    <form method="post">
                         <input type="email" name="email" placeholder="janticipe0101@gmail.com"
-                            required><input type="submit" value="S'inscrire">
+                            required>
+                        <input type="submit" value="S'inscrire">
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -61,3 +65,4 @@
         </div>
     </div>
 </footer><!-- End Footer -->
+

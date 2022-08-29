@@ -15,6 +15,8 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,35 +32,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('new-email', function (Request $request) {
-    $request->validate([
-        'email' => 'required|unique:mail_boxes|email:rfc,dns'
-    ]);
-    DB::beginTransaction();
-    try {
-        $newEmail = new MailBox();
-        $newEmail->email = $request->email;
-        $newEmail->saveOrFail();
-        DB::commit();
-    } catch (\Throwable $th) {
-    }
-})->name('new-email');
-
-Route::post('contact/message', function (Request $request) {
-    $request->validate([
-        'objet' => 'required',
-        'message' => 'required',
-        'email' => 'required',
-    ]);
-    try {
-        $objet = $request->objet;
-        $email = $request->email;
-        $message = $request->message;
-        Mail::to('janticipe0101@gmail.com')->send(new SendContactMessageEmail($objet, $email, $message));
-    } catch (\Throwable $th) {
-    }
-})->name('contact/message');
 
 Route::prefix('V1')->group(function () {
     Route::get('numberOfSpecialites', function () {
@@ -90,4 +63,39 @@ Route::prefix('V1')->group(function () {
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
     Route::post('cours/search', [CoursController::class, 'search']);
     Route::post('document/search/', [DocumentController::class, 'search']);
+
+
+    Route::post('new-email', function (Request $request) {
+        $validators = Validator::make($request->all(), [
+            'email' => 'required|unique:mail_boxes|email:rfc,dns'
+        ]);
+        if ($validators->fails()) {
+            return CustomResponse::buildValidationErrorResponse($validators->errors());
+        }
+        DB::beginTransaction();
+        try {
+            $newEmail = new MailBox();
+            $newEmail->email = $request->email;
+            $newEmail->saveOrFail();
+            DB::commit();
+        } catch (\Throwable $th) {
+            return CustomResponse::buildErrorResponse("Une erreur est survenue lors de l'enregistrement...");
+        }
+        return CustomResponse::buildSuccessResponse("Email enregistré avec succès!");
+    })->name('new-email');
+
+    Route::post('contact/message', function (Request $request) {
+        $request->validate([
+            'objet' => 'required',
+            'message' => 'required',
+            'email' => 'required',
+        ]);
+        try {
+            $objet = $request->objet;
+            $email = $request->email;
+            $message = $request->message;
+            Mail::to('janticipe0101@gmail.com')->send(new SendContactMessageEmail($objet, $email, $message));
+        } catch (\Throwable $th) {
+        }
+    })->name('contact/message');
 });
