@@ -32,6 +32,7 @@ class CoursController extends Controller
     {
         $types = Type::all();
         $anneeAcademiques = AnneeAcademique::all();
+        return CustomResponse::buildSuccessResponse($cour);
     }
 
     public function search(Request $request)

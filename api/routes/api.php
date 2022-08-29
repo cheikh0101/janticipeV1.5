@@ -60,7 +60,9 @@ Route::prefix('V1')->group(function () {
         $anneeAcademiques = AnneeAcademique::all();
         return CustomResponse::buildSuccessResponse($anneeAcademiques);
     });
+
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
+
     Route::post('cours/search', [CoursController::class, 'search']);
     Route::post('document/search/', [DocumentController::class, 'search']);
 

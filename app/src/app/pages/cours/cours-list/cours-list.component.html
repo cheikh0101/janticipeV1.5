@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let cour of cours">
       <div class="card">
-        <a routerLink="/cours/details" style="text-decoration: none;">
+        <a [routerLink]="['/cours',cour.id,'details']" style="text-decoration: none;">
           <h3 class="card__title">{{cour.name}}</h3>
           <div class="card__date">{{cour.classe.libelle}} </div>
           <div class="card__arrow">

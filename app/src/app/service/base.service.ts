@@ -20,4 +20,8 @@ export abstract class BaseService<T extends BaseClass> {
   findAll() {
     return this.http.get(this.prefix);
   }
+
+  findOneById(id: number) {
+    return this.http.get(this.prefix + '/' + id);
+  }
 }

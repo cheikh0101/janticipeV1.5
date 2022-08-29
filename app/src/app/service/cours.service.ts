@@ -12,4 +12,5 @@ export class CoursService extends BaseService<Cours> {
     super(http);
     this.prefix = 'cours';
   }
+
 }
