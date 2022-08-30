@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Custom\CustomResponse;
 use App\Http\Controllers\Controller;
 use App\Models\AnneeAcademique;
 use App\Models\Classe;
@@ -180,5 +181,11 @@ class DocumentController extends Controller
         $types = Type::all();
         $anneeAcademiques = AnneeAcademique::all();
         return view('cours.show', compact('types', 'anneeAcademiques'));
+    }
+
+    public function findCourseDocument(Request $request)
+    {
+        $documents = Document::where('cour_id', $request->id)->get();
+        return CustomResponse::buildSuccessResponse($documents);
     }
 }

@@ -64,7 +64,10 @@ Route::prefix('V1')->group(function () {
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 
     Route::post('cours/search', [CoursController::class, 'search']);
+
     Route::post('document/search/', [DocumentController::class, 'search']);
+
+    Route::get('document/courseDocument/{id}', [DocumentController::class, 'findCourseDocument']);
 
 
     Route::post('new-email', function (Request $request) {

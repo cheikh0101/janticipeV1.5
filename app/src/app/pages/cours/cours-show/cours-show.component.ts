@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Cours } from 'src/app/model/Cours';
 import { Type } from 'src/app/model/Type';
 import { CoursService } from 'src/app/service/cours.service';
+import { DocumentService } from 'src/app/service/document.service';
 import { IndexService } from 'src/app/service/index.service';
 
 @Component({
@@ -15,14 +16,16 @@ export class CoursShowComponent implements OnInit {
   pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
   cours: Cours;
   types: Type[] = [];
+  documents: Document[] = [];
 
-  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService) {
+  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService) {
     this.cours = Object.create(null);
    }
 
   ngOnInit(): void {
     this.findCours();
     this.getAllTypes();
+    this.getCourseDocument();
   }
 
   findCours() {
@@ -38,5 +41,12 @@ export class CoursShowComponent implements OnInit {
       .then((data:any) => {
         this.types = data;
       } )
+  }
+
+  getCourseDocument() {
+    this.documentSrv.findCourseDocument(this.activatedRoute.snapshot.params["id"])
+      .then((data:any) => {
+        this.documents = data;
+    } )
   }
 }
