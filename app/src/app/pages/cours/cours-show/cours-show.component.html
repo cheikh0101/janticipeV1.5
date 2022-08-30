@@ -21,6 +21,10 @@
                   <p>{{cours.classe.specialite.libelle}}</p>
               </div>
               <div class="course-info d-flex justify-content-between align-items-center">
+                  <h5>Année Académique</h5>
+                  <p>{{cours.classe.annee_academique.libelle}}</p>
+              </div>
+              <div class="course-info d-flex justify-content-between align-items-center">
                   <h5>Nombre de documents</h5>
                   <p>xxx</p>
               </div>
@@ -34,17 +38,13 @@
       <div class="row">
           <div class="col-md-6">
               <div class="mb-3">
-                  <label for="anneeAcademique" class="form-label">Année Académique</label>
-                  <select class="form-control" name="anneeAcademique" id="anneeAcademique">
-                    <option value="">2022-2021</option>
-                    <option value="">2021-2020</option>
-                    <option value="">2020-2019</option>
-                  </select>
+                  <label for="anneeAcademique" class="form-label">Rechercher</label>
+                  <input type="text" class="form-control" name="motCle" id="motCle" aria-describedby="helpId" placeholder="cours ...">
               </div>
           </div>
           <div class="col-md-6">
               <div class="mb-3">
-                  <label for="type" class="form-label">Type</label>
+                  <label for="type" class="form-label">Filtrer par Type</label>
                   <select class="form-control">
                     <option value="" *ngFor="let type of types"> {{type.name}} </option>
                   </select>
