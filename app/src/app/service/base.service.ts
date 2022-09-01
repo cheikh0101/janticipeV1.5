@@ -24,4 +24,11 @@ export abstract class BaseService<T extends BaseClass> {
   findOneById(id: number) {
     return this.http.get(this.prefix + '/' + id);
   }
+
+  paginate(itemsPerPage: number, pageNumber = null) {
+    if (pageNumber) {
+      return this.http.get(`${this.prefix}/paginate/${itemsPerPage}?page=${pageNumber}`);
+    }
+    return this.http.get(`${this.prefix}/paginate/${itemsPerPage}`);
+  }
 }

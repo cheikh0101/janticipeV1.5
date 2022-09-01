@@ -185,7 +185,13 @@ class DocumentController extends Controller
 
     public function findCourseDocument(Request $request)
     {
-        $documents = Document::where('cour_id', $request->id)->get();
+        $documents = Document::where('cour_id', $request->id)->with('user')->get();
+        return CustomResponse::buildSuccessResponse($documents);
+    }
+
+    public function paginate($itemPerPage, Request $request)
+    {
+        $documents = Document::where('cour_id', $request->id)->with('user')->paginate($itemPerPage);
         return CustomResponse::buildSuccessResponse($documents);
     }
 }

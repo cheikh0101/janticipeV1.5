@@ -65,10 +65,13 @@ Route::prefix('V1')->group(function () {
 
     Route::post('cours/search', [CoursController::class, 'search']);
 
+    Route::post('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
+
     Route::post('document/search/', [DocumentController::class, 'search']);
 
     Route::get('document/courseDocument/{id}', [DocumentController::class, 'findCourseDocument']);
 
+    Route::post('document/paginate/{itemPerPage}', [DocumentController::class, 'paginate']);
 
     Route::post('new-email', function (Request $request) {
         $validators = Validator::make($request->all(), [

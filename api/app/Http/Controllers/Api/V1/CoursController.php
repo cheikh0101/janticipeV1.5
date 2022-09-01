@@ -43,4 +43,10 @@ class CoursController extends Controller
         $motCle = $request->motCle;
         $cours = Cour::where('name', 'like', '%' . $motCle . '%')->get();
     }
+
+    public function paginate($itemPerPage)
+    {
+        $cours = Cour::paginate($itemPerPage);
+        return CustomResponse::buildSuccessResponse($cours);
+    }
 }
