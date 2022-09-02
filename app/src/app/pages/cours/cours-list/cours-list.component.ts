@@ -17,7 +17,7 @@ export class CoursListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
-    this.paginate();
+    // this.paginate();
   }
 
   findAll(){

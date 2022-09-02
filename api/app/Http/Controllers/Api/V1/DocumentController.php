@@ -9,7 +9,6 @@ use App\Models\Classe;
 use App\Models\Cour;
 use App\Models\Document;
 use App\Models\Type;
-use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +66,7 @@ class DocumentController extends Controller
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
+            $document->type_id = $request->type;
             $document->save();
             session()->flash('storeDocument', 'Document enregistré avec succès');
             DB::commit();
@@ -128,6 +128,7 @@ class DocumentController extends Controller
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
+            $document->type_id = $request->type;
             $document->update();
             DB::commit();
             return redirect()->route('document.index');
@@ -147,8 +148,6 @@ class DocumentController extends Controller
     {
         DB::beginTransaction();
         try {
-            $typeDocument = TypeDocument::where('document_id', $document->id)->first();
-            $typeDocument->deleteOrFail();
             $document->deleteOrFail();
             DB::commit();
             session()->flash('deleteDocument', 'Document supprimé avec succès');
@@ -169,7 +168,7 @@ class DocumentController extends Controller
 
     public function findCourseDocument(Request $request)
     {
-        $documents = Document::where('cour_id', $request->id)->with('user')->get();
+        $documents = Document::where('cour_id', $request->id)->with('user', 'type')->get();
         return CustomResponse::buildSuccessResponse($documents);
     }
 

@@ -115,7 +115,7 @@
                                     <label for="type" class="form-label">Type du document</label>
                                     <select class="form-select" name="type" id="type" required>
                                         @foreach ($types as $type)
-                                            <option value="{{ $type->code }}">{{ $type->name }}
+                                            <option value="{{ $type->id }}">{{ $type->name }}
                                             </option>
                                         @endforeach
                                     </select>

@@ -1,5 +1,6 @@
 import { Classe } from "./Classe";
 import { Cours } from "./Cours";
+import { Type } from "./Type";
 import { User } from "./User";
 
 export class Document{
@@ -10,4 +11,5 @@ export class Document{
   classe: Classe = Object.create(null);
   cours: Cours = Object.create(null);
   user: User = Object.create(null);
+  type: Type = Object.create(null);
 }
