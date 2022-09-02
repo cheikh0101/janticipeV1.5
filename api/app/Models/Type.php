@@ -36,13 +36,13 @@ class Type extends Model
     |--------------------------------------------------------------------------
     */
     /**
-     * Get all of the typeDocuments for the Type
+     * Get all of the documents for the Type
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function typeDocuments(): HasMany
+    public function documents(): HasMany
     {
-        return $this->hasMany(TypeDocument::class);
+        return $this->hasMany(Document::class);
     }
 
     /*

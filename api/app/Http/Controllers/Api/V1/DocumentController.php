@@ -68,14 +68,6 @@ class DocumentController extends Controller
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
             $document->save();
-
-            $type = Type::whereCode($request->type)->first();
-
-            $typeDocument = new TypeDocument();
-            $typeDocument->user_email = auth()->user()->email;
-            $typeDocument->document_id = $document->id;
-            $typeDocument->type_id = $type->id;
-            $typeDocument->save();
             session()->flash('storeDocument', 'Document enregistré avec succès');
             DB::commit();
             return redirect()->route('document.index');
@@ -137,14 +129,6 @@ class DocumentController extends Controller
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
             $document->update();
-
-            $type = Type::whereCode($request->type)->first();
-
-            $typeDocument = TypeDocument::where('document_id', $document->id)->first();
-            $typeDocument->user_email = auth()->user()->email;
-            $typeDocument->document_id = $document->id;
-            $typeDocument->type_id = $type->id;
-            $typeDocument->update();
             DB::commit();
             return redirect()->route('document.index');
         } catch (\Throwable $th) {

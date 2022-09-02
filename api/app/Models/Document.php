@@ -44,12 +44,12 @@ class Document extends Model
     }
 
     /**
-     * Get all of the typeDocuments for the Document
+     * Get the type that owns the Document
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function typeDocuments(): HasMany
+    public function type(): BelongsTo
     {
-        return $this->hasMany(TypeDocument::class);
+        return $this->belongsTo(Type::class);
     }
 }
