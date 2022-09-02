@@ -14,6 +14,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

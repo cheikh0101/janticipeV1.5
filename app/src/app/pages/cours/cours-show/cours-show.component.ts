@@ -7,6 +7,9 @@ import { CoursService } from 'src/app/service/cours.service';
 import { DocumentService } from 'src/app/service/document.service';
 import { IndexService } from 'src/app/service/index.service';
 
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
   selector: 'app-cours-show',
   templateUrl: './cours-show.component.html',
@@ -19,7 +22,9 @@ export class CoursShowComponent implements OnInit {
   types: Type[] = [];
   documents: Document[] = [];
 
-  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService) {
+
+
+  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
     this.cours = Object.create(null);
    }
 
@@ -49,5 +54,11 @@ export class CoursShowComponent implements OnInit {
       .then((data:any) => {
         this.documents = data;
     } )
+  }
+
+  open(content:any) {
+    this.modalService.open(content, { size: 'xl', scrollable:true, centered:true }).result.then((result) => {
+    }, (reason) => {
+    });
   }
 }

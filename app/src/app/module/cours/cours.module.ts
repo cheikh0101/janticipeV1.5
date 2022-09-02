@@ -8,12 +8,14 @@ import { CoursShowComponent } from 'src/app/pages/cours/cours-show/cours-show.co
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     CoursComponent,
     CoursListComponent,
-    CoursShowComponent
+    CoursShowComponent,
+
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     PdfViewerModule,
     NzModalModule,
     NzButtonModule,
+    NgbModule
   ]
 })
 export class CoursModule { }
