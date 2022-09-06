@@ -5,10 +5,10 @@
 }
 
 .card:hover{
-  color: #0d6efd;
   text-decoration: none;
   transform: translateX(3px);
   cursor: pointer;
+  border-radius: 10px
 }
 
 .c-details span {

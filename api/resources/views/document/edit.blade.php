@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
+                                <label for="description" class="form-label">Commentaire</label>
                                 <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description">
                                             {{ $document->description }}
                                         </textarea>

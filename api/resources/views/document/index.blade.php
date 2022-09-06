@@ -98,7 +98,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="form-group">
                                     <label for="">Libelle du document</label>
                                     <input type="text" name="name" required id="name"
@@ -110,7 +110,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="type" class="form-label">Type du document</label>
                                     <select class="form-select" name="type" id="type" required>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="classe" class="form-label">Classe</label>
                                     <select class="form-select" name="classe" id="classe" required>
@@ -134,7 +134,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="cours" class="form-label">Cours</label>
                                     <select class="form-select" name="cours" id="cours" required>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Commentaire</label>
                                     <textarea class="ckeditor form-control" @error('description') is-invalid @enderror" name="description"></textarea>

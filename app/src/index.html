@@ -18,6 +18,29 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD7rgUjcEfiDhkALyHbXsadZSLsvJNQO98",
+    authDomain: "janticipe-55588.firebaseapp.com",
+    projectId: "janticipe-55588",
+    storageBucket: "janticipe-55588.appspot.com",
+    messagingSenderId: "59465231234",
+    appId: "1:59465231234:web:a3613388974a5abc657d9b",
+    measurementId: "G-BNVZ8RNJHG"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
   </script>

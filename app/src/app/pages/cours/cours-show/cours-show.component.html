@@ -64,7 +64,7 @@
         </div>
         <div class="mt-5">
           <h3 class="heading">{{document.name}}</h3>
-          <p>{{document.description}}</p>
+          <p [innerHTML]="document?.description"></p>
           <div class="mt-5">
             <div class="mt-3"> <span class="text1">Publié par: {{document.user.name}}</span> </div>
           </div>
