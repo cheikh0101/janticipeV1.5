@@ -1,5 +1,5 @@
 # janticipeV2
 
-Suite au succès de la première version avec des retours encourangeants, l'idée de passer à une deuxième version est née.
+Following the success of the first version with encouraging feedback, the idea of a second version was born.
 
-Janticipe est une plateforme permettant aux apprenants de l'Université Iba Der Thiam de Thiès d'avoir accès en quelques clics à l'ensemble des documents pédagogiques.
+Janticipe is a platform allowing learners of the University Iba Der Thiam of Thies to have access in a few clicks to all educational documents.
