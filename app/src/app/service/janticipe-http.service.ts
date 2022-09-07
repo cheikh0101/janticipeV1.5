@@ -8,7 +8,7 @@ import { first } from 'rxjs';
 })
 export class JanticipeHttpService {
 
-  prefixUrl = 'https://janticipe2.herokuapp.com/api/V1/';
+  prefixUrl = 'http://localhost:8000/api/V1/';
 
   constructor(public http: HttpClient, public injector: Injector) { }
 

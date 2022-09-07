@@ -18,7 +18,7 @@
                             <div class="col mr-2">
                                 <div class="h5 mb-0 text-center font-weight-bold text-gray-800">STATISTIQUES</div>
                                 <div class=" mb-0 text-center font-weight-bold text-gray-800">Plus il y a de documents,
-                                    mieux ça sera! &smile;</div>
+                                    mieux ce sera! &smile;</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa fa-bar-chart fa-2x text-gray-300" aria-hidden="true"></i>

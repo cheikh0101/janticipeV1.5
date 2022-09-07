@@ -18,7 +18,7 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $cours = Cour::all();
+        $cours = Cour::inRandomOrder()->get();
         return CustomResponse::buildSuccessResponse($cours);
     }
 

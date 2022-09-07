@@ -61,7 +61,13 @@ class DocumentController extends Controller
         try {
             $document = new Document();
             $document->name = $request->name;
-            $document->file = $request->file;
+
+            $file = $request->file;
+            $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
+            $destination_path = "document/$document->id";
+            $file->storeAs($destination_path, $filename);
+            $document->file = $destination_path . $filename;
+
             $document->description = $request->description;
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
@@ -168,7 +174,7 @@ class DocumentController extends Controller
 
     public function findCourseDocument(Request $request)
     {
-        $documents = Document::where('cour_id', $request->id)->with('user', 'type')->get();
+        $documents = Document::where('cour_id', $request->id)->with('user', 'type')->inRandomOrder()->get();
         return CustomResponse::buildSuccessResponse($documents);
     }
 

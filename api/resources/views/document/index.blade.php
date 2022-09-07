@@ -37,8 +37,13 @@
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h4>{{ $document->cour->name }}</h4>
                                 </div>
-                                <h3><a href="course-details.html"> {{ $document->name }} </a></h3>
+                                <h3><a href="{{ route('document.show', compact('document')) }}"> {{ $document->name }} </a>
+                                </h3>
                                 <p> {!! $document->description !!} </p>
+                                <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                                    <span></span>
+                                    <span class="badge bg-primary">{{ $document->type->name }}</span>
+                                </div>
                                 <div class="trainer d-flex justify-content-between align-items-center">
                                     <div class="trainer-profile d-flex align-items-center">
                                         <span>Publié le: {{ $document->created_at->format('Y-m-d') }} </span>
@@ -98,7 +103,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Libelle du document</label>
                                     <input type="text" name="name" required id="name"
@@ -110,7 +115,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="type" class="form-label">Type du document</label>
                                     <select class="form-select" name="type" id="type" required>
@@ -119,6 +124,17 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="file">Joindre le fichier</label>
+                                    <input type="file" name="file" required id="file"
+                                        class="form-control @error('file') is-invalid @enderror">
+                                    @error('file')
+                                        <small id="file" class="form-text text-danger"> {{ $errors->first('file') }}
+                                        </small>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -161,7 +177,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col text-center">
                                 <button type="submit" class="btn btn-outline-primary btn-block">
                                     Enregistrer
                                 </button>
