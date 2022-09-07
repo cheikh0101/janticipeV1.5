@@ -17,7 +17,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class CoursShowComponent implements OnInit {
 
-  pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+  pdfSrc:any = "";
   cours: Cours;
   types: Type[] = [];
   documents: Document[] = [];
@@ -53,12 +53,16 @@ export class CoursShowComponent implements OnInit {
     this.documentSrv.findCourseDocument(this.activatedRoute.snapshot.params["id"])
       .then((data:any) => {
         this.documents = data;
+    console.log(this.documents);
+
     } )
   }
 
-  open(content:any) {
-    this.modalService.open(content, { size: 'xl', scrollable:true, centered:true }).result.then((result) => {
+  open(content:any, document:Document) {
+    this.modalService.open(content, { size: 'xl', scrollable: true, centered: true }).result.then((result) => {
+
     }, (reason) => {
+      this.pdfSrc = document.file;
     });
   }
 }

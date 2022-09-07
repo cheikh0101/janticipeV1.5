@@ -53,7 +53,7 @@
   </form>
   <div class="row">
     <div class="col-md-4" *ngFor="let document of documents" >
-      <div class="card p-3 mb-2" (click)="open(content)">
+      <div class="card p-3 mb-2" (click)="open(content,document)">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
               <div class="icon"> <i class="fa fa-book" aria-hidden="true"></i> </div>
@@ -96,7 +96,8 @@
   <div class="modal-body">
     <section id="" class="d-flex align-items-center">
         <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-          <pdf-viewer [src]="pdfSrc"
+          <pdf-viewer
+            [src]="pdfSrc"
             [render-text]="false"
             [autoresize]="true"
             [show-borders]="true"
