@@ -13,6 +13,8 @@ class Document extends Model
 {
     use HasFactory, Uuids;
 
+    protected $appends = ['document_path'];
+
     /**
      * Get the classe that owns the Document
      *
@@ -51,5 +53,10 @@ class Document extends Model
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
+    }
+
+    public function getDocumentPathAttribute()
+    {
+        return request()->getSchemeAndHttpHost() . '/uploads/documents/' . $this->file;
     }
 }

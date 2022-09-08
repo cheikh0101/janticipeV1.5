@@ -8,6 +8,7 @@ export class Document{
   name: string | undefined;
   description: string | undefined;
   file: string | undefined;
+  document_path: string | undefined;
   created_at: string | undefined;
   classe: Classe = Object.create(null);
   cours: Cours = Object.create(null);

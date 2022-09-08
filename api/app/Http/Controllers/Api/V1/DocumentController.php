@@ -62,11 +62,13 @@ class DocumentController extends Controller
             $document = new Document();
             $document->name = $request->name;
 
-            $file = $request->file;
-            $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
-            $destination_path = "document/$document->id";
-            $file->storeAs($destination_path, $filename);
-            $document->file = $destination_path . $filename;
+            if ($request->exists('file')) {
+                $file = $request->file;
+                $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
+                $destination_path = "document/$document->id";
+                $file->storeAs($destination_path, $filename);
+                $document->file = $filename;
+            }
 
             $document->description = $request->description;
             $document->user_id = Auth::id();

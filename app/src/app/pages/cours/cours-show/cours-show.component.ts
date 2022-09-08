@@ -22,8 +22,6 @@ export class CoursShowComponent implements OnInit {
   types: Type[] = [];
   documents: Document[] = [];
 
-
-
   constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
     this.cours = Object.create(null);
    }
@@ -53,16 +51,18 @@ export class CoursShowComponent implements OnInit {
     this.documentSrv.findCourseDocument(this.activatedRoute.snapshot.params["id"])
       .then((data:any) => {
         this.documents = data;
-    console.log(this.documents);
 
     } )
   }
 
-  open(content:any, document:Document) {
+  open(content: any, document: Document) {
+    this.pdfSrc = document.document_path;
+    console.log(document);
+
     this.modalService.open(content, { size: 'xl', scrollable: true, centered: true }).result.then((result) => {
 
     }, (reason) => {
-      this.pdfSrc = document.file;
+
     });
   }
 }
