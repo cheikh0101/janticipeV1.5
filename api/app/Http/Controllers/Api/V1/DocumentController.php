@@ -65,8 +65,7 @@ class DocumentController extends Controller
             if ($request->exists('file')) {
                 $file = $request->file;
                 $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
-                $destination_path = "document/$document->id";
-                $file->storeAs($destination_path, $filename);
+                $file->storeAs('documents', $filename);
                 $document->file = $filename;
             }
 

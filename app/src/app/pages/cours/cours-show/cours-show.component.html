@@ -43,10 +43,14 @@
           </div>
           <div class="col-md-6">
               <div class="mb-3">
-                  <label for="type" class="form-label">Filtrer par Type</label>
-                  <select class="form-control">
-                      <option value=""> xxx </option>
-                  </select>
+                <label for="type" class="form-label">Filtrer par Type</label>
+                <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner un Type" nzSize="large">
+                  <ng-container *ngFor="let type of types">
+                    <nz-option [nzValue]="type"
+                      [nzLabel]="type.name!">
+                    </nz-option>
+                  </ng-container>
+                </nz-select>
               </div>
           </div>
       </div>

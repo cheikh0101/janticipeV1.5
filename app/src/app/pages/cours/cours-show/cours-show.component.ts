@@ -6,9 +6,7 @@ import { Type } from 'src/app/model/Type';
 import { CoursService } from 'src/app/service/cours.service';
 import { DocumentService } from 'src/app/service/document.service';
 import { IndexService } from 'src/app/service/index.service';
-
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-cours-show',
@@ -51,14 +49,11 @@ export class CoursShowComponent implements OnInit {
     this.documentSrv.findCourseDocument(this.activatedRoute.snapshot.params["id"])
       .then((data:any) => {
         this.documents = data;
-
     } )
   }
 
   open(content: any, document: Document) {
     this.pdfSrc = document.document_path;
-    console.log(document);
-
     this.modalService.open(content, { size: 'xl', scrollable: true, centered: true }).result.then((result) => {
 
     }, (reason) => {

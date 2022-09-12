@@ -4,14 +4,34 @@
   </div>
 </div>
 <div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col col-lg-6 col-md-6">
-      <form action="" method="post" autocomplete="on">
-        <div class="mb-3">
-          <label for="motCle" class="form-label">Rechercher un cours</label>
-          <input type="text" class="form-control" name="motCle" id="motCle" aria-describedby="helpId" placeholder="ex: algorithme">
-        </div>
-      </form>
+  <div class="row" *ngIf="cours.length != 0">
+    <div class="col-md-4">
+      <div class="mb-3">
+        <label for="motCle" class="form-label">Rechercher un cours</label>
+        <input type="text" class="form-control" name="motCle" id="motCle" aria-describedby="helpId" placeholder="ex: algorithme">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Niveau</label>
+        <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
+          <ng-container >
+            <nz-option >
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Année Académique</label>
+        <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
+          <ng-container >
+            <nz-option >
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
     </div>
   </div>
   <div class="row">

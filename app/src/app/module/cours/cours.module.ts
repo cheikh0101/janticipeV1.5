@@ -9,6 +9,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PdfViewerModule,
     NzModalModule,
     NzButtonModule,
-    NgbModule
+    NgbModule,
+    NzSelectModule
   ]
 })
 export class CoursModule { }
