@@ -76,11 +76,15 @@ Route::prefix('V1')->group(function () {
 
     Route::get('cours/filtre/niveaux/{niveau}', [CoursController::class, 'filtreParNiveau']);
 
+    Route::get('cours/filtre/annee_academique/{annee_academique}', [CoursController::class, 'filtreParAnneeAcademique']);
+
     Route::post('document/search/', [DocumentController::class, 'search']);
 
     Route::get('document/courseDocument/{id}', [DocumentController::class, 'findCourseDocument']);
 
     Route::post('document/paginate/{itemPerPage}', [DocumentController::class, 'paginate']);
+
+    Route::post('document/filtrer/type/{document}', [DocumentController::class, 'filtrerParType']);
 
     Route::post('new-email', function (Request $request) {
         $validators = Validator::make($request->all(), [

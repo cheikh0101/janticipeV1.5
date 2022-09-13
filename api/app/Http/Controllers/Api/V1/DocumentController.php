@@ -184,4 +184,11 @@ class DocumentController extends Controller
         $documents = Document::where('cour_id', $request->id)->with('user')->paginate($itemPerPage);
         return CustomResponse::buildSuccessResponse($documents);
     }
+
+    public function filtreParType(Request $request)
+    {
+        $type = Type::find($request->id);
+        $documents = Document::whereRelation('type', 'code', $type->code)->inRandomOrder()->get();
+        return CustomResponse::buildSuccessResponse($documents);
+    }
 }

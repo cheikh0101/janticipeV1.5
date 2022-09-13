@@ -18,4 +18,8 @@ export class CoursService extends BaseService<Cours> {
     return this.http.get(this.prefix  +'/filtre/niveaux/'+id);
   }
 
+  filtreCoursParAnneeAcademique(id : object) {
+    return this.http.get(this.prefix  +'/filtre/annee_academique/'+id);
+  }
+
 }

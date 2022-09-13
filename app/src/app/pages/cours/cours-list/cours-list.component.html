@@ -31,7 +31,7 @@
     <div class="col-md-4">
       <div class="mb-3">
         <label for="type" class="form-label">Filtrer par Année Académique</label>
-        <nz-select style="width: 100%;"  nzPlaceHolder="Sélectionner une année académique" nzSize="large">
+        <nz-select style="width: 100%;" [(ngModel)]="selectedAnneeAcademique" (ngModelChange)="filtreCoursParAnneeAcademique()" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
           <ng-container *ngFor="let anneeAcademique of anneeAcademiques">
             <nz-option [nzValue]="anneeAcademique"
               [nzLabel]="anneeAcademique.libelle!">

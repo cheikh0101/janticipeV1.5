@@ -6,6 +6,7 @@ use App\Custom\CustomResponse;
 use App\Http\Controllers\Controller;
 use App\Models\AnneeAcademique;
 use App\Models\Cour;
+use App\Models\Niveau;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,19 @@ class CoursController extends Controller
 
     public function filtreParNiveau(Request $request)
     {
-        // return $request;
-        $cours = Cour::whereId($request->id)->inRandomOrder()->get();
+        $niveau = Niveau::find($request->id);
+        $cours = Cour::whereRelation('classe', function ($query) use ($niveau) {
+            $query->whereRelation('niveau', 'code', $niveau->code);
+        })->inRandomOrder()->get();
+        return CustomResponse::buildSuccessResponse($cours);
+    }
+
+    public function filtreParAnneeAcademique(Request $request)
+    {
+        $anneeAcademique = AnneeAcademique::find($request->id);
+        $cours = Cour::whereRelation('classe', function ($query) use ($anneeAcademique) {
+            $query->whereRelation('annee_academique', 'code', $anneeAcademique->code);
+        })->inRandomOrder()->get();
         return CustomResponse::buildSuccessResponse($cours);
     }
 }
