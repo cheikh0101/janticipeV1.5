@@ -8,15 +8,21 @@
     <div class="col-md-4">
       <div class="mb-3">
         <label for="motCle" class="form-label">Rechercher un cours</label>
-        <input type="text" class="form-control" name="motCle" id="motCle" aria-describedby="helpId" placeholder="ex: algorithme">
+        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+          <input type="text" nz-input placeholder="Nom du cours" />
+        </nz-input-group>
+        <ng-template #suffixButton>
+          <button nz-button nzType="primary" nzSize="large" nzSearch>Rechercher</button>
+        </ng-template>
       </div>
     </div>
     <div class="col-md-4">
       <div class="mb-3">
         <label for="type" class="form-label">Filtrer par Niveau</label>
-        <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
-          <ng-container >
-            <nz-option >
+        <nz-select style="width: 100%;" [(ngModel)]="selectedNiveaux" (ngModelChange)="filtreCoursParNiveaux()" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
+          <ng-container *ngFor="let niveau of niveaux">
+            <nz-option [nzValue]="niveau"
+              [nzLabel]="niveau.libelle!">
             </nz-option>
           </ng-container>
         </nz-select>
@@ -25,9 +31,10 @@
     <div class="col-md-4">
       <div class="mb-3">
         <label for="type" class="form-label">Filtrer par Année Académique</label>
-        <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
-          <ng-container >
-            <nz-option >
+        <nz-select style="width: 100%;"  nzPlaceHolder="Sélectionner une année académique" nzSize="large">
+          <ng-container *ngFor="let anneeAcademique of anneeAcademiques">
+            <nz-option [nzValue]="anneeAcademique"
+              [nzLabel]="anneeAcademique.libelle!">
             </nz-option>
           </ng-container>
         </nz-select>

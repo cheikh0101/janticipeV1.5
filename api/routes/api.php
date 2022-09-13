@@ -8,6 +8,7 @@ use App\Models\AnneeAcademique;
 use App\Models\Classe;
 use App\Models\Document;
 use App\Models\MailBox;
+use App\Models\Niveau;
 use App\Models\Specialite;
 use App\Models\Type;
 use App\Models\TypeDocument;
@@ -62,11 +63,18 @@ Route::prefix('V1')->group(function () {
         return CustomResponse::buildSuccessResponse($anneeAcademiques);
     });
 
+    Route::get('niveaux', function () {
+        $niveaux = Niveau::all();
+        return CustomResponse::buildSuccessResponse($niveaux);
+    });
+
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 
     Route::post('cours/search', [CoursController::class, 'search']);
 
     Route::post('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
+
+    Route::get('cours/filtre/niveaux/{niveau}', [CoursController::class, 'filtreParNiveau']);
 
     Route::post('document/search/', [DocumentController::class, 'search']);
 

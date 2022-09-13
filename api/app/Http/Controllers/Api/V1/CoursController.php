@@ -49,4 +49,11 @@ class CoursController extends Controller
         $cours = Cour::paginate($itemPerPage);
         return CustomResponse::buildSuccessResponse($cours);
     }
+
+    public function filtreParNiveau(Request $request)
+    {
+        // return $request;
+        $cours = Cour::whereId($request->id)->inRandomOrder()->get();
+        return CustomResponse::buildSuccessResponse($cours);
+    }
 }

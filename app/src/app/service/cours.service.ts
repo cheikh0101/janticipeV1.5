@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cours } from '../model/Cours';
+import { Niveau } from '../model/Niveau';
 import { BaseService } from './base.service';
 import { JanticipeHttpService } from './janticipe-http.service';
 
@@ -11,6 +12,10 @@ export class CoursService extends BaseService<Cours> {
   constructor(public override http: JanticipeHttpService) {
     super(http);
     this.prefix = 'cours';
+  }
+
+  filtreCoursParNiveaux(id : object) {
+    return this.http.get(this.prefix  +'/filtre/niveaux/'+id);
   }
 
 }

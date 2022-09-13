@@ -10,6 +10,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzModalModule,
     NzButtonModule,
     NgbModule,
-    NzSelectModule
+    NzSelectModule,
+    NzInputModule,
+    NzPaginationModule,
+    FormsModule
   ]
 })
 export class CoursModule { }

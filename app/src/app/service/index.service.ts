@@ -32,4 +32,12 @@ export class IndexService {
   getTypes() {
     return this.http.get('types');
   }
+
+  getNiveaux() {
+    return this.http.get('niveaux');
+  }
+
+  getAnneeAcademique() {
+    return this.http.get('annee_academique');
+  }
 }

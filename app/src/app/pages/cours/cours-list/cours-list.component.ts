@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AnneeAcademique } from 'src/app/model/AnneeAcademique';
 import { Cours } from 'src/app/model/Cours';
+import { Niveau } from 'src/app/model/Niveau';
 import { CoursService } from 'src/app/service/cours.service';
+import { IndexService } from 'src/app/service/index.service';
 
 @Component({
   selector: 'app-cours-list',
@@ -10,13 +13,18 @@ import { CoursService } from 'src/app/service/cours.service';
 export class CoursListComponent implements OnInit {
 
   cours: Cours[] = [];
+  niveaux: Niveau[] = [];
+  selectedNiveaux: Niveau[] = [];
+  anneeAcademiques: AnneeAcademique[] = [];
   itemsPerPage = 9;
   paginationData: any = {};
 
-  constructor(public coursSrv: CoursService) { }
+  constructor(public coursSrv: CoursService, public indexSrv: IndexService) { }
 
   ngOnInit(): void {
     this.findAll();
+    this.findAllLevels();
+    this.findAllAnneeAcademique();
     // this.paginate();
   }
 
@@ -28,13 +36,40 @@ export class CoursListComponent implements OnInit {
       .catch(() => { });
   }
 
+  findAllLevels(){
+    this.indexSrv.getNiveaux()
+    .then((data: Niveau[]) => {
+        this.niveaux = data;
+      })
+      .catch(() => { });
+  }
+
+  findAllAnneeAcademique(){
+    this.indexSrv.getAnneeAcademique()
+    .then((data: AnneeAcademique[]) => {
+        this.anneeAcademiques = data;
+      })
+      .catch(() => { });
+  }
+
+  filtreCoursParNiveaux() {
+    console.log(this.selectedNiveaux);
+    this.coursSrv.filtreCoursParNiveaux(this.selectedNiveaux)
+      .then((data: Cours[]) => {
+        if (data.length == 0) {
+          this.indexSrv.http.toastr.info('Aucun cours existant pour le niveau choisit');
+      } else {
+        this.cours = data;
+      }
+    })
+    .catch(() => { });
+  }
+
   paginate() {
     this.coursSrv.paginate(this.itemsPerPage)
       .then((data: Cours[]) => {
         this.paginationData = data;
         this.cours = this.paginationData.data;
-        console.log(this.cours);
-
       })
       .catch(() => { });
   }
