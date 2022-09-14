@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\DocumentController;
 use App\Mail\SendContactMessageEmail;
 use App\Models\AnneeAcademique;
 use App\Models\Classe;
+use App\Models\Cour;
 use App\Models\Document;
 use App\Models\MailBox;
 use App\Models\Niveau;
@@ -44,9 +45,9 @@ Route::prefix('V1')->group(function () {
         $classes = Classe::all()->count();
         return CustomResponse::buildSuccessResponse($classes);
     });
-    Route::get('numberOfCMDoc', function () {
-        $cm = Document::whereRelation('type', 'code', 'CM')->count();
-        return CustomResponse::buildSuccessResponse($cm);
+    Route::get('numberOfCourse', function () {
+        $cours = Cour::all()->count();
+        return CustomResponse::buildSuccessResponse($cours);
     });
     Route::get('numberOfExamDoc', function () {
         $en = Document::whereRelation('type', 'code', 'EN')->count();

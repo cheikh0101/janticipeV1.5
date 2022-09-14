@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.getNumberOfSpeciallites();
     this.getNumberOfClasses();
-    this.getNumberOfCM();
+    this.getNumberOfCourse();
     this.getNumberOfExams();
   }
 
@@ -39,8 +39,8 @@ export class IndexComponent implements OnInit {
       .catch(() => { });
   }
 
-  getNumberOfCM(){
-    this.indexSrv.getCM()
+  getNumberOfCourse(){
+    this.indexSrv.getNumberOfCourse()
     .then((data: number) => {
       this.cm = data;
       })

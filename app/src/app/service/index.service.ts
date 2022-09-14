@@ -17,8 +17,8 @@ export class IndexService {
     return this.http.get('numberOfClasses');
   }
 
-  getCM() {
-    return this.http.get('numberOfCMDoc');
+  getNumberOfCourse() {
+    return this.http.get('numberOfCourse');
   }
 
   getExams() {
