@@ -21,7 +21,7 @@
         <label for="type" class="form-label">Filtrer par Niveau</label>
         <nz-select style="width: 100%;" [(ngModel)]="selectedNiveaux" (ngModelChange)="filtreCoursParNiveaux()" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
           <ng-container *ngFor="let niveau of niveaux">
-            <nz-option [nzValue]="niveau"
+            <nz-option [nzValue]="niveau.id"
               [nzLabel]="niveau.libelle!">
             </nz-option>
           </ng-container>
@@ -33,7 +33,7 @@
         <label for="type" class="form-label">Filtrer par Année Académique</label>
         <nz-select style="width: 100%;" [(ngModel)]="selectedAnneeAcademique" (ngModelChange)="filtreCoursParAnneeAcademique()" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
           <ng-container *ngFor="let anneeAcademique of anneeAcademiques">
-            <nz-option [nzValue]="anneeAcademique"
+            <nz-option [nzValue]="anneeAcademique.id"
               [nzLabel]="anneeAcademique.libelle!">
             </nz-option>
           </ng-container>

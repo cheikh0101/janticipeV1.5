@@ -53,7 +53,7 @@ class CoursController extends Controller
 
     public function filtreParNiveau(Request $request)
     {
-        $niveau = Niveau::find($request->id);
+        $niveau = Niveau::find($request->niveau);
         $cours = Cour::whereRelation('classe', function ($query) use ($niveau) {
             $query->whereRelation('niveau', 'code', $niveau->code);
         })->inRandomOrder()->get();
@@ -62,7 +62,7 @@ class CoursController extends Controller
 
     public function filtreParAnneeAcademique(Request $request)
     {
-        $anneeAcademique = AnneeAcademique::find($request->id);
+        $anneeAcademique = AnneeAcademique::find($request->annee_academique);
         $cours = Cour::whereRelation('classe', function ($query) use ($anneeAcademique) {
             $query->whereRelation('annee_academique', 'code', $anneeAcademique->code);
         })->inRandomOrder()->get();

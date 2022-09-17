@@ -14,8 +14,8 @@ export class CoursListComponent implements OnInit {
 
   cours: Cours[] = [];
   niveaux: Niveau[] = [];
-  selectedNiveaux: Niveau[] = [];
-  selectedAnneeAcademique: AnneeAcademique[] = [];
+  selectedNiveaux: number = 0;
+  selectedAnneeAcademique: number = 0;
   anneeAcademiques: AnneeAcademique[] = [];
   itemsPerPage = 9;
   paginationData: any = {};
@@ -26,7 +26,6 @@ export class CoursListComponent implements OnInit {
     this.findAll();
     this.findAllLevels();
     this.findAllAnneeAcademique();
-    // this.paginate();
   }
 
   findAll(){
@@ -54,10 +53,12 @@ export class CoursListComponent implements OnInit {
   }
 
   filtreCoursParNiveaux() {
+    console.log(this.selectedNiveaux);
     this.coursSrv.filtreCoursParNiveaux(this.selectedNiveaux)
       .then((data: Cours[]) => {
         if (data.length == 0) {
-          this.indexSrv.http.toastr.info('Fonctionnalité en développement');
+          this.indexSrv.http.toastr.info('Aucun cours disponible pour ce niveau');
+          this.findAll();
       } else {
         this.cours = data;
       }
@@ -66,10 +67,11 @@ export class CoursListComponent implements OnInit {
   }
 
   filtreCoursParAnneeAcademique() {
-    this.coursSrv.filtreCoursParAnneeAcademique(this.anneeAcademiques)
+    this.coursSrv.filtreCoursParAnneeAcademique(this.selectedAnneeAcademique)
       .then((data: Cours[]) => {
         if (data.length == 0) {
-          this.indexSrv.http.toastr.info('Fonctionnalité en développement');
+          this.indexSrv.http.toastr.info('Aucun cours disponible pour l\'année académique choisit! ');
+          this.findAll();
         } else {
           this.cours = data;
         }

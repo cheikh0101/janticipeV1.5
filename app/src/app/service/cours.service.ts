@@ -14,11 +14,11 @@ export class CoursService extends BaseService<Cours> {
     this.prefix = 'cours';
   }
 
-  filtreCoursParNiveaux(id : object) {
+  filtreCoursParNiveaux(id : number) {
     return this.http.get(this.prefix  +'/filtre/niveaux/'+id);
   }
 
-  filtreCoursParAnneeAcademique(id : object) {
+  filtreCoursParAnneeAcademique(id : number) {
     return this.http.get(this.prefix  +'/filtre/annee_academique/'+id);
   }
 
