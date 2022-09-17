@@ -53,14 +53,15 @@ export class CoursListComponent implements OnInit {
   }
 
   filtreCoursParNiveaux() {
-    console.log(this.selectedNiveaux);
     this.coursSrv.filtreCoursParNiveaux(this.selectedNiveaux)
       .then((data: Cours[]) => {
         if (data.length == 0) {
           this.indexSrv.http.toastr.info('Aucun cours disponible pour ce niveau');
           this.findAll();
+          this.selectedAnneeAcademique = 0;
       } else {
-        this.cours = data;
+          this.cours = data;
+          this.selectedAnneeAcademique = 0;
       }
     })
     .catch(() => { });
@@ -72,8 +73,10 @@ export class CoursListComponent implements OnInit {
         if (data.length == 0) {
           this.indexSrv.http.toastr.info('Aucun cours disponible pour l\'année académique choisit! ');
           this.findAll();
+          this.selectedNiveaux = 0;
         } else {
           this.cours = data;
+          this.selectedNiveaux = 0;
         }
     })
     .catch(() => { });

@@ -16,4 +16,8 @@ export class DocumentService extends BaseService<Document> {
   findCourseDocument(id: number) {
     return this.http.get(this.prefix + '/courseDocument/' + id)
   }
+
+  filtreDocumentParType(id : number) {
+    return this.http.get(this.prefix  +'/filtre/type/'+id);
+  }
 }

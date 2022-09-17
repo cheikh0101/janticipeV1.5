@@ -50,9 +50,9 @@
           <div class="col-md-6">
               <div class="mb-3">
                 <label for="type" class="form-label">Filtrer par Type</label>
-                <nz-select style="width: 100%;" nzPlaceHolder="Sélectionner un Type" nzSize="large">
+                <nz-select style="width: 100%;" [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}" (ngModelChange)="filtreDocumentParType()" nzPlaceHolder="Sélectionner un Type" nzSize="large">
                   <ng-container *ngFor="let type of types">
-                    <nz-option [nzValue]="type"
+                    <nz-option [nzValue]="type.id"
                       [nzLabel]="type.name!">
                     </nz-option>
                   </ng-container>

@@ -19,6 +19,7 @@ export class CoursShowComponent implements OnInit {
   cours: Cours;
   types: Type[] = [];
   documents: Document[] = [];
+  selectedType: number = 0;
 
   constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
     this.cours = Object.create(null);
@@ -50,6 +51,20 @@ export class CoursShowComponent implements OnInit {
       .then((data:any) => {
         this.documents = data;
     } )
+  }
+
+  filtreDocumentParType() {
+    this.documentSrv.filtreDocumentParType(this.selectedType)
+      .then((data: Document[]) => {
+        if (data.length == 0) {
+          this.indexSrv.http.toastr.info('Aucun document disponible pour le type choisit! ');
+          this.getCourseDocument();
+          this.selectedType = 0;
+        } else {
+          this.documents = data;
+        }
+    })
+    .catch(() => { });
   }
 
   open(content: any, document: Document) {

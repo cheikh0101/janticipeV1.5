@@ -185,9 +185,9 @@ class DocumentController extends Controller
         return CustomResponse::buildSuccessResponse($documents);
     }
 
-    public function filtreParType(Request $request)
+    public function filtrerParType(Request $request)
     {
-        $type = Type::find($request->id);
+        $type = Type::find($request->document);
         $documents = Document::whereRelation('type', 'code', $type->code)->inRandomOrder()->get();
         return CustomResponse::buildSuccessResponse($documents);
     }
