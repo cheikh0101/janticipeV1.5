@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     NzSelectModule,
     NzInputModule,
     NzPaginationModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class CoursModule { }

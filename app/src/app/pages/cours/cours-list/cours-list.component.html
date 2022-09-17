@@ -8,12 +8,13 @@
     <div class="col-md-4">
       <div class="mb-3">
         <label for="motCle" class="form-label">Rechercher un cours</label>
-        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+        <!-- <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
           <input type="text" nz-input placeholder="Nom du cours" />
         </nz-input-group>
         <ng-template #suffixButton>
           <button nz-button nzType="primary" nzSize="large" nzSearch>Rechercher</button>
-        </ng-template>
+        </ng-template> -->
+        <input nz-input placeholder="Rechercher..." [(ngModel)]="searchField" />
       </div>
     </div>
     <div class="col-md-4">
@@ -42,7 +43,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let cour of cours">
+    <div class="col-md-4 mb-4" *ngFor="let cour of cours|filterBy: filterFields: searchField">
       <div class="card">
         <a [routerLink]="['/cours',cour.id,'details']" style="text-decoration: none;">
           <h3 class="card__title">{{cour.name}}</h3>
