@@ -19,11 +19,12 @@ export class CoursListComponent implements OnInit {
   anneeAcademiques: AnneeAcademique[] = [];
   itemsPerPage = 9;
   paginationData: any = {};
+  pageSizeOptions = [10, 40, 80, 100];
 
   constructor(public coursSrv: CoursService, public indexSrv: IndexService) { }
 
   ngOnInit(): void {
-    this.findAll();
+    this.paginate();
     this.findAllLevels();
     this.findAllAnneeAcademique();
   }

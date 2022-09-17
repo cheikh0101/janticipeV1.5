@@ -47,7 +47,7 @@ class CoursController extends Controller
 
     public function paginate($itemPerPage)
     {
-        $cours = Cour::paginate($itemPerPage);
+        $cours = Cour::inRandomOrder()->paginate($itemPerPage);
         return CustomResponse::buildSuccessResponse($cours);
     }
 

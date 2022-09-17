@@ -73,7 +73,7 @@ Route::prefix('V1')->group(function () {
 
     Route::post('cours/search', [CoursController::class, 'search']);
 
-    Route::post('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
+    Route::get('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
 
     Route::get('cours/filtre/niveaux/{niveau}', [CoursController::class, 'filtreParNiveau']);
 

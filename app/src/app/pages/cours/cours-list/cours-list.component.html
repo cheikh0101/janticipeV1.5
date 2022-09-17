@@ -56,6 +56,14 @@
   </div>
 
   <div class="row">
+    <div class="col">
+      <nz-pagination [nzResponsive]="true" [nzPageSizeOptions]="pageSizeOptions" (nzPageSizeChange)="changePageSize($event)" nzShowSizeChanger (nzPageIndexChange)="changePagination($event)" [nzPageIndex]="paginationData.current_page" [nzTotal]="paginationData.total"
+          [nzPageSize]="itemsPerPage">
+      </nz-pagination>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col" *ngIf=" cours.length === 0 ">
       <div class="alert alert-primary" role="alert">
         <strong>Si vous avez des cours à nous suggérer,</strong> veuillez nous <a routerLink="/contact">contacter</a>.
