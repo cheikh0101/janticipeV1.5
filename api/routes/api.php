@@ -85,7 +85,7 @@ Route::prefix('V1')->group(function () {
 
     Route::post('document/paginate/{itemPerPage}', [DocumentController::class, 'paginate']);
 
-    Route::get('document/filtre/type/{document}', [DocumentController::class, 'filtrerParType']);
+    Route::get('document/filtre/type/{typeId}/{coursId}', [DocumentController::class, 'filtrerParType']);
 
     Route::post('new-email', function (Request $request) {
         $validators = Validator::make($request->all(), [

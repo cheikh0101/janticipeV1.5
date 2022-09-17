@@ -187,8 +187,8 @@ class DocumentController extends Controller
 
     public function filtrerParType(Request $request)
     {
-        $type = Type::find($request->document);
-        $documents = Document::whereRelation('type', 'code', $type->code)->inRandomOrder()->get();
+        $type = Type::find($request->typeId);
+        $documents = Document::whereRelation('type', 'code', $type->code)->with('user', 'type')->where('cour_id', $request->coursId)->inRandomOrder()->get();
         return CustomResponse::buildSuccessResponse($documents);
     }
 }
