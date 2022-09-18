@@ -112,5 +112,4 @@ export class CoursListComponent implements OnInit {
       })
       .catch(() => { });
   }
-
 }

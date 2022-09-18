@@ -13,13 +13,13 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { FormsModule } from '@angular/forms';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
     CoursComponent,
     CoursListComponent,
     CoursShowComponent,
-
   ],
   imports: [
     CommonModule,
@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
     NzInputModule,
     NzPaginationModule,
     FormsModule,
+    FilterPipeModule
   ]
 })
 export class CoursModule { }
