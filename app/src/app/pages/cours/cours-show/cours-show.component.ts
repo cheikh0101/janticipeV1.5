@@ -21,6 +21,7 @@ export class CoursShowComponent implements OnInit {
   documents: Document[] = [];
   selectedType: number = 0;
   coursId: number = this.activatedRoute.snapshot.params["id"];
+  searchField:any = {name:''};
 
   constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
     this.cours = Object.create(null);

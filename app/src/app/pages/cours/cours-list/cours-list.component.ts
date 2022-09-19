@@ -20,8 +20,7 @@ export class CoursListComponent implements OnInit {
   itemsPerPage = 9;
   paginationData: any = {};
   pageSizeOptions = [10, 40, 80, 100];
-  searchField = null;
-  filterFields = ['name'];
+  searchField:any = {name:''};
 
   constructor(public coursSrv: CoursService, public indexSrv: IndexService) { }
 
