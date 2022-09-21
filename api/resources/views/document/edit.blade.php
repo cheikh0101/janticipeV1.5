@@ -103,9 +103,13 @@
                                     </small>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-outline-primary btn-block">
-                                Enregistrer
-                            </button>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-outline-primary btn-block">
+                                        Enregistrer
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

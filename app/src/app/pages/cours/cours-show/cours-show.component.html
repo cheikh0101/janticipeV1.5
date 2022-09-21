@@ -79,7 +79,7 @@
                   <i class="fa fa-eye" aria-hidden="true"></i>
                 </button>
                 &nbsp;
-                <a class="btn btn-outline-primary" href=" {{document.file}} " target="_blank">
+                <a class="btn btn-outline-primary" href=" {{document.document_path}} " target="_blank">
                   <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 </a>
               </span>
@@ -104,14 +104,14 @@
     </div>
   </div>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-      <ng-container *nzModalContent>
-         <pdf-viewer
-            [src]="pdfSrc"
-            [render-text]="false"
-            [autoresize]="true"
-            [show-borders]="true"
-            style="width: 500px; height: 500px">
-          </pdf-viewer>
-      </ng-container>
-    </nz-modal>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" nzWidth="500" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+      <pdf-viewer
+        [src]="pdfSrc"
+        [render-text]="false"
+        [autoresize]="true"
+        [show-borders]="true"
+        style="width: 400px; height: 500px">
+      </pdf-viewer>
+  </ng-container>
+</nz-modal>

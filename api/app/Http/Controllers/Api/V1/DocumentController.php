@@ -65,7 +65,7 @@ class DocumentController extends Controller
             if ($request->exists('file')) {
                 $file = $request->file;
                 $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
-                $file->storeAs('documents', $filename);
+                $file->storeAs('public/documents', $filename);
                 $document->file = $filename;
             }
             $document->description = $request->description;

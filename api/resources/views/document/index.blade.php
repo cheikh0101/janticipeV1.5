@@ -32,7 +32,9 @@
                 @forelse ($documents as $document)
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-2">
                         <div class="course-item">
-                            <img src="../../assets/images/bg.jpeg" class="img-fluid" alt="...">
+                            <img src="../../assets/images/g.jpg" class="img-fluid" alt="...">
+                            {{-- <img src=" {{ asset('/storage/documents/' . $document->file) }} " class="img-fluid"
+                                alt="..."> --}}
                             <div class="course-content">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h4>{{ $document->cour->name }}</h4>
@@ -129,7 +131,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="file">Joindre le fichier</label>
-                                    <input type="file" name="file" required id="file"
+                                    <input type="file" name="file" id="file"
                                         class="form-control @error('file') is-invalid @enderror">
                                     @error('file')
                                         <small id="file" class="form-text text-danger"> {{ $errors->first('file') }}
