@@ -57,6 +57,6 @@ class Document extends Model
 
     public function getDocumentPathAttribute()
     {
-        return request()->getSchemeAndHttpHost() . '/uploads/documents/' . $this->file;
+        return request()->getSchemeAndHttpHost() . '/storage/documents/' . $this->file;
     }
 }
