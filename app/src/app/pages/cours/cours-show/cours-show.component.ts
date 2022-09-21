@@ -21,7 +21,8 @@ export class CoursShowComponent implements OnInit {
   documents: Document[] = [];
   selectedType: number = 0;
   coursId: number = this.activatedRoute.snapshot.params["id"];
-  searchField:any = {name:''};
+  searchField: any = { name: '' };
+  isVisible = false;
 
   constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
     this.cours = Object.create(null);
@@ -69,12 +70,21 @@ export class CoursShowComponent implements OnInit {
     .catch(() => { });
   }
 
-  open(content: any, document: Document) {
-    // this.pdfSrc = document.document_path;
-    this.modalService.open(content, { size: 'xl', scrollable: true, centered: true }).result.then((result) => {
+  // open(content: any, document: Document) {
+  //   // this.pdfSrc = document.document_path;
+  //   this.modalService.open(content, { size: 'xl', scrollable: true, centered: true }).result.then((result) => {
+  //   }, (reason) => {
+  //   });
+  // }
+  showModal(document:Document): void {
+    this.isVisible = true;
+  }
 
-    }, (reason) => {
+  handleOk(): void {
+    this.isVisible = false;
+  }
 
-    });
+  handleCancel(): void {
+    this.isVisible = false;
   }
 }

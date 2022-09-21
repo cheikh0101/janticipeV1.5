@@ -4,14 +4,14 @@
   </div>
 </div>
 <div class="container mt-5 mb-5">
-  <div class="row" *ngIf="cours.length != 0">
-    <div class="col-md-4">
+  <div class="row">
+    <div class="col-md-3">
       <div class="mb-3">
         <label for="motCle" class="form-label">Rechercher un cours</label>
         <input nz-input style="width: 100%;" nzSize="large" placeholder="Algorithme" [(ngModel)]="searchField.name" />
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="mb-3">
         <label for="type" class="form-label">Filtrer par Niveau</label>
         <nz-select style="width: 100%;" [(ngModel)]="selectedNiveaux" (ngModelChange)="filtreCoursParNiveaux()" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
@@ -23,13 +23,25 @@
         </nz-select>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="mb-3">
         <label for="type" class="form-label">Filtrer par Année Académique</label>
         <nz-select style="width: 100%;" [(ngModel)]="selectedAnneeAcademique" (ngModelChange)="filtreCoursParAnneeAcademique()" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
           <ng-container *ngFor="let anneeAcademique of anneeAcademiques">
             <nz-option [nzValue]="anneeAcademique.id"
               [nzLabel]="anneeAcademique.libelle!">
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Classe</label>
+        <nz-select style="width: 100%;" [(ngModel)]="selectedClasse" (ngModelChange)="filtreCoursParClasse()" nzPlaceHolder="Sélectionner une classe" nzSize="large">
+          <ng-container *ngFor="let classe of classes">
+            <nz-option [nzValue]="classe.id"
+              [nzLabel]="classe.libelle!">
             </nz-option>
           </ng-container>
         </nz-select>
@@ -69,20 +81,6 @@
       <nz-pagination [nzResponsive]="true" [nzPageSizeOptions]="pageSizeOptions" (nzPageSizeChange)="changePageSize($event)"  (nzPageIndexChange)="changePagination($event)" [nzPageIndex]="paginationData.current_page" [nzTotal]="paginationData.total"
           [nzPageSize]="itemsPerPage">
       </nz-pagination>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col" *ngIf=" cours.length === 0 ">
-      <div class="alert alert-primary" role="alert">
-        <strong>Si vous avez des cours à nous suggérer,</strong> veuillez nous <a routerLink="/contact">contacter</a>.
-      </div>
-      <!-- ======= Hero Section ======= -->
-      <section id="" class="d-flex align-items-center">
-        <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-          <iframe src="https://embed.lottiefiles.com/animation/73061"></iframe>
-        </div>
-      </section><!-- End Hero -->
     </div>
   </div>
 </div>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Custom\CustomResponse;
-use App\Http\Controllers\Controller;
-use App\Models\AnneeAcademique;
-use App\Models\Classe;
 use App\Models\Cour;
-use App\Models\Document;
 use App\Models\Type;
+use App\Models\Classe;
+use App\Models\Document;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Custom\CustomResponse;
+use App\Models\AnneeAcademique;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
@@ -61,14 +62,12 @@ class DocumentController extends Controller
         try {
             $document = new Document();
             $document->name = $request->name;
-
             if ($request->exists('file')) {
                 $file = $request->file;
                 $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
                 $file->storeAs('documents', $filename);
                 $document->file = $filename;
             }
-
             $document->description = $request->description;
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;

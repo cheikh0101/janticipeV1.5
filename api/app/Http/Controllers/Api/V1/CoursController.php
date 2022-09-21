@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Custom\CustomResponse;
 use App\Http\Controllers\Controller;
 use App\Models\AnneeAcademique;
+use App\Models\Classe;
 use App\Models\Cour;
 use App\Models\Niveau;
 use App\Models\Type;
@@ -36,15 +37,6 @@ class CoursController extends Controller
         return CustomResponse::buildSuccessResponse($cour);
     }
 
-    public function search(Request $request)
-    {
-        $request->validate([
-            'motCle' => 'required|min:2'
-        ]);
-        $motCle = $request->motCle;
-        $cours = Cour::where('name', 'like', '%' . $motCle . '%')->get();
-    }
-
     public function paginate($itemPerPage)
     {
         $cours = Cour::inRandomOrder()->paginate($itemPerPage);
@@ -56,7 +48,7 @@ class CoursController extends Controller
         $niveau = Niveau::find($request->niveau);
         $cours = Cour::whereRelation('classe', function ($query) use ($niveau) {
             $query->whereRelation('niveau', 'code', $niveau->code);
-        })->inRandomOrder()->get();
+        })->inRandomOrder()->paginate(18);
         return CustomResponse::buildSuccessResponse($cours);
     }
 
@@ -65,7 +57,14 @@ class CoursController extends Controller
         $anneeAcademique = AnneeAcademique::find($request->annee_academique);
         $cours = Cour::whereRelation('classe', function ($query) use ($anneeAcademique) {
             $query->whereRelation('annee_academique', 'code', $anneeAcademique->code);
-        })->inRandomOrder()->get();
+        })->inRandomOrder()->paginate(18);
+        return CustomResponse::buildSuccessResponse($cours);
+    }
+
+    public function filtreParClasse(Request $request)
+    {
+        $classe = Classe::find($request->classe);
+        $cours = Cour::whereRelation('classe', 'classe_id', $classe->id)->inRandomOrder()->paginate(18);
         return CustomResponse::buildSuccessResponse($cours);
     }
 }

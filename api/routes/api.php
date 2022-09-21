@@ -69,17 +69,20 @@ Route::prefix('V1')->group(function () {
         return CustomResponse::buildSuccessResponse($niveaux);
     });
 
-    Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
+    Route::get('classes', function () {
+        $classes = Classe::all();
+        return CustomResponse::buildSuccessResponse($classes);
+    });
 
-    Route::post('cours/search', [CoursController::class, 'search']);
+    Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 
     Route::get('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
 
     Route::get('cours/filtre/niveaux/{niveau}', [CoursController::class, 'filtreParNiveau']);
 
-    Route::get('cours/filtre/annee_academique/{annee_academique}', [CoursController::class, 'filtreParAnneeAcademique']);
+    Route::get('cours/filtre/classe/{classe}', [CoursController::class, 'filtreParClasse']);
 
-    Route::post('document/search/', [DocumentController::class, 'search']);
+    Route::get('cours/filtre/annee_academique/{annee_academique}', [CoursController::class, 'filtreParAnneeAcademique']);
 
     Route::get('document/courseDocument/{id}', [DocumentController::class, 'findCourseDocument']);
 

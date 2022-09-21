@@ -40,4 +40,8 @@ export class IndexService {
   getAnneeAcademique() {
     return this.http.get('annee_academique');
   }
+
+  getClasse() {
+    return this.http.get('classes');
+  }
 }
