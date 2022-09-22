@@ -74,6 +74,11 @@ Route::prefix('V1')->group(function () {
         return CustomResponse::buildSuccessResponse($classes);
     });
 
+    Route::get('specialites', function () {
+        $specialites = Specialite::all();
+        return CustomResponse::buildSuccessResponse($specialites);
+    });
+
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 
     Route::get('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);

@@ -1,0 +1,79 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <h2>A chacun sa classe</h2>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="motCle" class="form-label">Rechercher une classe</label>
+        <input nz-input style="width: 100%;" nzSize="large" placeholder="Licence 1 Informatique" [(ngModel)]="searchField.name" />
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Niveau</label>
+        <nz-select style="width: 100%;" [(ngModel)]="selectedNiveaux" (ngModelChange)="filtreClasseParNiveaux()" nzPlaceHolder="Sélectionner un niveau" nzSize="large">
+          <ng-container *ngFor="let niveau of niveaux">
+            <nz-option [nzValue]="niveau.id"
+              [nzLabel]="niveau.libelle!">
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Année Académique</label>
+        <nz-select style="width: 100%;" [(ngModel)]="selectedAnneeAcademique" (ngModelChange)="filtreClasseParAnneeAcademique()" nzPlaceHolder="Sélectionner une année académique" nzSize="large">
+          <ng-container *ngFor="let anneeAcademique of anneeAcademiques">
+            <nz-option [nzValue]="anneeAcademique.id"
+              [nzLabel]="anneeAcademique.libelle!">
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="mb-3">
+        <label for="type" class="form-label">Filtrer par Spécialité</label>
+        <nz-select style="width: 100%;" [(ngModel)]="selectedSpecialite" (ngModelChange)="filtreClasseParSpecialite()" nzPlaceHolder="Sélectionner une spécialité" nzSize="large">
+          <ng-container *ngFor="let specialite of specialites">
+            <nz-option [nzValue]="specialite.id"
+              [nzLabel]="specialite.libelle!">
+            </nz-option>
+          </ng-container>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let classe of classes|filterBy: searchField">
+      <div class="card">
+        <a [routerLink]="['/cours',classe.id,'details']" style="text-decoration: none;">
+          <h3 class="card__title">{{classe.libelle}}</h3>
+          <!-- <div class="card__date">{{classe.libelle}} </div> -->
+          <div class="card__arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15"><path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" *ngIf=" (classes | filterBy: searchField).length === 0">
+      <div class="alert alert-primary" role="alert">
+        <strong>Aucune classe trouvée. Pour des suggestions,</strong> veuillez nous <a routerLink="/contact">contacter</a>.
+      </div>
+      <section id="" class="d-flex align-items-center">
+        <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+          <iframe src="https://embed.lottiefiles.com/animation/90714"></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+

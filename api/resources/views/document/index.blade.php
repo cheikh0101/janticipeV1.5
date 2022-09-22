@@ -22,6 +22,11 @@
                         <strong>{{ session()->get('storeDocument') }}</strong>
                     </div>
                 @endif
+                @if (session()->has('updateDocument'))
+                    <div class="alert alert-primary" role="alert">
+                        <strong>{{ session()->get('updateDocument') }}</strong>
+                    </div>
+                @endif
                 @if (session()->has('deleteDocument'))
                     <div class="alert alert-danger" role="alert">
                         <strong>{{ session()->get('deleteDocument') }}</strong>

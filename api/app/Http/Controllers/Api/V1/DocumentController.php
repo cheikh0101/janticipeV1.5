@@ -55,7 +55,7 @@ class DocumentController extends Controller
             'classe' => 'required',
             'cours' => 'required',
             'type' => 'required',
-            'file' => 'nullable|mimes:pdf,jpg,png',
+            'file' => 'required|mimes:pdf,jpg,png',
             'description' => 'nullable|string',
         ]);
         DB::beginTransaction();
@@ -128,14 +128,19 @@ class DocumentController extends Controller
         DB::beginTransaction();
         try {
             $document->name = $request->name;
-            $document->file = $request->file;
-            $document->lien = $request->lien;
+            if ($request->exists('file')) {
+                $file = $request->file;
+                $filename = md5(uniqid()) . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/documents', $filename);
+                $document->file = $filename;
+            }
             $document->description = $request->description;
             $document->user_id = Auth::id();
             $document->cour_id = $request->cours;
             $document->classe_id = $request->classe;
             $document->type_id = $request->type;
             $document->update();
+            session()->flash('updateDocument', 'Document modifié avec succès');
             DB::commit();
             return redirect()->route('document.index');
         } catch (\Throwable $th) {

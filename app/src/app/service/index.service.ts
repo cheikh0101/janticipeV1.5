@@ -9,7 +9,7 @@ export class IndexService {
   constructor(public http: JanticipeHttpService) {
   }
 
-  getSpecialites() {
+  getNumberSpecialites() {
     return this.http.get('numberOfSpecialites');
   }
 
@@ -39,6 +39,10 @@ export class IndexService {
 
   getAnneeAcademique() {
     return this.http.get('annee_academique');
+  }
+
+  getSpecialites() {
+    return this.http.get('specialites');
   }
 
   getClasse() {

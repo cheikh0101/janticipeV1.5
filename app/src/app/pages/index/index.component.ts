@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
   }
 
   getNumberOfSpeciallites(){
-    this.indexSrv.getSpecialites()
+    this.indexSrv.getNumberSpecialites()
     .then((data: number) => {
       this.specialites = data;
       })
