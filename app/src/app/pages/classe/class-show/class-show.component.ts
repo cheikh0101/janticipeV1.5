@@ -24,8 +24,6 @@ export class ClassShowComponent implements OnInit {
     this.coursSrv.findClasseCourse(this.activatedRoute.snapshot.params["id"])
       .then((data: any) => {
         this.cours = data;
-        console.log(data);
-
       })
       .catch(() => { })
   }

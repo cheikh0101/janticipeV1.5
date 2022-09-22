@@ -8,11 +8,11 @@
 <div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let cour of cours">
-      <div class="card p-3 mb-2">
+      <div class="card p-3 mb-2" [routerLink]="['/cours',cour.id,'details']">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
               <div class="icon">
-                <i class="fa fa-book" aria-hidden="true"></i>
+                <i class="fa fa-book" style="color: #0d6efd;" aria-hidden="true"></i>
               </div>
               <!-- <div class="ms-2 c-details">
                 <h6 class="mb-0">xxx</h6> <span> xxx </span>
@@ -23,10 +23,12 @@
           <h3 class="heading">{{cour.name}}</h3>
           <div class="mt-3">
             <div class="mt-3 d-flex justify-content-between">
-              <span class="text1"></span>
+              <span class="text1">
+                {{cour.libelle_classe}}
+              </span>
               <span>
-                <a class="btn btn-outline-primary" [routerLink]="['/cours',cour.id,'details']">
-                  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                <a class="btn btn-outline-primary streched-link" [routerLink]="['/cours',cour.id,'details']">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
                 </a>
               </span>
             </div>
