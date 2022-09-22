@@ -28,6 +28,14 @@
                   <h5>Nombre de documents</h5>
                   <p>{{documents.length}}</p>
               </div>
+              <div class="course-info d-flex justify-content-between align-items-center">
+                  <h5>Partager sur Whatsapp</h5>
+                  <p>
+                    <a href="https://wa.me/?text=https://janticipe-55588.web.app/cours/{{cours.id}}/details" class="btn btn-white">
+                      <i class="fa fa-whatsapp" style="color: #0d6efd;" aria-hidden="true"></i>
+                    </a>
+                  </p>
+              </div>
           </div>
       </div>
   </div>
@@ -104,7 +112,7 @@
     </div>
   </div>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" nzWidth="500" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
     <pdf-viewer
       [src]="pdfSrc"
@@ -114,5 +122,11 @@
       style="width: 400px; height: 500px">
     </pdf-viewer>
     <!-- <embed src="{{pdfSrc}}" type=""> -->
+    <p>
+      <a class="btn btn-outline-primary" href="https://wa.me/?text={{pdfSrc}}">
+        Partager sur Whatsapp
+        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+      </a>
+    </p>
   </ng-container>
 </nz-modal>
