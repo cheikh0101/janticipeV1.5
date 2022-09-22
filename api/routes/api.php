@@ -1,6 +1,7 @@
 <?php
 
 use App\Custom\CustomResponse;
+use App\Http\Controllers\Api\V1\ClasseController;
 use App\Http\Controllers\Api\V1\CoursController;
 use App\Http\Controllers\Api\V1\DocumentController;
 use App\Mail\SendContactMessageEmail;
@@ -81,6 +82,8 @@ Route::prefix('V1')->group(function () {
 
     Route::apiResource('cours', CoursController::class)->only(['index', 'show']);
 
+    Route::get('cours/classeCourse/{id}', [CoursController::class, 'findClasseCourse']);
+
     Route::get('cours/paginate/{itemPerPage}', [CoursController::class, 'paginate']);
 
     Route::get('cours/filtre/niveaux/{niveau}', [CoursController::class, 'filtreParNiveau']);
@@ -88,6 +91,12 @@ Route::prefix('V1')->group(function () {
     Route::get('cours/filtre/classe/{classe}', [CoursController::class, 'filtreParClasse']);
 
     Route::get('cours/filtre/annee_academique/{annee_academique}', [CoursController::class, 'filtreParAnneeAcademique']);
+
+    Route::get('classe/filtre/niveaux/{niveau}', [ClasseController::class, 'filtreParNiveau']);
+
+    Route::get('classe/filtre/specialite/{specialite}', [ClasseController::class, 'filtreParSpecialite']);
+
+    Route::get('classe/filtre/annee_academique/{annee_academique}', [ClasseController::class, 'filtreParAnneeAcademique']);
 
     Route::get('document/courseDocument/{id}', [DocumentController::class, 'findCourseDocument']);
 

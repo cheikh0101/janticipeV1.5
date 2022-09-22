@@ -68,65 +68,62 @@ export class ClassListComponent implements OnInit {
   }
 
   filtreClasseParNiveaux() {
-    // this.classeSrv
-    //   .filtreClasseParNiveaux(this.selectedNiveaux)
-    //   .then((data: Cours[]) => {
-    //     if (this.cours.length == 0) {
-    //       this.indexSrv.http.toastr.info(
-    //         'Aucune classe disponible pour ce niveau'
-    //       );
-    //       this.selectedAnneeAcademique = 0;
-    //       this.selectedNiveaux = 0;
-    //       this.selectedSpecialite = 0;
-    //     } else {
-    //       this.selectedAnneeAcademique = 0;
-    //       this.selectedSpecialite = 0;
-    //     }
-    //   })
-    //   .catch(() => {});
+    this.classeSrv
+      .filtreClasseParNiveaux(this.selectedNiveaux)
+      .then((data: Classe[]) => {
+        this.classes = data;
+        if (this.classes.length == 0) {
+          this.indexSrv.http.toastr.info(
+            'Aucune classe disponible pour ce niveau'
+          );
+          this.selectedAnneeAcademique = 0;
+          this.selectedNiveaux = 0;
+          this.selectedSpecialite = 0;
+        } else {
+          this.selectedAnneeAcademique = 0;
+          this.selectedSpecialite = 0;
+        }
+      })
+      .catch(() => {});
   }
 
   filtreClasseParAnneeAcademique() {
-    // this.classeSrv
-    //   .filtreCoursParAnneeAcademique(this.selectedAnneeAcademique)
-    //   .then((data: Cours[]) => {
-    //     this.paginationData = data;
-    //     this.cours = this.paginationData.data;
-    //     if (this.cours.length == 0) {
-    //       this.indexSrv.http.toastr.info(
-    //         "Aucune classe disponible pour l'année académique choisit! "
-    //       );
-    //       this.selectedNiveaux = 0;
-    //       this.selectedAnneeAcademique = 0;
-    //       this.selectedSpecialite = 0;
-    //     } else {
-    //       this.selectedNiveaux = 0;
-    //       this.selectedSpecialite = 0;
-    //     }
-    //   })
-    //   .catch(() => {});
+    this.classeSrv
+      .filtreClasseParAnneeAcademique(this.selectedAnneeAcademique)
+      .then((data: Classe[]) => {
+        this.classes = data;
+        if (this.classes.length == 0) {
+          this.indexSrv.http.toastr.info(
+            "Aucune classe disponible pour l'année académique choisit! "
+          );
+          this.selectedNiveaux = 0;
+          this.selectedAnneeAcademique = 0;
+          this.selectedSpecialite = 0;
+        } else {
+          this.selectedNiveaux = 0;
+          this.selectedSpecialite = 0;
+        }
+      })
+      .catch(() => {});
   }
 
   filtreClasseParSpecialite() {
-    // this.classeSrv
-    //   .filtreCoursParClasse(this.selectedClasse)
-    //   .then((data: Cours[]) => {
-    //     this.paginationData = data;
-    //     this.cours = this.paginationData.data;
-    //     if (this.cours.length == 0) {
-    //       this.indexSrv.http.toastr.info(
-    //         "Aucune classe disponible pour la spécialité choisit! "
-    //       );
-    //       this.selectedNiveaux = 0;
-    //       this.selectedAnneeAcademique = 0;
-    //       this.selectedSpecialite = 0;
-    //     } else {
-    //       this.selectedNiveaux = 0;
-    //       this.selectedAnneeAcademique = 0;
-    //     }
-    //   })
-    //   .catch(() => {});
+    this.classeSrv
+      .filtreClasseParSpecialite(this.selectedSpecialite)
+      .then((data: Classe[]) => {
+        this.classes = data;
+        if (this.classes.length == 0) {
+          this.indexSrv.http.toastr.info(
+            "Aucune classe disponible pour la spécialité choisit! "
+          );
+          this.selectedNiveaux = 0;
+          this.selectedAnneeAcademique = 0;
+          this.selectedSpecialite = 0;
+        } else {
+          this.selectedNiveaux = 0;
+          this.selectedAnneeAcademique = 0;
+        }
+      })
+      .catch(() => {});
   }
-
-
 }

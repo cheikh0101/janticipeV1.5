@@ -67,4 +67,10 @@ class CoursController extends Controller
         $cours = Cour::whereRelation('classe', 'classe_id', $classe->id)->inRandomOrder()->paginate(18);
         return CustomResponse::buildSuccessResponse($cours);
     }
+
+    public function findClasseCourse(Request $request)
+    {
+        $cours = Cour::where('classe_id', $request->id)->get();
+        return CustomResponse::buildSuccessResponse($cours);
+    }
 }

@@ -1,1 +1,54 @@
-<p>class-show works!</p>
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs" data-aos="fade-in">
+  <div class="container">
+    <h2>Maquette de formation</h2>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let cour of cours">
+      <div class="card p-3 mb-2">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+              <div class="icon">
+                <i class="fa fa-book" aria-hidden="true"></i>
+              </div>
+              <!-- <div class="ms-2 c-details">
+                <h6 class="mb-0">xxx</h6> <span> xxx </span>
+              </div> -->
+          </div>
+        </div>
+        <div class="mt-2">
+          <h3 class="heading">{{cour.name}}</h3>
+          <div class="mt-3">
+            <div class="mt-3 d-flex justify-content-between">
+              <span class="text1"></span>
+              <span>
+                <a class="btn btn-outline-primary" [routerLink]="['/cours',cour.id,'details']">
+                  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" *ngIf=" cours.length === 0">
+      <div class="alert alert-primary" role="alert">
+        <strong>Aucun cours trouvé. Pour des suggestions,</strong> veuillez nous <a routerLink="/contact">contacter</a>.
+      </div>
+      <!-- ======= Hero Section ======= -->
+      <section id="" class="d-flex align-items-center">
+        <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+          <iframe src="https://embed.lottiefiles.com/animation/68738"></iframe>
+        </div>
+      </section><!-- End Hero -->
+    </div>
+  </div>
+</div>
+
+

@@ -25,5 +25,8 @@ export class CoursService extends BaseService<Cours> {
   filtreCoursParClasse(id : number) {
     return this.http.get(this.prefix  +'/filtre/classe/'+id);
   }
+   findClasseCourse(id: number) {
+    return this.http.get(this.prefix + '/classeCourse/' + id)
+  }
 
 }
