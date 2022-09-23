@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit {
   specialites: number | undefined;
   classes: number | undefined;
   cm: number | undefined;
-  exams: number | undefined;
+  documents: number | undefined;
 
   constructor(public indexSrv: IndexService) { }
 
@@ -20,7 +20,7 @@ export class IndexComponent implements OnInit {
     this.getNumberOfSpeciallites();
     this.getNumberOfClasses();
     this.getNumberOfCourse();
-    this.getNumberOfExams();
+    this.getNumberOfDocuments();
   }
 
   getNumberOfSpeciallites(){
@@ -47,10 +47,10 @@ export class IndexComponent implements OnInit {
       .catch(() => { });
   }
 
-  getNumberOfExams(){
-    this.indexSrv.getExams()
+  getNumberOfDocuments(){
+    this.indexSrv.getNumberOfDocuments()
     .then((data: number) => {
-      this.exams = data;
+      this.documents = data;
       })
       .catch(() => { });
   }

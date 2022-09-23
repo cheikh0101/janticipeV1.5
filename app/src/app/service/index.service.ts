@@ -21,8 +21,8 @@ export class IndexService {
     return this.http.get('numberOfCourse');
   }
 
-  getExams() {
-    return this.http.get('numberOfExamDoc');
+  getNumberOfDocuments() {
+    return this.http.get('numberOfDoc');
   }
 
   sendContact(contact: object) {

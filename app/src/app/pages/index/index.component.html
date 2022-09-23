@@ -1,17 +1,41 @@
  <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-content-center align-items-center">
   <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Apprendre aujourd'hui,<br>Apprendre demain</h1>
-      <h2>Tous mes cours en un seul endroit</h2>
-      <a routerLink="/cours" class="btn-get-started">Les Cours <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+    <h1>Apprendre aujourd'hui,<br>Apprendre demain</h1>
+    <h2>Tous mes cours en un seul endroit</h2>
+    <a routerLink="/cours" class="btn-get-started">Les Cours <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+    <!-- &nbsp;
+    <a href="#events" class="btn-get-started"> <i class="fa fa-play-circle" aria-hidden="true"></i> Vidéo de présentation</a> -->
   </div>
 </section><!-- End Hero -->
 
 <main id="main">
+   <!-- ======= Counts Section ======= -->
+  <section id="counts" class="counts section-bg mt-2">
+      <div class="container">
+          <div class="row counters">
+              <div class="col-lg-3 col-6 text-center">
+                  <span>{{specialites}}</span>
+                  <h4>Spécialités</h4>
+              </div>
+              <div class="col-lg-3 col-6 text-center">
+                  <span>{{classes}}</span>
+                  <h4>Classes</h4>
+              </div>
+              <div class="col-lg-3 col-6 text-center">
+                  <span> {{cm}} </span>
+                  <h4>Cours</h4>
+              </div>
+              <div class="col-lg-3 col-6 text-center">
+                  <span>{{documents}}</span>
+                  <h4>Documents</h4>
+              </div>
+          </div>
+      </div>
+  </section><!-- End Counts Section -->
   <!-- ======= Why Us Section ======= -->
   <section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
-
           <div class="row">
               <div class="col-lg-4 d-flex align-items-stretch">
                   <div class="content">
@@ -57,31 +81,40 @@
                   </div><!-- End .content-->
               </div>
           </div>
-
       </div>
   </section><!-- End Why Us Section -->
-  <!-- ======= Counts Section ======= -->
-  <section id="counts" class="counts mb-4">
-      <div class="container">
-          <div class="row counters">
-              <div class="col-lg-3 col-6 text-center">
-                  <span>{{specialites}}</span>
-                  <h4>Spécialités</h4>
-              </div>
-              <div class="col-lg-3 col-6 text-center">
-                  <span>{{classes}}</span>
-                  <h4>Classes</h4>
-              </div>
-              <div class="col-lg-3 col-6 text-center">
-                  <span> {{cm}} </span>
-                  <h4>Cours</h4>
-              </div>
-              <div class="col-lg-3 col-6 text-center">
-                  <span>{{exams}}</span>
-                  <h4>Examens</h4>
-              </div>
+
+  <!-- ======= Events Section ======= -->
+  <!-- <section id="events" class="events">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-img">
+              <img src="assets/img/a.jpg" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><a href="">Version web</a></h5>
+              <p class="fst-italic text-center">Ergonomique, Prise en main facile et simple.</p>
+            </div>
           </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="card">
+            <div class="card-img">
+              <img src="assets/img/a.jpg" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><a href="">Version Mobile</a></h5>
+              <p class="fst-italic text-center">Responsive, Téléchargeable, faible consommation en données mobile.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
-  </section><!-- End Counts Section -->
+
+    </div>
+  </section> -->
 </main>
 

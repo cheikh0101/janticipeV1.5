@@ -50,9 +50,9 @@ Route::prefix('V1')->group(function () {
         $cours = Cour::all()->count();
         return CustomResponse::buildSuccessResponse($cours);
     });
-    Route::get('numberOfExamDoc', function () {
-        $en = Document::whereRelation('type', 'code', 'EN')->count();
-        return CustomResponse::buildSuccessResponse($en);
+    Route::get('numberOfDoc', function () {
+        $documents = Document::all()->count();
+        return CustomResponse::buildSuccessResponse($documents);
     });
 
     Route::get('types', function () {
