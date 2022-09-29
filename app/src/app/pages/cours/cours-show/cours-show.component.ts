@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵgetSanitizationBypassType } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cours } from 'src/app/model/Cours';
 import { Document } from 'src/app/model/Document';
@@ -6,7 +6,7 @@ import { Type } from 'src/app/model/Type';
 import { CoursService } from 'src/app/service/cours.service';
 import { DocumentService } from 'src/app/service/document.service';
 import { IndexService } from 'src/app/service/index.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cours-show',
@@ -16,7 +16,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CoursShowComponent implements OnInit {
 
   // pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
-  pdfSrc: any;
+  public pdfSrc: SafeResourceUrl = "";
+  // pdfSrc: any;
   cours: Cours;
   types: Type[] = [];
   documents: Document[] = [];
@@ -25,7 +26,7 @@ export class CoursShowComponent implements OnInit {
   searchField: any = { name: '' };
   isVisible = false;
 
-  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private modalService: NgbModal) {
+  constructor( public activatedRoute: ActivatedRoute, public coursSrv: CoursService, public indexSrv:IndexService, public documentSrv: DocumentService, private sanitizer: DomSanitizer) {
     this.cours = Object.create(null);
    }
 
@@ -73,7 +74,8 @@ export class CoursShowComponent implements OnInit {
 
   showModal(document:Document): void {
     this.isVisible = true;
-    this.pdfSrc = document.document_path;
+    this.pdfSrc = this.sanitizer.bypassSecurityTrustUrl(document.document_path)
+    // this.pdfSrc = document.document_path;
   }
 
   handleOk(): void {

@@ -55,7 +55,7 @@ class DocumentController extends Controller
             'classe' => 'required',
             'cours' => 'required',
             'type' => 'required',
-            'file' => 'required|mimes:pdf,jpg,png',
+            'file' => 'nullable|mimes:pdf,jpg,png',
             'description' => 'nullable|string',
         ]);
         DB::beginTransaction();

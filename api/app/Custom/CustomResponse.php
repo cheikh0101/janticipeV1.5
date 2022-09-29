@@ -32,11 +32,12 @@ class CustomResponse
         ];
     }
 
-    public static function buildValidationErrorResponse($errors) {
+    public static function buildValidationErrorResponse($errors)
+    {
         return [
-            'error'=>true,
-            'validationError'=>true,
-            'data'=>$errors
+            'error' => true,
+            'validationError' => true,
+            'data' => $errors
         ];
     }
 }
