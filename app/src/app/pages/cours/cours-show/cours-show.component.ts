@@ -15,9 +15,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class CoursShowComponent implements OnInit {
 
-  // pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
-  // public pdfSrc: SafeResourceUrl = "";
-  pdfSrc: any;
+  pdfSrc!: string;
   cours: Cours;
   types: Type[] = [];
   documents: Document[] = [];
@@ -74,7 +72,6 @@ export class CoursShowComponent implements OnInit {
 
   showModal(document:Document): void {
     this.isVisible = true;
-    // this.pdfSrc = this.sanitizer.bypassSecurityTrustUrl(document.document_path)
     this.pdfSrc = document.document_path;
   }
 

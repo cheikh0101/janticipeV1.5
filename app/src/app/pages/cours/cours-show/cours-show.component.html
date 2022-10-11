@@ -114,18 +114,18 @@
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
-
-    <!-- <pdf-viewer
-      [src]="pdfSrc"
-      [render-text]="false"
-      [autoresize]="true"
-      [show-borders]="true"
-      style="width: 400px; height: 500px">
-    </pdf-viewer> -->
-
     <div class="row">
       <div class="col">
-        <img src="{{ pdfSrc  }}" alt="previsualisation du document" class="img-fluid">
+        <!-- <pdf-viewer
+          [src]="pdfSrc"
+          [render-text]="false"
+          [autoresize]="true"
+          [show-borders]="true"
+          [original-size]="false"
+          style="width: 400px; height: 500px; display: block;">
+        </pdf-viewer> -->
+        <!-- <img src="{{ pdfSrc  }}" alt="previsualisation du document" class="img-fluid">
+        <embed src="{{pdfSrc}}" width="500" height="375"> -->
       </div>
     </div>
     <hr>
