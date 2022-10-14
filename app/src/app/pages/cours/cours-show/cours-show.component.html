@@ -83,9 +83,12 @@
             <div class="mt-3 d-flex justify-content-between">
               <span class="text1">Publié par: {{document.user.name}}</span>
               <span>
-                <button class="btn btn-outline-primary" *ngIf=" document.file != null " (click)="showModal(document)">
+                <!-- <button class="btn btn-outline-primary" *ngIf=" document.file != null " (click)="showModal(document)">
                   <i class="fa fa-eye" aria-hidden="true"></i>
-                </button>
+                </button> -->
+                <a class="btn btn-outline-primary" *ngIf=" document.file != null " href="https://wa.me/?text={{pdfSrc}}" target="_blank">
+                  <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                </a>
                 &nbsp;
                 <a class="btn btn-outline-primary" *ngIf=" document.file != null " href="{{document.document_path}}" target="_blank">
                   <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
@@ -112,20 +115,20 @@
     </div>
   </div>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<!-- <nz-modal [(nzVisible)]="isVisible" nzTitle="Prévisualization" [nzFooter]="null" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
     <div class="row">
       <div class="col">
-        <!-- <pdf-viewer
+        <pdf-viewer
           [src]="pdfSrc"
           [render-text]="false"
           [autoresize]="true"
           [show-borders]="true"
           [original-size]="false"
           style="width: 400px; height: 500px; display: block;">
-        </pdf-viewer> -->
-        <!-- <img src="{{ pdfSrc  }}" alt="previsualisation du document" class="img-fluid">
-        <embed src="{{pdfSrc}}" width="500" height="375"> -->
+        </pdf-viewer>
+        <img src="{{ pdfSrc  }}" alt="previsualisation du document" class="img-fluid">
+        <embed src="{{pdfSrc}}" width="500" height="375">
       </div>
     </div>
     <hr>
@@ -136,4 +139,4 @@
       </a>
     </p>
   </ng-container>
-</nz-modal>
+</nz-modal> -->
